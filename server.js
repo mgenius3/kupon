@@ -45,5 +45,4 @@ app.prepare().then(() => {
     if (err) throw err;
     console.log(`> Ready on http://localhost:${port}`);
   });
-  // .setTimeout(300000); //set connection timeout to 5mins
 });

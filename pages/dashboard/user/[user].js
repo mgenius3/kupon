@@ -59,7 +59,7 @@ function Account() {
           </div>
 
           <div className="side_links">
-            <span>
+            <span style={{ cursor: 'pointer' }}>
               <img
                 src="https://img.icons8.com/ios-glyphs/30/FD7E14/home-page--v1.png"
                 className="icon"
@@ -69,21 +69,24 @@ function Account() {
               </Link>
             </span>
 
-            <span onClick={() => setComponentDisplay('profile')}>
+            <span
+              onClick={() => setComponentDisplay('profile')}
+              style={{ cursor: 'pointer' }}
+            >
               <img
                 src="https://img.icons8.com/material-outlined/24/FD7E14/user.png"
                 className="icon"
               />
               <b>Profile</b>
             </span>
-            <span>
+            <span style={{ cursor: 'pointer' }}>
               <img
                 src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
                 className="icon"
               />
               <b>Logistics</b>
             </span>
-            <span>
+            <span style={{ cursor: 'pointer' }}>
               <img
                 src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
                 className="icon"
@@ -91,7 +94,7 @@ function Account() {
               <b>Market</b>
             </span>
 
-            <span>
+            <span style={{ cursor: 'pointer' }}>
               <img
                 src="https://img.icons8.com/ios/50/FD7E14/push-notifications.png"
                 className="icon"

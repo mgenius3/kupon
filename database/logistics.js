@@ -28,6 +28,7 @@ const createTableLogistics = async () => {
       deliveryState VARCHAR(255) NOT NULL,
       receiverCode VARCHAR(255) NOT NULL,
       receiverTelephone VARCHAR(255) NOT NULL,
+      status VARCHAR NOT NULL,
       description TEXT,
       PRIMARY KEY (id)
     ) AUTO_INCREMENT=1000`);
@@ -55,11 +56,12 @@ const sendPackageDetails = async (data) => {
     deliveryState,
     receiverCode,
     description,
+    status,
   } = data;
   try {
     const connection = await pool.getConnection();
     await connection.beginTransaction();
-    const logistics_query = `INSERT INTO logistics (userId, files, firstName, lastName, email, telephone, company, pickupAddress, pickupCity, pickupState, postcode, receiverTelephone, deliveryAddress, deliveryCity, deliveryState, receiverCode, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?)`;
+    const logistics_query = `INSERT INTO logistics (userId, files, firstName, lastName, email, telephone, company, pickupAddress, pickupCity, pickupState, postcode, receiverTelephone, deliveryAddress, deliveryCity, deliveryState, receiverCode, description, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?)`;
     const new_logistics_user = await pool.query(logistics_query, [
       userId,
       files,
@@ -78,6 +80,7 @@ const sendPackageDetails = async (data) => {
       deliveryState,
       receiverCode,
       description,
+      status,
     ]);
     return new_logistics_user[0].insertId;
   } catch (err) {
@@ -120,4 +123,7 @@ const getAUserPackage = async (userId) => {
 module.exports = {
   createTableLogistics,
   sendPackageDetails,
+  getAllPackage,
+  packageDetailById,
+  getAUserPackage,
 };
