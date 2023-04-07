@@ -28,7 +28,7 @@ const createTableLogistics = async () => {
       deliveryState VARCHAR(255) NOT NULL,
       receiverCode VARCHAR(255) NOT NULL,
       receiverTelephone VARCHAR(255) NOT NULL,
-      status VARCHAR NOT NULL,
+      status VARCHAR(255) NOT NULL,
       description TEXT,
       PRIMARY KEY (id)
     ) AUTO_INCREMENT=1000`);
