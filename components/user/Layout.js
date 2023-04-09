@@ -1,13 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { getInitials, shortenString } from '../../../utils/stringManipulation';
+import { getInitials, shortenString } from '../../utils/stringManipulation';
 import jwtDecode from 'jwt-decode';
-import logout from '../../../utils/logout';
-import Profile from '../../../components/user/profile';
-import PageAuthentication from '../../../hooks/useAuth';
+import logout from '../../utils/logout';
+import PageAuthentication from '../../hooks/useAuth';
 
-function Account() {
+function UserLayout({ children }) {
   const [token] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('token');
@@ -16,8 +15,6 @@ function Account() {
   const [user, setUser] = useState();
   const asideRef = useRef();
   const router = useRouter();
-  //   const { user: id } = router.query;
-  const [componentDisplay, setComponentDisplay] = useState('profile');
 
   useEffect(() => {
     try {
@@ -26,7 +23,7 @@ function Account() {
     } catch (err) {
       console.log(err);
     }
-  }, [user]);
+  }, [token]);
 
   const userlogout = () => {
     let out = logout();
@@ -59,48 +56,55 @@ function Account() {
           </div>
 
           <div className="side_links">
-            <span style={{ cursor: 'pointer' }}>
-              <img
-                src="https://img.icons8.com/ios-glyphs/30/FD7E14/home-page--v1.png"
-                className="icon"
-              />
-              <Link href="/">
+            <Link href="/">
+              <span style={{ cursor: 'pointer' }}>
+                <img
+                  src="https://img.icons8.com/ios-glyphs/30/FD7E14/home-page--v1.png"
+                  className="icon"
+                />
                 <b>Home</b>
-              </Link>
-            </span>
+              </span>
+            </Link>
 
-            <span
-              onClick={() => setComponentDisplay('profile')}
-              style={{ cursor: 'pointer' }}
-            >
-              <img
-                src="https://img.icons8.com/material-outlined/24/FD7E14/user.png"
-                className="icon"
-              />
-              <b>Profile</b>
-            </span>
-            <span style={{ cursor: 'pointer' }}>
-              <img
-                src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
-                className="icon"
-              />
-              <b>Logistics</b>
-            </span>
-            <span style={{ cursor: 'pointer' }}>
-              <img
-                src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
-                className="icon"
-              />
-              <b>Market</b>
-            </span>
+            <Link href="profile">
+              <span style={{ cursor: 'pointer' }}>
+                <img
+                  src="https://img.icons8.com/material-outlined/24/FD7E14/user.png"
+                  className="icon"
+                />
+                <b>Profile</b>
+              </span>
+            </Link>
 
-            <span style={{ cursor: 'pointer' }}>
-              <img
-                src="https://img.icons8.com/ios/50/FD7E14/push-notifications.png"
-                className="icon"
-              />
-              <b>Notification</b>
-            </span>
+            <Link href="logistics">
+              <span style={{ cursor: 'pointer' }}>
+                <img
+                  src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
+                  className="icon"
+                />
+                <b>Logistics</b>
+              </span>
+            </Link>
+
+            <Link href="market">
+              <span style={{ cursor: 'pointer' }}>
+                <img
+                  src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
+                  className="icon"
+                />
+                <b>Market</b>
+              </span>
+            </Link>
+
+            <Link href="notification">
+              <span style={{ cursor: 'pointer' }}>
+                <img
+                  src="https://img.icons8.com/ios/50/FD7E14/push-notifications.png"
+                  className="icon"
+                />
+                <b>Notification</b>
+              </span>
+            </Link>
 
             <span style={{ cursor: 'pointer' }} onClick={() => userlogout()}>
               <img
@@ -144,12 +148,10 @@ function Account() {
             </nav>
           </header>
 
-          <article>
-            {componentDisplay == 'profile' ? <Profile user={user} /> : null}
-          </article>
+          <article>{children}</article>
         </section>
       </main>
     </PageAuthentication>
   );
 }
-export default Account;
+export default UserLayout;

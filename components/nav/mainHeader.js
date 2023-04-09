@@ -1,9 +1,27 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import Link from 'next/link';
+import jwtDecode from 'jwt-decode';
+import { getInitials } from '../../utils/stringManipulation';
 
 export default function MainHeader() {
+  const [token] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('token');
+    }
+  });
+  const [user, setUser] = useState({});
   const [openMobileNav, setOpenMobileNav] = useState(false);
   const [avatarMenu, setAvatarMenu] = useState(false);
+
+  useEffect(() => {
+    try {
+      let decoded = jwtDecode(token);
+      setUser(decoded);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
   return (
     //  <!--Header-->
     <Fragment>
@@ -14,7 +32,7 @@ export default function MainHeader() {
           top: '0px',
           zIndex: '100',
           background: 'white',
-          padding: '20px 20px',
+          padding: '20px 40px 10px 20px',
           width: '100%',
           display: openMobileNav == true ? 'block' : 'none',
         }}
@@ -34,7 +52,7 @@ export default function MainHeader() {
               listStyle: 'none',
             }}
           >
-            <Link href="/market">
+            <Link href="/logistics">
               <p> Home</p>
             </Link>
           </li>
@@ -48,7 +66,7 @@ export default function MainHeader() {
               listStyle: 'none',
             }}
           >
-            <Link href="/market/contact-us">
+            <Link href="/logistics/contact-us">
               <p> Contact Us</p>
             </Link>
           </li>
@@ -107,7 +125,7 @@ export default function MainHeader() {
                     className="lvl1 parent megamenu"
                     style={{ cursor: 'pointer' }}
                   >
-                    <Link href="/market">
+                    <Link href="/logistics">
                       <p>
                         {' '}
                         Home <i className="anm anm-angle-down-l mx-3"></i>
@@ -119,7 +137,7 @@ export default function MainHeader() {
                     className="lvl1 parent dropdown"
                     style={{ cursor: 'pointer' }}
                   >
-                    <Link href="/market/contact-us">
+                    <Link href="/logistics/contact-us">
                       <p>
                         {' '}
                         Contact Us<i className="anm anm-angle-down-l mx-3"></i>
@@ -128,9 +146,9 @@ export default function MainHeader() {
                   </li>
 
                   <li className="lvl1" style={{ cursor: 'pointer' }}>
-                    <Link href="/market/sell">
+                    <Link href="/logistics/send">
                       <p>
-                        <b className="">Send package</b>{' '}
+                        <b className="">Send Package</b>{' '}
                       </p>
                     </Link>
                   </li>
@@ -159,43 +177,97 @@ export default function MainHeader() {
                     className="navbar-nav"
                     style={{ position: 'absolute', right: '0px' }}
                   >
-                    {/* <!-- Avatar --> */}
-                    <li className="nav-item dropdown">
-                      <a
-                        className="nav-link dropdown-toggle d-flex align-items-center"
-                        href="#"
-                        id="navbarDropdownMenuLink"
-                        role="button"
-                        data-mdb-toggle="dropdown"
-                        aria-expanded="false"
-                        onClick={() => setAvatarMenu(!avatarMenu)}
-                      >
-                        <img
-                          src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp"
-                          className="rounded-circle"
-                          height="22"
-                          alt="Avatar"
-                          loading="lazy"
-                        />
-                      </a>
-                      {avatarMenu ? (
-                        <ul
-                          className="bg-light position-absolute"
-                          aria-labelledby="navbarDropdownMenuLink"
-                          style={{ left: '-50px' }}
+                    {/* <!-- Avatar Menu --> */}
+                    {!Object.keys(user).length ? (
+                      <li>
+                        <Link href="/login">
+                          <small
+                            style={{
+                              fontSize: '15px',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            {' '}
+                            sign in{' '}
+                          </small>
+                        </Link>
+                        <Link href="register">
+                          <small
+                            style={{
+                              backgroundColor: '#e64c00',
+                              color: 'white',
+                              padding: '2px',
+                              fontSize: '15px',
+                              cursor: 'pointer',
+                            }}
+                            className="d-none d-sm-inline"
+                          >
+                            {' '}
+                            sign up{' '}
+                          </small>
+                        </Link>
+                      </li>
+                    ) : (
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle d-flex align-items-center"
+                          href="#"
+                          id="navbarDropdownMenuLink"
+                          role="button"
+                          data-mdb-toggle="dropdown"
+                          aria-expanded="false"
+                          onClick={() => setAvatarMenu(!avatarMenu)}
                         >
-                          <li className="dropdown-item">
-                            <Link href="#">My profile</Link>
-                          </li>
-                          <li className="dropdown-item">
-                            <Link href="#">Settings</Link>
-                          </li>
-                          <li className="dropdown-item">
-                            <Link href="#">Logout</Link>
-                          </li>
-                        </ul>
-                      ) : null}
-                    </li>
+                          <p
+                            style={{
+                              color: 'white',
+                              backgroundColor: 'black',
+                              borderRadius: '50%',
+                              padding: '3px',
+                            }}
+                          >
+                            {getInitials(user?.firstName, user?.lastName)}
+                          </p>
+                        </a>
+                        {avatarMenu ? (
+                          <ul
+                            className="bg-light position-absolute"
+                            aria-labelledby="navbarDropdownMenuLink"
+                            style={{ left: '-50px' }}
+                          >
+                            <li
+                              className="dropdown-item"
+                              style={{ cursor: 'pointer' }}
+                            >
+                              <Link href={`/dashboard/user/${user?.id}`}>
+                                <span>
+                                  <img
+                                    src="https://img.icons8.com/ios-filled/50/null/user.png"
+                                    width={15}
+                                  />{' '}
+                                  profile
+                                </span>
+                              </Link>
+                            </li>
+
+                            <li
+                              className="dropdown-item"
+                              style={{ cursor: 'pointer' }}
+                            >
+                              <Link href="/login">
+                                <span>
+                                  <img
+                                    src="https://img.icons8.com/ios-filled/50/null/logout-rounded.png"
+                                    width={15}
+                                  />{' '}
+                                  logout
+                                </span>
+                              </Link>
+                            </li>
+                          </ul>
+                        ) : null}
+                      </li>
+                    )}
                   </ul>
                 </div>
               </nav>

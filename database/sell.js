@@ -23,6 +23,8 @@ const createTableSell = async () => {
       conditions VARCHAR(255) NOT NULL,
       price VARCHAR(255) NOT NULL,
       description TEXT NOT NULL,
+      paid BIT DEFAULT 0,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       PRIMARY KEY (id)
     ) AUTO_INCREMENT=1000`);
   } catch (err) {

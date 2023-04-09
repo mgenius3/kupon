@@ -28,8 +28,11 @@ const createTableLogistics = async () => {
       deliveryState VARCHAR(255) NOT NULL,
       receiverCode VARCHAR(255) NOT NULL,
       receiverTelephone VARCHAR(255) NOT NULL,
-      status VARCHAR(255) NOT NULL,
+      status VARCHAR(255) DEFAULT 'pending',
+      paid BIT DEFAULT 0,
+      referenceId VARCHAR(255),
       description TEXT,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       PRIMARY KEY (id)
     ) AUTO_INCREMENT=1000`);
   } catch (err) {
@@ -56,12 +59,11 @@ const sendPackageDetails = async (data) => {
     deliveryState,
     receiverCode,
     description,
-    status,
   } = data;
   try {
     const connection = await pool.getConnection();
     await connection.beginTransaction();
-    const logistics_query = `INSERT INTO logistics (userId, files, firstName, lastName, email, telephone, company, pickupAddress, pickupCity, pickupState, postcode, receiverTelephone, deliveryAddress, deliveryCity, deliveryState, receiverCode, description, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?)`;
+    const logistics_query = `INSERT INTO logistics (userId, files, firstName, lastName, email, telephone, company, pickupAddress, pickupCity, pickupState, postcode, receiverTelephone, deliveryAddress, deliveryCity, deliveryState, receiverCode, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?)`;
     const new_logistics_user = await pool.query(logistics_query, [
       userId,
       files,
@@ -80,7 +82,6 @@ const sendPackageDetails = async (data) => {
       deliveryState,
       receiverCode,
       description,
-      status,
     ]);
     return new_logistics_user[0].insertId;
   } catch (err) {
@@ -105,7 +106,6 @@ const packageDetailById = async (id) => {
     `SELECT * FROM logistics id = ${id}`
   );
   await connection.release();
-
   return get_package;
 };
 
@@ -113,11 +113,46 @@ const getAUserPackage = async (userId) => {
   let connection = await pool.getConnection();
   (await connection).beginTransaction();
   let get_user_package = await connection.query(
-    `SELECT * FROM user WHERE userId = '${userId}'`
+    `SELECT * FROM logistics WHERE userId = '${userId}'`
   );
   await connection.release();
-
   return get_user_package[0];
+};
+
+const updatePackageStatus = async (id, status) => {
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = `UPDATE logistics SET status = ? WHERE id = ?`;
+    await pool.query(query, [status, id]);
+    await connection.release();
+  } catch (err) {
+    throw err.message;
+  }
+};
+
+const setPackageReference = async (referenceId, id) => {
+  console.log(referenceId, id);
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = `UPDATE logistics SET referenceId = ? WHERE id = ?`;
+    await pool.query(query, [referenceId, id]);
+    await connection.release();
+  } catch (err) {
+    throw err.message;
+  }
+};
+const updatePackagePayment = async (paid, id) => {
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = `UPDATE logistics SET paid = ? WHERE id = ?`;
+    await pool.query(query, [paid, id]);
+    await connection.release();
+  } catch (err) {
+    throw err.message;
+  }
 };
 
 module.exports = {
@@ -126,4 +161,7 @@ module.exports = {
   getAllPackage,
   packageDetailById,
   getAUserPackage,
+  updatePackageStatus,
+  setPackageReference,
+  updatePackagePayment,
 };

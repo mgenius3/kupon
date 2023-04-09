@@ -26,7 +26,7 @@ const createTableUser = async () => {
       ? null
       : await connection.query(`CREATE TABLE User (
       id INT NOT NULL AUTO_INCREMENT,
-      admin VARCHAR(50) NOT NULL,
+      admin BIT DEFAULT 0,
       firstName VARCHAR(255) NOT NULL,
       lastName VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
@@ -34,6 +34,7 @@ const createTableUser = async () => {
       telephone VARCHAR(255) NOT NULL,
       address VARCHAR(255) NOT NULL,
       token VARCHAR(1000) DEFAULT NULL,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       PRIMARY KEY (id),
       UNIQUE(email)
     ) AUTO_INCREMENT=100`);
@@ -42,7 +43,6 @@ const createTableUser = async () => {
   }
 };
 
-createTableUser();
 const registerUser = async ({
   email,
   password,

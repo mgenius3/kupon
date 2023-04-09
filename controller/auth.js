@@ -8,16 +8,17 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const RegisterNewUser = async (req, res) => {
+  console.log(req.body);
   try {
     const { password } = req.body;
     let encryptedPassword = await bcrypt.hash(password, 10);
     //PASSWORD ENCRYPTION
     req.body.password = encryptedPassword;
     let new_user_id = await registerUser(req.body);
-    let [user] = await getUser(new_user_id);
 
-    //getting the user details
-    user = user[0];
+    console.log(new_user_id);
+
+    let [user] = await getUser(new_user_id);
 
     //CREATE TOKEN
     const token = jwt.sign(
@@ -39,10 +40,11 @@ const RegisterNewUser = async (req, res) => {
     await updateUserToken(user.id, token);
     //GET UPDATED DATA FROM DB
     let [updatedUser] = await getUser(user.id);
-    delete updatedUser[0].password;
+    delete updatedUser.password;
     //SEND UPDATED DATA FROM DB
-    res.status(201).json(updatedUser[0].token);
+    res.status(201).json(updatedUser.token);
   } catch (err) {
+    console.log(err);
     res.status(400).json({ msg: err });
   }
 };

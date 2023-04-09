@@ -7,9 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 
 export default function Register() {
-  const [data, setData] = useState({
-    admin: false,
-  });
+  const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -57,6 +55,7 @@ export default function Register() {
         // addUserMutation.mutate(data);
         setIsLoading(true);
         try {
+          console.log(data);
           const response = await fetch('/user/register', {
             method: 'POST',
             headers: {
@@ -70,9 +69,9 @@ export default function Register() {
             setIsLoading(false);
             throw new Error(res.msg);
           }
-          const data = await response.json();
+          const res = await response.json();
           toast.success('successful');
-          localStorage.setItem('token', data);
+          localStorage.setItem('token', res);
           setIsLoading(false);
           router.push('/');
         } catch (err) {
