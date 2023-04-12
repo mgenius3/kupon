@@ -3,7 +3,8 @@ import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
 import UserLayout from '../../../components/admin/Layout';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import ConfirmationInput from '../../../components/Confirmation';
+import { Modal } from 'react-bootstrap';
 const UserMarket = () => {
   const [token] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -12,6 +13,7 @@ const UserMarket = () => {
   });
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
 
   useEffect(() => {
     const fetchSell = async () => {
@@ -136,7 +138,7 @@ const UserMarket = () => {
                       ) : (
                         <Button
                           variant="error"
-                          onClick={() => deletePackage(product?.id)}
+                          onClick={() => setConfirmation(true)}
                         >
                           DELETE
                         </Button>
@@ -148,6 +150,15 @@ const UserMarket = () => {
             ))}
           </Row>
         </Fragment>
+        {confirmation ? (
+          <Modal show={true}>
+            <ConfirmationInput
+              setConfirmation={setConfirmation}
+              action={deletePackage}
+              title="delete sell packages"
+            />
+          </Modal>
+        ) : null}
       </Container>
     </UserLayout>
   );

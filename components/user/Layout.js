@@ -146,12 +146,10 @@ function UserLayout({ children }) {
                 {/* <div className="alert alert-primary" role="alert">
                 <h3 className="h1 text-center"> Admin</h3>
               </div> */}
-                <h3>Settings</h3>
-                <p style={{ opacity: '0.7' }}>
-                  Manage your personal and organization settings
-                </p>
+                <h3>User - Settings</h3>
+                <p style={{ opacity: '0.7' }}>Manage your personal settings</p>
               </div>
-              <nav>
+              {/* <nav>
                 <ul style={{ listStyle: 'none', margin: '10px' }}>
                   <li style={{ margin: '10px' }}>
                     <Link href="profile">Profile</Link>
@@ -160,7 +158,7 @@ function UserLayout({ children }) {
                     <Link href="password">Password</Link>
                   </li>
                 </ul>
-              </nav>
+              </nav> */}
             </header>
 
             <article>{children}</article>

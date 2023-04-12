@@ -3,6 +3,9 @@ import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
 import UserLayout from '../../../components/user/Layout';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ConfirmationInput from '../../../components/Confirmation';
+import { Modal } from 'react-bootstrap';
+import { useRouter } from 'next/router';
 
 const UserMarket = () => {
   const [token] = useState(() => {
@@ -10,8 +13,12 @@ const UserMarket = () => {
       return localStorage.getItem('token');
     }
   });
+  const router = useRouter();
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
+  const [packageId, setPackageId] = useState();
 
   useEffect(() => {
     const fetchSell = async () => {
@@ -76,6 +83,7 @@ const UserMarket = () => {
       const res = await response.json();
       setIsLoading(false);
       toast.success(res.msg);
+      router.reload();
     } catch (err) {
       setIsLoading(false);
       toast.error(err);
@@ -127,16 +135,16 @@ const UserMarket = () => {
                         </Button>
                       )}
                       {isLoading ? (
-                        <Button
-                          variant="error"
-                          onClick={() => deletePackage(product?.id)}
-                        >
+                        <Button variant="error" disabled>
                           ...
                         </Button>
                       ) : (
                         <Button
                           variant="error"
-                          onClick={() => deletePackage(product?.id)}
+                          onClick={() => {
+                            setPackageId(product?.id);
+                            setConfirmation(true);
+                          }}
                         >
                           DELETE
                         </Button>
@@ -148,6 +156,16 @@ const UserMarket = () => {
             ))}
           </Row>
         </Fragment>
+        {confirmation ? (
+          <Modal show={true}>
+            <ConfirmationInput
+              setConfirmation={setConfirmation}
+              action={deletePackage}
+              title="to delete sell packages"
+              packageId={packageId}
+            />
+          </Modal>
+        ) : null}
       </Container>
     </UserLayout>
   );

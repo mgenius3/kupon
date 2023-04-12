@@ -41,9 +41,7 @@ const receiveUserPackage = async (req, res) => {
   try {
     let userPackage = await getAUserSell(req.user.id);
     userPackage.forEach(async (pack) => {
-      console.log(pack);
       let paid = convertBufferToBoolean(pack?.paid);
-
       if (!paid) {
         let confirm_payment = await verifyPaystackTransaction(
           pack?.referenceId
@@ -55,12 +53,10 @@ const receiveUserPackage = async (req, res) => {
 
     //refetch userPackage
     userPackage = await getAUserSell(req.user.id);
-    console.log(userPackage);
     //convert paid to boolean before sending to client side
-    // userPackage.forEach(
-    //   (pack) => (pack.paid = convertBufferToBoolean(pack?.paid))
-    // );
-    console.log(userPackage);
+    userPackage.forEach(
+      (pack) => (pack.paid = convertBufferToBoolean(pack?.paid))
+    );
     res.status(200).json({ msg: userPackage });
   } catch (err) {
     res.status(400).json({ msg: err.message });

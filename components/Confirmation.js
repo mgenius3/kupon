@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function ConfirmationInput({ setConfirmation, updateStatus }) {
+function ConfirmationInput({ setConfirmation, action, title, packageId }) {
   const [value, setValue] = useState('');
   const [confirmed, setConfirmed] = useState(false);
 
@@ -16,7 +16,8 @@ function ConfirmationInput({ setConfirmation, updateStatus }) {
     if (value === 'confirm') {
       setConfirmed(true);
       setConfirmation(false);
-      updateStatus();
+      //action to take when confirmed
+      action(packageId);
     } else {
       toast.error('wrong input');
     }
@@ -26,7 +27,7 @@ function ConfirmationInput({ setConfirmation, updateStatus }) {
     <Form.Group className="container p-5">
       <Form.Label>
         <span style={{ fontSize: '15px' }}>
-          Enter <b style={{ color: 'green' }}>confirm</b> to confirm:
+          Enter <b style={{ color: 'green' }}>confirm</b> {title}
         </span>
       </Form.Label>
       <div className="d-flex">

@@ -72,7 +72,6 @@ const packageStatusUpdate = async (req, res) => {
     res.status(400).json({ msg: err.message });
   }
 };
-
 module.exports = {
   PackageSent,
   ReceiveUserPackage,

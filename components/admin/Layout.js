@@ -122,12 +122,12 @@ function UserLayout({ children }) {
                   onClick={() => asideRef.current.classList.add('menu')}
                 />
 
-                <h3>Settings</h3>
+                <h3>Admin - Settings</h3>
                 <p style={{ opacity: '0.7' }}>
                   Manage your personal and organization settings
                 </p>
               </div>
-              <nav>
+              {/* <nav>
                 <ul style={{ listStyle: 'none', margin: '10px' }}>
                   <li style={{ margin: '10px' }}>
                     <Link href="profile">Profile</Link>
@@ -136,7 +136,7 @@ function UserLayout({ children }) {
                     <Link href="password">Password</Link>
                   </li>
                 </ul>
-              </nav>
+              </nav> */}
             </header>
 
             <article>{children}</article>
