@@ -24,7 +24,7 @@ const createTableUser = async () => {
     let checkUsertableExists = await tableExists('user');
     const user_table = checkUsertableExists
       ? null
-      : await connection.query(`CREATE TABLE User (
+      : await connection.query(`CREATE TABLE user (
       id INT NOT NULL AUTO_INCREMENT,
       admin BIT DEFAULT 0,
       firstName VARCHAR(255) NOT NULL,

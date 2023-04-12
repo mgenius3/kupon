@@ -45,11 +45,11 @@ export default function Home() {
 
       // Get the first six items using slice method
       data = data.slice(0, 6);
-
       setShuffleData(data);
     }
   }, [data]);
 
+  console.log(shuffleData);
   function handleScroll() {
     if (typeof window !== 'undefined') {
       if (window?.innerWidth > 1199) {
@@ -163,7 +163,7 @@ export default function Home() {
                           <span className="text-center">Loading...</span>
                         </Spinner>
                       </div>
-                    ) : (
+                    ) : shuffleData?.length ? (
                       shuffleData?.map((product, i) => (
                         <div
                           className="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2"
@@ -175,8 +175,12 @@ export default function Home() {
                               {/*<!-- image -->*/}
                               <img
                                 className="grid-view-item__image primary blur-up lazyload"
-                                dataSrc={`data:image/png;base64,${product?.files[0]}`}
-                                src={`data:image/png;base64,${product?.files[0]}`}
+                                dataSrc={`data:image/png;base64,${
+                                  JSON.parse(product?.files)[0]
+                                }`}
+                                src={`data:image/png;base64,${
+                                  JSON.parse(product?.files)[0]
+                                }`}
                                 alt="image"
                                 title="product"
                                 style={{ height: '250px' }}
@@ -186,32 +190,20 @@ export default function Home() {
                               <img
                                 className="grid-view-item__image hover blur-up lazyload"
                                 dataSrc={`data:image/png;base64,${
-                                  product.files[1]
-                                    ? product.files[1]
-                                    : product.files[0]
+                                  JSON.parse(product.files)[1]
+                                    ? JSON.parse(product.files)[1]
+                                    : JSON.parse(product.files)[0]
                                 }`}
                                 src={`data:image/png;base64,${
-                                  product.files[1]
-                                    ? product.files[1]
-                                    : product.files[0]
+                                  JSON.parse(product.files)[1]
+                                    ? JSON.parse(product.files)[1]
+                                    : JSON.parse(product.files)[0]
                                 }`}
                                 alt="image"
                                 title="product"
                                 style={{ height: '250px' }}
                               />
 
-                              {/* {product?.files.map((file, i) => (
-                                <img
-                                  key={i}
-                                  src={`data:image/png;base64,${file}`}
-                                  className="grid-view-item__image hover blur-up lazyload"
-                                  dataSrc={`data:image/png;base64,${file}`}
-                                  alt="image"
-                                  title="product"
-                                />
-                              ))} */}
-                              {/*<!-- End hover image -->*/}
-                              {/*<!-- product label -->*/}
                               <div className="product-labels rectangular">
                                 <span className="lbl on-sale">
                                   {product?.category}
@@ -243,6 +235,12 @@ export default function Home() {
                           </div>
                         </div>
                       ))
+                    ) : (
+                      <div className="row">
+                        <div className="section text-center col-12">
+                          <span className="text-center">NO COLLECTION</span>
+                        </div>
+                      </div>
                     )}
                   </div>
                   {shuffleData ? (

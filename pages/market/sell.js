@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ImageUpload from '../../utils/fileupload';
-import { useRouter } from 'next/router';
 import PageAuthentication from '../../hooks/useAuth';
 
 import {
@@ -27,8 +26,6 @@ export default function Logistics() {
     }
   });
 
-  const router = useRouter();
-
   useEffect(() => {
     toast.error(fileUploadError);
     setData({ ...data, ['files']: JSON.stringify(filesToUpload) });
@@ -40,40 +37,11 @@ export default function Logistics() {
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
-  // const sellPackageMutation = useMutation(
-  //   async (data) => {
-  //     const response = await fetch('/sell', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     if (!response.ok) {
-  //       const res = await response.json();
-  //       throw new Error(res.msg);
-  //     }
-  //     const res = await response.json();
-  //     return res;
-  //   },
-  //   {
-  //     onSuccess: () => {
-  //       toast.success('successful');
-  //       router.push('/sell');
-  //     },
-  //     onError: (err) => {
-  //       toast.error(err.message);
-  //     },
-  //   }
-  // );
-
   const submitPackageDetails = async () => {
     // sellPackageMutation.mutate(data);
     setIsLoading(true);
     try {
-      const response = await fetch('/user/login', {
+      const response = await fetch('/sell', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -89,8 +57,8 @@ export default function Logistics() {
       }
       const res = await response.json();
       localStorage.setItem('token', res);
+      if (window !== undefined) window.location.replace(`${res.msg}`);
       setIsLoading(false);
-      router.back();
     } catch (err) {
       setIsLoading(false);
       toast.error(err.message);

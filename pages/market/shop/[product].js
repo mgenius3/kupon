@@ -8,9 +8,9 @@ export default function Cart() {
   const router = useRouter();
   const { query } = router;
   const { product } = query;
-  const [data, setData] = useState();
+  const [data, setData] = useState({});
   const [user, setUser] = useState();
-  // const [error, setError] = useState();
+  const [error, setError] = useState();
   const [token] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('token');
@@ -34,7 +34,7 @@ export default function Cart() {
         setData(data?.msg);
       })
       .catch(() => {
-        // setError(error);
+        setError(error);
       });
   }, [product]);
 
@@ -59,6 +59,8 @@ export default function Cart() {
       });
   }, [data]);
 
+  console.log(typeof data?.files);
+
   return (
     <PageAuthentication>
       <Layout title="Cart - Market">
@@ -80,19 +82,22 @@ export default function Cart() {
                       <h4>{data?.category}</h4>
                       <Card>
                         <Carousel>
-                          {data?.files.map((file, i) => (
-                            <Carousel.Item interval={1500} key={i}>
-                              <img
-                                className="d-block"
-                                src={`data:image/png;base64,${file}`}
-                                alt="Image One"
-                              />
-                              <Carousel.Caption>
-                                <h3>{data?.title}</h3>
-                                <p>{data?.description} </p>
-                              </Carousel.Caption>
-                            </Carousel.Item>
-                          ))}
+                          {typeof data.files === 'string'
+                            ? JSON.parse(data.files)?.map((file, i) => (
+                                <Carousel.Item interval={4500} key={i}>
+                                  <img
+                                    className="d-block"
+                                    src={`data:image/png;base64,${file}`}
+                                    alt="Image One"
+                                    style={{ width: '100%' }}
+                                  />
+                                  <Carousel.Caption className="bg-secondary o">
+                                    <h3>{data?.title} </h3>
+                                    <p> {data?.description} </p>
+                                  </Carousel.Caption>
+                                </Carousel.Item>
+                              ))
+                            : null}
                         </Carousel>
                         <Card.Body>
                           <Card.Title>{data?.title}</Card.Title>

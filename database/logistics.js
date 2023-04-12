@@ -7,13 +7,13 @@ const createTableLogistics = async () => {
   try {
     const connection = await pool.getConnection();
     await connection.beginTransaction();
-    let checkUsertableExists = await tableExists('Logistics');
+    let checkUsertableExists = await tableExists('logistics');
     const user_table = checkUsertableExists
       ? null
-      : await connection.query(`CREATE TABLE Logistics (
+      : await connection.query(`CREATE TABLE logistics (
       id INT NOT NULL AUTO_INCREMENT,
       userId VARCHAR(255) NOT NULL,
-      files JSON,
+      files LONGTEXT NOT NULL,
       firstName VARCHAR(255) NOT NULL,
       lastName VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
@@ -93,9 +93,8 @@ const sendPackageDetails = async (data) => {
 const getAllPackage = async () => {
   const query = 'SELECT * FROM logistics';
   const connection = await pool.getConnection();
-  const users = await connection.query(query);
+  const [users] = await connection.query(query);
   await connection.release();
-
   return users;
 };
 

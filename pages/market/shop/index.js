@@ -6,43 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from '../../../store/store';
 import { sellCategory, Condition } from '../../../utils/data';
 export default function Shop() {
-  // const [data, setData] = useState();
-  // const [error, setError] = useState();
-  // const [token, setToken] = useState(() => {
-  //   if (typeof window !== 'undefined') {
-  //     return localStorage.getItem('token');
-  //   }
-  // });
-
-  // useEffect(() => {
-  //   fetch('/sell', {
-  //     method: 'GET',
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         throw new Error('Network response was not ok');
-  //       }
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       setData(data);
-  //     })
-  //     .catch((error) => {
-  //       setError(error);
-  //     });
-  // }, []);
-
   const [allData, setAllData] = useState([]);
   const dispatch = useDispatch();
   let { data, isLoading } = useSelector((state) => state);
 
   useEffect(() => {
-    // if (!dataFetch || !dataFetch.length) {
-    //   setData(dataFetch);
-    // } else dispatch(fetchData());
     dispatch(fetchData());
   }, [dispatch]);
 
@@ -83,14 +51,6 @@ export default function Shop() {
         );
       }
     }
-    // } else if (name == 'price') {
-    //   if (e == '') setAllData(data);
-    //   setAllData(() =>
-    //     data.filter((product) =>
-
-    //     )
-    //   );
-    // }
   }
   return (
     <Layout title="Shop - Market">
@@ -183,8 +143,12 @@ export default function Shop() {
                       {/*<!-- image -->*/}
                       <img
                         className="grid-view-item__image primary blur-up lazyload"
-                        dataSrc={`data:image/png;base64,${product?.files[0]}`}
-                        src={`data:image/png;base64,${product?.files[0]}`}
+                        dataSrc={`data:image/png;base64,${
+                          JSON.parse(product?.files)[0]
+                        }`}
+                        src={`data:image/png;base64,${
+                          JSON.parse(product?.files)[0]
+                        }`}
                         alt="image"
                         title="product"
                         style={{ height: '250px' }}
@@ -194,10 +158,14 @@ export default function Shop() {
                       <img
                         className="grid-view-item__image hover blur-up lazyload"
                         dataSrc={`data:image/png;base64,${
-                          product.files[1] ? product.files[1] : product.files[0]
+                          JSON.parse(product.files)[1]
+                            ? JSON.parse(product.files)[1]
+                            : JSON.parse(product.files)[0]
                         }`}
                         src={`data:image/png;base64,${
-                          product.files[1] ? product.files[1] : product.files[0]
+                          JSON.parse(product.files)[1]
+                            ? JSON.parse(product.files)[1]
+                            : JSON.parse(product.files)[0]
                         }`}
                         alt="image"
                         title="product"

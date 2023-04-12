@@ -30,11 +30,12 @@ app.prepare().then(() => {
   //Create Table for Sell
   server.use('/sell', require('./routes/sell'));
   server.use('/user', require('./routes/auth'));
+  server.use('/admin', require('./routes/admin'));
 
   //Create Table for Logistics
 
-  //error handling
-  // server.use(errorHandler);
+  // error handling
+  server.use(errorHandler);
 
   // Default route handler
   server.get('*', (req, res) => {
