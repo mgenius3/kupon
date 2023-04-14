@@ -28,8 +28,8 @@ const packageSent = async (req, res) => {
       20000
     );
     //set references on db
-    await setPackageReference(initialize_payment?.data?.reference, packagesId);
-    res.status(201).json({ msg: initialize_payment?.data?.authorization_url });
+    await setPackageReference(initialize_payment.data.reference, packagesId);
+    res.status(201).json({ msg: initialize_payment.data.authorization_url });
     // res.status(201).json({ msg: 'successful' });
   } catch (err) {
     console.log(err);
@@ -41,26 +41,20 @@ const receiveUserPackage = async (req, res) => {
   try {
     let userPackage = await getAUserSell(req.user.id);
     userPackage.forEach(async (pack) => {
-      console.log(pack);
-      let paid = convertBufferToBoolean(pack?.paid);
-
+      let paid = convertBufferToBoolean(pack.paid);
       if (!paid) {
-        let confirm_payment = await verifyPaystackTransaction(
-          pack?.referenceId
-        );
-        if (confirm_payment.status && confirm_payment?.data.status == 'success')
-          await updatePackagePayment(true, pack?.id);
+        let confirm_payment = await verifyPaystackTransaction(pack.referenceId);
+        if (confirm_payment.status && confirm_payment.data.status == 'success')
+          await updatePackagePayment(true, pack.id);
       }
     });
 
     //refetch userPackage
     userPackage = await getAUserSell(req.user.id);
-    console.log(userPackage);
     //convert paid to boolean before sending to client side
-    // userPackage.forEach(
-    //   (pack) => (pack.paid = convertBufferToBoolean(pack?.paid))
-    // );
-    console.log(userPackage);
+    userPackage.forEach(
+      (pack) => (pack.paid = convertBufferToBoolean(pack.paid))
+    );
     res.status(200).json({ msg: userPackage });
   } catch (err) {
     res.status(400).json({ msg: err.message });
@@ -95,8 +89,8 @@ const payment = async (req, res) => {
       20000
     );
     //set references on db
-    await setPackageReference(initialize_payment?.data?.reference, packagesId);
-    res.status(201).json({ msg: initialize_payment?.data?.authorization_url });
+    await setPackageReference(initialize_payment.data.reference, packagesId);
+    res.status(201).json({ msg: initialize_payment.data.authorization_url });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

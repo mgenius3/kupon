@@ -3,7 +3,7 @@ const {
   getUser,
   getUserByEmail,
   updateUserToken,
-} = require('../database/auth');
+} = require('../database/authFile');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -18,8 +18,9 @@ const RegisterNewUser = async (req, res) => {
 
     console.log(new_user_id);
 
-    let [user] = await getUser(new_user_id);
+    let user = await getUser(new_user_id);
 
+    console.log(user);
     //CREATE TOKEN
     const token = jwt.sign(
       {
@@ -39,7 +40,7 @@ const RegisterNewUser = async (req, res) => {
     //UPDATE USER WITH TOKEN
     await updateUserToken(user.id, token);
     //GET UPDATED DATA FROM DB
-    let [updatedUser] = await getUser(user.id);
+    let updatedUser = await getUser(user.id);
     delete updatedUser.password;
     //SEND UPDATED DATA FROM DB
     res.status(201).json(updatedUser.token);
@@ -56,7 +57,7 @@ const LoginUser = async (req, res) => {
     if (!(email && password)) {
       res.status(400).json({ msg: 'Please input all field' });
     } else {
-      let [user] = await getUserByEmail(email);
+      let user = await getUserByEmail(email);
 
       if (user && (await bcrypt.compare(password, user.password))) {
         //CREATE TOKEN
@@ -78,7 +79,7 @@ const LoginUser = async (req, res) => {
         //UPDATE USER WITH TOKEN
         await updateUserToken(user.id, token);
         //GET UPDATED DATA FROM DB
-        let [updatedUser] = await getUser(user.id);
+        let updatedUser = await getUser(user.id);
         delete updatedUser.password;
         //SEND UPDATED DATA FROM DB
         res.status(200).json(updatedUser.token);
@@ -87,7 +88,6 @@ const LoginUser = async (req, res) => {
       }
     }
   } catch (err) {
-    console.log(err.message);
     res.status(400).json({ msg: err.message });
   }
 };

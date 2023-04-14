@@ -7,15 +7,15 @@ paystack(process.env.PAYSTACK_SECRET_KEY);
 
 const initializePaystackTransaction = async (req, service, amount) => {
   const params = JSON.stringify({
-    email: req?.user?.email,
+    email: req.user.email,
     amount: amount * 100,
-    callback_url: `https://kupon.onrender.com/dashboard/user/${service}`, // Set the redirect URL here
+    callback_url: `https://kupon.com.ng/dashboard/user/${service}`, // Set the redirect URL here
     metadata: {
       custom_fields: [
         {
-          display_name: req.user?.firstName + ' ' + req?.user?.lastName,
+          display_name: req.user.firstName + ' ' + req.user.lastName,
           variable_name: 'Kupon',
-          value: req?.user?.id,
+          value: req.user.id,
         },
       ],
     },

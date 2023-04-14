@@ -12,7 +12,7 @@ const packageValidation = async (data) => {
   if (!data.deliveryCity) throw Error('No delivery city');
   if (!data.deliveryState) throw Error('No delivery State');
   if (!data.postCode) throw Error('No postcode');
-  if (!JSON.parse(data?.files).length) throw Error('No package images');
+  if (!JSON.parse(data.files).length) throw Error('No package images');
   if (!data.receiverTelephone) throw Error("No package receiver's telephone");
 };
 

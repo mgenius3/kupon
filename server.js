@@ -10,7 +10,7 @@ const handle = app.getRequestHandler();
 const port = process.env.PORT || 3000;
 const errorHandler = require('./middleware/errorHandler');
 const morgan = require('morgan');
-const { createFileUser } = require('./database/auth');
+const { createTableUser } = require('./database/auth');
 const { createTableLogistics } = require('./database/logistics');
 const { createTableSell } = require('./database/sell');
 
@@ -18,8 +18,8 @@ app.prepare().then(() => {
   const server = express();
 
   //Create Table for User
-  // createTableUser();
-  createFileUser();
+  createTableUser();
+  // createFileUser();
   createTableLogistics();
   createTableSell();
 

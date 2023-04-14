@@ -35,7 +35,7 @@ export const fetchData = () => {
     dispatch(fetchDataRequest());
     try {
       const response = await axios.get('/sell');
-      dispatch(fetchDataSuccess(response.data?.msg));
+      dispatch(fetchDataSuccess(response.data.msg));
     } catch (error) {
       dispatch(fetchDataFailure(error));
     }

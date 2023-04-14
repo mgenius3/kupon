@@ -9,7 +9,7 @@ const packageValidation = async (data) => {
   if (!data.conditions) throw Error('No condition');
   if (!data.price) throw Error('No price');
   if (!data.description) throw Error('No package description');
-  if (!JSON.parse(data?.files).length) throw Error('No package images');
+  if (!JSON.parse(data.files).length) throw Error('No package images');
 };
 
 module.exports = { packageValidation };
