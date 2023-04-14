@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { pool } = require('../config/db');
+const { pool } = require('../configdb/db');
 
 //check if table exist before create one
 const tableExists = async (tableName) => {

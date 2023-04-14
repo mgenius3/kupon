@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { pool } = require('../config/db');
+const { pool } = require('../configdb/db');
 const { tableExists } = require('../utils/checkTableExist');
 
 //create table user
