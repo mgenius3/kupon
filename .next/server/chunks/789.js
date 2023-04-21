@@ -11,6 +11,9 @@ exports.modules = {
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1664);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
+
 
 function Footer() {
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("footer", {
@@ -26,53 +29,30 @@ function Footer() {
                             className: "row",
                             children: [
                                 /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                    className: "col-12 col-sm-12 col-md-3 col-lg-3 footer-links",
+                                    className: "col-12 col-sm-12 col-md-3 col-lg-3",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h4", {
                                             className: "h4",
-                                            children: "Quick Shop"
-                                        }),
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
-                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                    href: "#",
-                                                    children: "Sale"
-                                                })
-                                            })
-                                        })
-                                    ]
-                                }),
-                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                    className: "col-12 col-sm-12 col-md-3 col-lg-3 footer-links",
-                                    children: [
-                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h4", {
-                                            className: "h4",
-                                            children: "Informations"
+                                            children: "Quick Link"
                                         }),
                                         /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
                                             children: [
                                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "About us"
+                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                        href: "/",
+                                                        children: "Home"
                                                     })
                                                 }),
                                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "Privacy policy"
+                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                        href: "/about",
+                                                        children: "About Us"
                                                     })
                                                 }),
                                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "Terms & condition"
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "My Account"
+                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                        href: "/contact",
+                                                        children: "Contact Us"
                                                     })
                                                 })
                                             ]
@@ -80,45 +60,44 @@ function Footer() {
                                     ]
                                 }),
                                 /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
-                                    className: "col-12 col-sm-12 col-md-3 col-lg-3 footer-links",
+                                    className: "col-12 col-sm-12 col-md-3 col-lg-3",
+                                    children: [
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h4", {
+                                            className: "h4",
+                                            children: "Services"
+                                        }),
+                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+                                            children: [
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
+                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                        href: "/logistics",
+                                                        children: "Logistics Services"
+                                                    })
+                                                }),
+                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
+                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                        href: "/market",
+                                                        children: "Market"
+                                                    })
+                                                })
+                                            ]
+                                        })
+                                    ]
+                                }),
+                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+                                    className: "col-12 col-sm-12 col-md-3 col-lg-3",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("h4", {
                                             className: "h4",
                                             children: "Customer Services"
                                         }),
-                                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
-                                            children: [
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "Request Personal Data"
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "FAQ's"
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "Contact Us"
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "Orders and Returns"
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
-                                                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-                                                        href: "#",
-                                                        children: "Support Center"
-                                                    })
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("ul", {
+                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
+                                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                    href: "/contact",
+                                                    children: "Contact Us"
                                                 })
-                                            ]
+                                            })
                                         })
                                     ]
                                 }),
@@ -139,9 +118,11 @@ function Footer() {
                                                         }),
                                                         /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                                                             children: [
-                                                                "Benin express way",
+                                                                "No 2 Molarin Close Off Church Street",
                                                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
-                                                                "2568 steet, 23568 Nigeria"
+                                                                "Akinogun Shagari estate, Ipaja",
+                                                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
+                                                                "Lagos, Nigeria"
                                                             ]
                                                         })
                                                     ]
@@ -150,10 +131,34 @@ function Footer() {
                                                     className: "phone",
                                                     children: [
                                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("i", {
-                                                            className: "icon anm anm-phone-s"
+                                                            className: "icon anm anm-phone-s",
+                                                            children: " "
                                                         }),
-                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                            children: "(234) 000 000 0000"
+                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                            href: "tel:07033717055",
+                                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                                style: {
+                                                                    cursor: "pointer"
+                                                                },
+                                                                children: " 07033717055"
+                                                            })
+                                                        })
+                                                    ]
+                                                }),
+                                                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("li", {
+                                                    children: [
+                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("i", {
+                                                            className: "icon anm anm-phone-s",
+                                                            children: " "
+                                                        }),
+                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                            href: "tel:234 9117331396",
+                                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                                style: {
+                                                                    cursor: "pointer"
+                                                                },
+                                                                children: " 09117331396"
+                                                            })
                                                         })
                                                     ]
                                                 }),
@@ -161,10 +166,17 @@ function Footer() {
                                                     className: "email",
                                                     children: [
                                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("i", {
-                                                            className: "icon anm anm-envelope-l"
+                                                            className: "icon anm anm-envelope-l",
+                                                            children: " "
                                                         }),
-                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                            children: "kupon.com.ng"
+                                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
+                                                            href: "mailto: kuponlogistics@gmail.com",
+                                                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                                                                style: {
+                                                                    cursor: "pointer"
+                                                                },
+                                                                children: "kuponlogistics@gmail.com"
+                                                            })
                                                         })
                                                     ]
                                                 })
@@ -374,62 +386,67 @@ function Search() {
     }));
 };
 
-// EXTERNAL MODULE: ./node_modules/next/link.js
-var next_link = __webpack_require__(1664);
-var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
+// EXTERNAL MODULE: external "react-bootstrap"
+var external_react_bootstrap_ = __webpack_require__(358);
 ;// CONCATENATED MODULE: ./components/mainNav/mainHeader.js
 
 
 
 function MainHeader() {
-    return(//  <!--Header-->
-    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-        className: "header-wrap classicHeader animated d-flex",
-        children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-            className: "container-fluid",
-            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                className: "row align-items-center",
-                children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "logo col-md-2 col-lg-2 d-none d-lg-block",
-                        children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "/",
-                            children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                src: "/images/kupon logo with text (1).png",
-                                alt: "Belle Multipurpose Html Template",
-                                width: 100
-                            })
-                        })
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "col-2 col-sm-3 col-md-3 col-lg-8",
-                        children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
-                            className: "grid__item",
-                            id: "AccessibleNav"
-                        })
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo",
-                        children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                            className: "logo",
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                    src: "/images/kupon logo with text (1).png",
-                                    alt: "Belle Multipurpose Html Template",
-                                    title: "Belle Multipurpose Html Template",
-                                    width: 100
-                                })
-                            })
-                        })
-                    }),
-                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                        className: "col-4 col-sm-3 col-md-3 col-lg-2"
+    return /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Navbar, {
+            bg: "light",
+            expand: "md",
+            className: "py-3",
+            children: [
+                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Brand, {
+                    href: "#home",
+                    children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                        src: "/images/kupon logo with text (1).png",
+                        width: "80",
+                        className: "d-inline-block align-top",
+                        alt: "Your Logo"
                     })
-                ]
-            })
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Toggle, {
+                    "aria-controls": "basic-navbar-nav"
+                }),
+                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Collapse, {
+                    id: "basic-navbar-nav",
+                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Nav, {
+                        className: "ml-auto",
+                        children: [
+                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                href: "/",
+                                className: "text-uppercase mx-3",
+                                children: "Home"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                href: "/about#about",
+                                className: "text-uppercase mx-3",
+                                children: "About Us"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                href: "/contact",
+                                className: "text-uppercase mx-3",
+                                children: "Contact Us"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                href: "/logistics",
+                                className: "text-uppercase mx-3",
+                                children: "Logistics"
+                            }),
+                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                href: "/market",
+                                className: "text-uppercase mx-3",
+                                children: "Market Place"
+                            })
+                        ]
+                    })
+                })
+            ]
         })
-    }));
+    });
 };
 
 ;// CONCATENATED MODULE: ./components/mainNav/mobileHeader.js
@@ -1509,14 +1526,15 @@ function TopHeader() {
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "col-8 col-sm-8 col-lg-8",
                         children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "tel:440 0(111) 044 833",
+                            href: "tel:234 7033717055",
                             children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                 className: "phone-no",
                                 children: [
                                     /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                        className: "anm anm-phone-s"
+                                        className: "icon anm anm-phone-s",
+                                        children: " "
                                     }),
-                                    " +440 0(111) 044 833"
+                                    "07033717055"
                                 ]
                             })
                         })
@@ -1647,7 +1665,7 @@ function MainHeader() {
                                 listStyle: "none"
                             },
                             children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/market/contact-us",
+                                href: "/contact",
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                     children: " Contact Us"
                                 })
@@ -1763,7 +1781,7 @@ function MainHeader() {
                                                         cursor: "pointer"
                                                     },
                                                     children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/market/contact-us",
+                                                        href: "/contact-us",
                                                         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                                             children: [
                                                                 " ",
@@ -1806,8 +1824,8 @@ function MainHeader() {
                                         href: "/",
                                         children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
                                             src: "/images/kupon text for white bg.png",
-                                            alt: "Belle Multipurpose Html Template",
-                                            title: "Belle Multipurpose Html Template",
+                                            alt: "kupon",
+                                            title: "kupon",
                                             width: 70
                                         })
                                     })
@@ -1851,6 +1869,7 @@ function MainHeader() {
                                                                 fontSize: "15px",
                                                                 cursor: "pointer"
                                                             },
+                                                            className: "d-none d-sm-inline",
                                                             children: [
                                                                 " ",
                                                                 "sign up",
@@ -1887,6 +1906,25 @@ function MainHeader() {
                                                             left: "-50px"
                                                         },
                                                         children: [
+                                                            (user === null || user === void 0 ? void 0 : user.admin) == "yes" && /*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                                className: "dropdown-item",
+                                                                style: {
+                                                                    cursor: "pointer"
+                                                                },
+                                                                children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                                                    href: `/dashboard/admin/profile`,
+                                                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                                                        children: [
+                                                                            /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                                                                src: "https://img.icons8.com/ios/50/null/administrator-male--v1.png",
+                                                                                width: 15
+                                                                            }),
+                                                                            " ",
+                                                                            "Admin"
+                                                                        ]
+                                                                    })
+                                                                })
+                                                            }),
                                                             /*#__PURE__*/ jsx_runtime_.jsx("li", {
                                                                 className: "dropdown-item",
                                                                 style: {
@@ -1901,7 +1939,7 @@ function MainHeader() {
                                                                                 width: 15
                                                                             }),
                                                                             " ",
-                                                                            "profile"
+                                                                            "Profile"
                                                                         ]
                                                                     })
                                                                 })
@@ -1919,7 +1957,7 @@ function MainHeader() {
                                                                             width: 15
                                                                         }),
                                                                         " ",
-                                                                        "logout"
+                                                                        "Logout"
                                                                     ]
                                                                 })
                                                             })
@@ -3063,14 +3101,15 @@ function TopHeader() {
                     /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: "col-8 col-sm-8 col-lg-8",
                         children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                            href: "tel:440 0(111) 044 833",
+                            href: "tel:07033717055",
                             children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                 className: "phone-no",
                                 children: [
                                     /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                        className: "anm anm-phone-s"
+                                        className: "icon anm anm-phone-s",
+                                        children: " "
                                     }),
-                                    " +440 0(111) 044 833"
+                                    "07033717055"
                                 ]
                             })
                         })
@@ -3184,7 +3223,7 @@ function MainHeader() {
                                 listStyle: "none"
                             },
                             children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/logistics/contact-us",
+                                href: "/contact",
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                     children: " Contact Us"
                                 })
@@ -3283,7 +3322,7 @@ function MainHeader() {
                                                         cursor: "pointer"
                                                     },
                                                     children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/logistics/contact-us",
+                                                        href: "/contact",
                                                         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                                             children: [
                                                                 " ",
@@ -3326,8 +3365,8 @@ function MainHeader() {
                                         href: "/",
                                         children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
                                             src: "/images/kupon text for white bg.png",
-                                            alt: "Belle Multipurpose Html Template",
-                                            title: "Belle Multipurpose Html Template",
+                                            alt: "kupon",
+                                            title: "kupon",
                                             width: 70
                                         })
                                     })
@@ -3408,6 +3447,25 @@ function MainHeader() {
                                                             left: "-50px"
                                                         },
                                                         children: [
+                                                            (user === null || user === void 0 ? void 0 : user.admin) == "yes" && /*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                                className: "dropdown-item",
+                                                                style: {
+                                                                    cursor: "pointer"
+                                                                },
+                                                                children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                                                    href: `/dashboard/admin/profile`,
+                                                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                                                        children: [
+                                                                            /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                                                                src: "https://img.icons8.com/ios/50/null/administrator-male--v1.png",
+                                                                                width: 15
+                                                                            }),
+                                                                            " ",
+                                                                            "Admin"
+                                                                        ]
+                                                                    })
+                                                                })
+                                                            }),
                                                             /*#__PURE__*/ jsx_runtime_.jsx("li", {
                                                                 className: "dropdown-item",
                                                                 style: {
@@ -3422,7 +3480,7 @@ function MainHeader() {
                                                                                 width: 15
                                                                             }),
                                                                             " ",
-                                                                            "profile"
+                                                                            "Profile"
                                                                         ]
                                                                     })
                                                                 })
@@ -3440,7 +3498,7 @@ function MainHeader() {
                                                                             width: 15
                                                                         }),
                                                                         " ",
-                                                                        "logout"
+                                                                        "Logout"
                                                                     ]
                                                                 })
                                                             })
@@ -4529,7 +4587,7 @@ function logout() {
 /* harmony export */   "S": () => (/* binding */ shortenString)
 /* harmony export */ });
 function shortenString(str, maxLength) {
-    if (str.length > maxLength) {
+    if ((str === null || str === void 0 ? void 0 : str.length) > maxLength) {
         // Shorten the string and append ellipses
         return str.slice(0, maxLength - 3) + "...";
     } else {

@@ -9,30 +9,6 @@ const UserLogistics = () => {
   });
   const [data, setData] = useState([]);
 
-  //   const data = [
-  //     {
-  //       id: 1,
-  //       shipmentId: 'S0001',
-  //       sender: 'John Doe',
-  //       receiver: 'Jane Smith',
-  //       status: 'In transit',
-  //     },
-  //     {
-  //       id: 2,
-  //       shipmentId: 'S0002',
-  //       sender: 'Bob Johnson',
-  //       receiver: 'Alice Lee',
-  //       status: 'Delivered',
-  //     },
-  //     {
-  //       id: 3,
-  //       shipmentId: 'S0003',
-  //       sender: 'Mary Brown',
-  //       receiver: 'Tom Wilson',
-  //       status: 'Pending',
-  //     },
-  //   ];
-
   useEffect(() => {
     const fetchLogistics = async () => {
       try {
@@ -58,6 +34,28 @@ const UserLogistics = () => {
     };
     fetchLogistics();
   }, []);
+
+  const pay = async (id) => {
+    try {
+      const response = await fetch(`/logistic/pay/${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        const res = await response.json();
+        throw new Error(res.msg);
+      }
+      const res = await response.json();
+      if (window !== undefined) window.location.replace(`${res.msg}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <UserLayout>
       <div className="table-responsive">
@@ -68,7 +66,7 @@ const UserLogistics = () => {
               <th scope="col">Address(Sender)</th>
               <th scope="col">Address(receiver)</th>
               <th scope="col">Status</th>
-              <th scope="col">Code</th>
+              <th scope="col">Paid</th>
             </tr>
           </thead>
           <tbody>
@@ -89,7 +87,24 @@ const UserLogistics = () => {
                 >
                   {item?.status}
                 </td>
-                <td>{item?.receiverCode}</td>
+                <td>
+                  {item?.paid ? (
+                    'paid'
+                  ) : (
+                    <small
+                      style={{
+                        background: 'red',
+                        color: 'white',
+                        padding: '2px',
+                        borderRadius: '5px',
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => pay(item?.id)}
+                    >
+                      <b className="text-white">pay&nbsp;now</b>
+                    </small>
+                  )}
+                </td>
               </tr>
             ))}
           </tbody>

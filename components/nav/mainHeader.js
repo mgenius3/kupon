@@ -73,7 +73,7 @@ export default function MainHeader() {
               listStyle: 'none',
             }}
           >
-            <Link href="/logistics/contact-us">
+            <Link href="/contact">
               <p> Contact Us</p>
             </Link>
           </li>
@@ -144,7 +144,7 @@ export default function MainHeader() {
                     className="lvl1 parent dropdown"
                     style={{ cursor: 'pointer' }}
                   >
-                    <Link href="/logistics/contact-us">
+                    <Link href="/contact">
                       <p>
                         {' '}
                         Contact Us<i className="anm anm-angle-down-l mx-3"></i>
@@ -169,8 +169,8 @@ export default function MainHeader() {
                 <Link href="/">
                   <img
                     src="/images/kupon text for white bg.png"
-                    alt="Belle Multipurpose Html Template"
-                    title="Belle Multipurpose Html Template"
+                    alt="kupon"
+                    title="kupon"
                     width={70}
                   />
                 </Link>
@@ -242,6 +242,22 @@ export default function MainHeader() {
                             aria-labelledby="navbarDropdownMenuLink"
                             style={{ left: '-50px' }}
                           >
+                            {user?.admin == 'yes' && (
+                              <li
+                                className="dropdown-item"
+                                style={{ cursor: 'pointer' }}
+                              >
+                                <Link href={`/dashboard/admin/profile`}>
+                                  <span>
+                                    <img
+                                      src="https://img.icons8.com/ios/50/null/administrator-male--v1.png"
+                                      width={15}
+                                    />{' '}
+                                    Admin
+                                  </span>
+                                </Link>
+                              </li>
+                            )}
                             <li
                               className="dropdown-item"
                               style={{ cursor: 'pointer' }}
@@ -252,7 +268,7 @@ export default function MainHeader() {
                                     src="https://img.icons8.com/ios-filled/50/null/user.png"
                                     width={15}
                                   />{' '}
-                                  profile
+                                  Profile
                                 </span>
                               </Link>
                             </li>
@@ -267,7 +283,7 @@ export default function MainHeader() {
                                   src="https://img.icons8.com/ios-filled/50/null/logout-rounded.png"
                                   width={15}
                                 />{' '}
-                                logout
+                                Logout
                               </span>
                             </li>
                           </ul>

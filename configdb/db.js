@@ -2,15 +2,6 @@ const mysql = require('mysql2/promise');
 const dotenv = require('dotenv');
 
 dotenv.config();
-// const pool = mysql.createPool({
-//   host: process.env.MYSQL_HOST,
-//   user: process.env.MYSQL_USER,
-//   password: process.env.MYSQL_PASSWORD,
-//   database: process.env.MYSQL_DATABASE,
-//   waitForConnections: true,
-//   connectionLimit: 151,
-//   queueLimit: 0,
-// });
 
 const pool = mysql.createPool({
   host:
@@ -26,7 +17,7 @@ const pool = mysql.createPool({
       ? process.env.MYSQL_PROD_PASSWORD
       : process.env.MYSQL_PASSWORD,
   database:
-    process.env.NODE_ENV == 'production'
+    process.env.NODE_ENV == 'productio'
       ? process.env.MYSQL_PROD_DATABASE
       : process.env.MYSQL_DATABASE,
   waitForConnections: true,

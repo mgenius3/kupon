@@ -6,7 +6,7 @@ import ConfirmationInput from '../../../../components/Confirmation';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
-
+import { Carousel } from 'react-bootstrap';
 const UserLogistics = () => {
   const [token] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -22,6 +22,7 @@ const UserLogistics = () => {
 
   //to display confirmation input
   const [confirmation, setConfirmation] = useState(false);
+  const [hideConfirmationModal, setHideConfirmationModal] = useState(true);
   //update status
   const [isLoadingUpdateStatus, setIsLoadingUpdateStatus] = useState(false);
 
@@ -175,6 +176,21 @@ const UserLogistics = () => {
             )}
           </Modal.Header>
           <Modal.Body>
+            <Carousel className="w-screen">
+              {typeof modalData?.files == 'string'
+                ? JSON.parse(modalData?.files).map((image, index) => (
+                    <Carousel.Item key={index}>
+                      <img
+                        className="d-block w-100"
+                        src={`data:image/png;base64,${image}`}
+                        alt={`Product ${modalData.title}`}
+                        style={{ height: 'auto' }}
+                      />
+                    </Carousel.Item>
+                  ))
+                : null}
+            </Carousel>{' '}
+            <br />
             <table className="table">
               <thead>Sender Details</thead>
               <tbody>
@@ -249,12 +265,22 @@ const UserLogistics = () => {
         </Modal>
 
         {confirmation ? (
-          <Modal show={true}>
+          <Modal show={hideConfirmationModal}>
             <ConfirmationInput
               setConfirmation={setConfirmation}
               action={updateStatus}
-              title={`to update logistics status`}
+              title={`to update logistics status '${
+                modalData?.status == 'pending' ? 'in transit' : 'delivered'
+              }'`}
             />
+            <Modal.Footer>
+              <Button
+                variant="error"
+                onClick={() => setHideConfirmationModal(false)}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
           </Modal>
         ) : null}
       </div>

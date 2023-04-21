@@ -153,7 +153,7 @@ iframe {
 }
 
 a {
-  color: #555555;
+  color: white;
   text-decoration: none;
   -ms-transition: all 0.5s ease-in-out;
   -webkit-transition: all 0.5s ease-in-out;

@@ -87,7 +87,7 @@ export default function MainHeader() {
               listStyle: 'none',
             }}
           >
-            <Link href="/market/contact-us">
+            <Link href="/contact">
               <p> Contact Us</p>
             </Link>
           </li>
@@ -168,7 +168,7 @@ export default function MainHeader() {
                     className="lvl1 parent dropdown"
                     style={{ cursor: 'pointer' }}
                   >
-                    <Link href="/market/contact-us">
+                    <Link href="/contact-us">
                       <p>
                         {' '}
                         Contact Us<i className="anm anm-angle-down-l mx-3"></i>
@@ -193,8 +193,8 @@ export default function MainHeader() {
                 <Link href="/">
                   <img
                     src="/images/kupon text for white bg.png"
-                    alt="Belle Multipurpose Html Template"
-                    title="Belle Multipurpose Html Template"
+                    alt="kupon"
+                    title="kupon"
                     width={70}
                   />
                 </Link>
@@ -231,6 +231,7 @@ export default function MainHeader() {
                               fontSize: '15px',
                               cursor: 'pointer',
                             }}
+                            className="d-none d-sm-inline"
                           >
                             {' '}
                             sign up{' '}
@@ -265,6 +266,22 @@ export default function MainHeader() {
                             aria-labelledby="navbarDropdownMenuLink"
                             style={{ left: '-50px' }}
                           >
+                            {user?.admin == 'yes' && (
+                              <li
+                                className="dropdown-item"
+                                style={{ cursor: 'pointer' }}
+                              >
+                                <Link href={`/dashboard/admin/profile`}>
+                                  <span>
+                                    <img
+                                      src="https://img.icons8.com/ios/50/null/administrator-male--v1.png"
+                                      width={15}
+                                    />{' '}
+                                    Admin
+                                  </span>
+                                </Link>
+                              </li>
+                            )}
                             <li
                               className="dropdown-item"
                               style={{ cursor: 'pointer' }}
@@ -275,7 +292,7 @@ export default function MainHeader() {
                                     src="https://img.icons8.com/ios-filled/50/null/user.png"
                                     width={15}
                                   />{' '}
-                                  profile
+                                  Profile
                                 </span>
                               </Link>
                             </li>
@@ -290,7 +307,7 @@ export default function MainHeader() {
                                   src="https://img.icons8.com/ios-filled/50/null/logout-rounded.png"
                                   width={15}
                                 />{' '}
-                                logout
+                                Logout
                               </span>
                             </li>
                           </ul>
@@ -300,175 +317,6 @@ export default function MainHeader() {
                   </ul>
                 </div>
               </nav>
-              {/* <div className="rounded bg-black">
-                <img src="https://img.icons8.com/office/16/null/guest-male--v1.png" />
-              </div> */}
-              {/* <div className="site-cart">
-                <Link href="#;" className="site-header__cart" title="Cart">
-                  <p>
-                    {' '}
-                    <img src="https://img.icons8.com/material-outlined/24/null/shopping-cart--v1.png" />
-                    <span
-                      id="CartCount"
-                      className="site-header__cart-count"
-                      data-cart-render="item_count"
-                    >
-                      2
-                    </span>
-                  </p>
-                </Link>
-                <!--Minicart Popup-->
-                <div id="header-cart" className="block block-cart">
-                  <ul className="mini-products-list">
-                    <li className="item">
-                      <Link className="product-image" href="#">
-                        <img
-                          src="assets/images/product-images/cape-dress-1.jpg"
-                          alt="3/4 Sleeve Kimono Dress"
-                          title=""
-                        />
-                      </Link>
-                      <div className="product-details">
-                        <Link href="#" className="remove">
-                          <i className="anm anm-times-l" aria-hidden="true"></i>
-                        </Link>
-                        <Link href="#" className="edit-i remove">
-                          <i className="anm anm-edit" aria-hidden="true"></i>
-                        </Link>
-                        <Link className="pName" href="cart.html">
-                          Sleeve Kimono Dress
-                        </Link>
-                        <div className="variant-cart">Black / XL</div>
-                        <div className="wrapQtyBtn">
-                          <div className="qtyField">
-                            <span className="label">Qty:</span>
-                            <Link
-                              className="qtyBtn minus"
-                              href="javascript:void(0);"
-                            >
-                              <i
-                                className="fa anm anm-minus-r"
-                                aria-hidden="true"
-                              ></i>
-                            </Link>
-                            <input
-                              type="text"
-                              id="Quantity"
-                              name="quantity"
-                              value="1"
-                              className="product-form__input qty"
-                            />
-                            <Link
-                              className="qtyBtn plus"
-                              href="javascript:void(0);"
-                            >
-                              <i
-                                className="fa anm anm-plus-r"
-                                aria-hidden="true"
-                              ></i>
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="priceRow">
-                          <div className="product-price">
-                            <span className="money">$59.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li className="item">
-                      <Link className="product-image" href="#">
-                        <img
-                          src="assets/images/product-images/cape-dress-2.jpg"
-                          alt="Elastic Waist Dress - Black / Small"
-                          title=""
-                        />
-                      </Link>
-                      <div className="product-details">
-                        <Link href="#" className="remove">
-                          <i className="anm anm-times-l" aria-hidden="true"></i>
-                        </Link>
-                        <Link href="#" className="edit-i remove">
-                          <i className="anm anm-edit" aria-hidden="true"></i>
-                        </Link>
-                        <Link className="pName" href="cart.html">
-                          Elastic Waist Dress
-                        </Link>
-                        <div className="variant-cart">Gray / XXL</div>
-                        <div className="wrapQtyBtn">
-                          <div className="qtyField">
-                            <span className="label">Qty:</span>
-                            <Link
-                              className="qtyBtn minus"
-                              href="javascript:void(0);"
-                            >
-                              <i
-                                className="fa anm anm-minus-r"
-                                aria-hidden="true"
-                              ></i>
-                            </Link>
-                            <input
-                              type="text"
-                              id="Quantity"
-                              name="quantity"
-                              value="1"
-                              className="product-form__input qty"
-                            />
-                            <Link
-                              className="qtyBtn plus"
-                              href="javascript:void(0);"
-                            >
-                              <i
-                                className="fa anm anm-plus-r"
-                                aria-hidden="true"
-                              ></i>
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="priceRow">
-                          <div className="product-price">
-                            <span className="money">$99.00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                  <div className="total">
-                    <div className="total-in">
-                      <span className="label">Cart Subtotal:</span>
-                      <span className="product-price">
-                        <span className="money">$748.00</span>
-                      </span>
-                    </div>
-                    <div className="buttonSet text-center">
-                      <Link
-                        href="cart.html"
-                        className="btn btn-secondary btn--small"
-                      >
-                        View Cart
-                      </Link>
-                      <Link
-                        href="checkout.html"
-                        className="btn btn-secondary btn--small"
-                      >
-                        Checkout
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-                <!--EndMinicart Popup-->
-              </div> */}
-              {/* <div className="site-header__search">
-                <button type="button" className="search-trigger">
-                  <i className="icon "></i>
-
-                  <img
-                    src="https://img.icons8.com/ios/50/737373/search--v1.png"
-                    className="anm anm-search-l"
-                    width={25}
-                  />
-                </button>
-              </div> */}
             </div>
           </div>
         </div>

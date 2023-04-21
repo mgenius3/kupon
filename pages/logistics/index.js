@@ -114,49 +114,6 @@ export default function Logistics() {
             </div>
           </Slider>
         </div>
-        {/* {/*<!--End Home slider-->*/}
-        {/* {/*<!--Collection Tab slider-->*/}
-
-        {/*<!--Collection Tab slider-->*/}
-
-        {/*<!--Collection Box slider-->*/}
-
-        {/*<!--End Collection Box slider-->*/}
-
-        {/*<!--Logo Slider-->*/}
-        {/* <div className="section logo-section">
-            <div className="container">
-              <div className="row">
-                <div className="col-12 col-sm-12 col-md-12 col-lg-12">
-                  <div className="logo-bar row">
-                    <div className="logo-bar__item col-sm-2">
-                      <img src="/images/logo/brandlogo1.png" alt="" title="" />
-                    </div>
-                    <div className="logo-bar__item col-sm-2">
-                      <img src="/images/logo/brandlogo2.png" alt="" title="" />
-                    </div>
-                    <div className="logo-bar__item col-sm-2">
-                      <img src="/images/logo/brandlogo3.png" alt="" title="" />
-                    </div>
-                    <div className="logo-bar__item col-sm-2">
-                      <img src="/images/logo/brandlogo4.png" alt="" title="" />
-                    </div>
-                    <div className="logo-bar__item col-sm-2">
-                      <img src="/images/logo/brandlogo5.png" alt="" title="" />
-                    </div>
-                    <div className="logo-bar__item col-sm-2">
-                      <img src="/images/logo/brandlogo6.png" alt="" title="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
-        {/*<!--End Logo Slider-->*/}
-
-        {/*<!--Featured Product-->*/}
-
-        {/*<!--End Featured Product-->*/}
 
         {/*<!--Store Feature-->*/}
         <div className="store-feature section">
@@ -171,13 +128,7 @@ export default function Logistics() {
                       Provision of Fast Delivery of Ordes
                     </span>
                   </li>
-                  <li className="display-table-cell">
-                    <i className="icon anm anm-dollar-sign-r"></i>
-                    <h5>Money Guarantee</h5>
-                    <span className="sub-text">
-                      30 days money back guarantee
-                    </span>
-                  </li>
+
                   <li className="display-table-cell">
                     <i className="icon anm anm-comments-l"></i>
                     <h5>Online Support</h5>

@@ -83,10 +83,38 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
-              <Link href="logistics">
+              <Link href="profile">
+                <span style={{ cursor: 'pointer' }}>
+                  <img
+                    src="https://img.icons8.com/material-outlined/24/FD7E14/user.png"
+                    className="icon"
+                  />
+                  <b>My Profile</b>
+                </span>
+              </Link>
+              {/* <Link href="/dashboard/admin">
                 <span style={{ cursor: 'pointer' }}>
                   <img
                     src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
+                    className="icon"
+                  />
+                  <b>Chart</b>
+                </span>
+              </Link> */}
+              <Link href="user">
+                <span style={{ cursor: 'pointer' }}>
+                  <img
+                    src="https://img.icons8.com/stickers/100/null/user-skin-type-3.png"
+                    className="icon"
+                  />
+                  <b>User</b>
+                </span>
+              </Link>
+
+              <Link href="logistics">
+                <span style={{ cursor: 'pointer' }}>
+                  <img
+                    src="https://img.icons8.com/ios-glyphs/30/FD7E14/food-truck.png"
                     className="icon"
                   />
                   <b>Logistics</b>
@@ -96,7 +124,7 @@ function UserLayout({ children }) {
               <Link href="market">
                 <span style={{ cursor: 'pointer' }}>
                   <img
-                    src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
+                    src="https://img.icons8.com/material-outlined/24/FD7E14/shopping-cart--v1.png"
                     className="icon"
                   />
                   <b>Market</b>
@@ -127,16 +155,6 @@ function UserLayout({ children }) {
                   Manage your personal and organization settings
                 </p>
               </div>
-              {/* <nav>
-                <ul style={{ listStyle: 'none', margin: '10px' }}>
-                  <li style={{ margin: '10px' }}>
-                    <Link href="profile">Profile</Link>
-                  </li>
-                  <li style={{ margin: '10px' }}>
-                    <Link href="password">Password</Link>
-                  </li>
-                </ul>
-              </nav> */}
             </header>
 
             <article>{children}</article>

@@ -106,6 +106,16 @@ const deleteUserPackage = async (req, res) => {
   }
 };
 
+const allSellPackages = async (req, res) => {
+  try {
+    const packages = await getAllSell();
+    packages.forEach((pack) => (pack.paid = convertBufferToBoolean(pack.paid)));
+    res.status(200).json({ msg: packages });
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+};
+
 module.exports = {
   receiveUserPackage,
   receivePackage,
@@ -113,4 +123,5 @@ module.exports = {
   getParticularPackage,
   payment,
   deleteUserPackage,
+  allSellPackages,
 };

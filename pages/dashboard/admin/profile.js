@@ -25,10 +25,6 @@ const UserProfile = () => {
         <div className="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
           <div className="row align-items-center">
             <div className="col-lg-6 mb-4 mb-lg-0">
-              {/* <img
-              src="https://bootdey.com/img/Content/avatar/avatar7.png"
-              alt="..."
-            /> */}
               <span
                 style={{
                   color: 'white',

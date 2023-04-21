@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchData } from '../../../store/store';
 import { sellCategory, Condition } from '../../../utils/data';
+import { shortenString } from '../../../utils/stringManipulation';
 export default function Shop() {
   const [allData, setAllData] = useState([]);
   const dispatch = useDispatch();
@@ -173,7 +174,9 @@ export default function Shop() {
                       />
 
                       <div className="product-labels rectangular">
-                        <span className="lbl on-sale">{product?.category}</span>{' '}
+                        <span className="lbl on-sale" title={product?.category}>
+                          {shortenString(product?.category, 20)}
+                        </span>{' '}
                         <span className="lbl pr-label1">
                           {product?.conditions}
                         </span>

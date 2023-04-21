@@ -236,14 +236,14 @@ export default function Home() {
                         </div>
                       ))
                     ) : (
-                      <div className="row">
-                        <div className="section text-center col-12">
-                          <span className="text-center">NO COLLECTION</span>
-                        </div>
+                      <div className="section text-center col-12 d-flex justify-content-center">
+                        <span className="text-center mx-5 text-lg">
+                          <b>NO COLLECTION</b>
+                        </span>
                       </div>
                     )}
                   </div>
-                  {shuffleData ? (
+                  {shuffleData?.length ? (
                     <div className="text-right">
                       <Link href="market/shop">
                         <button className="btn">MORE</button>

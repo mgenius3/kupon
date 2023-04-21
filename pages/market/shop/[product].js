@@ -76,10 +76,12 @@ export default function Cart() {
 
             <div className="container">
               <div className="row">
-                <div className="col-12 col-sm-12 col-md-8 col-lg-8 main-col">
+                <div className="col-12 col-sm-12 col-md-8 col-lg-8 main-col mx-auto">
                   <div className="cart style2">
-                    <div style={{ display: 'block', width: 700, padding: 30 }}>
-                      <h4>{data?.category}</h4>
+                    <div style={{ display: 'block' }}>
+                      <h2 style={{ fontSize: '1rem', fontWeight: 'bold' }}>
+                        {data?.category}
+                      </h2>
                       <Card>
                         <Carousel>
                           {typeof data.files === 'string'
@@ -91,9 +93,19 @@ export default function Cart() {
                                     alt="Image One"
                                     style={{ width: '100%' }}
                                   />
-                                  <Carousel.Caption className="bg-secondary o">
+                                  <Carousel.Caption
+                                    style={{ background: '#e64c0066' }}
+                                  >
                                     <h3>{data?.title} </h3>
-                                    <p> {data?.description} </p>
+                                    <p
+                                      style={{
+                                        background: 'rgb(230 76 0)',
+                                        color: 'white',
+                                      }}
+                                    >
+                                      {' '}
+                                      {data?.description}{' '}
+                                    </p>
                                   </Carousel.Caption>
                                 </Carousel.Item>
                               ))
@@ -113,63 +125,40 @@ export default function Cart() {
                   </div>
                 </div>
                 <div className="col-12 col-sm-12 col-md-8 col-lg-4 cart__footer mx-auto">
-                  <div className="cart-note">
-                    <div className="solid-border">
-                      <h1>SELLER</h1>
-                      <hr />
-                      <h5>
-                        <label
-                          htmlFor="CartSpecialInstructions"
-                          className="cart-note__label small--text-center flex align-items-center"
-                        >
-                          <img
-                            src="https://img.icons8.com/plasticine/100/null/gender-neutral-user--v1.png"
-                            width={50}
-                          />{' '}
-                          {user?.firstName} {user?.lastName}
-                        </label>
-                      </h5>
-                      <Link href="tel:2348134460259">
-                        <button className="btn">call : 2348134460259</button>
-                      </Link>
+                  <div className="cart style2 my-5 my-lg-0">
+                    <h2 style={{ fontSize: '1rem', fontWeight: 'bold' }}>
+                      SELLER INFORMATION
+                    </h2>
+
+                    <div className="cart-note">
+                      <div className="solid-border">
+                        <h1>SELLER</h1>
+                        <hr />
+                        <h5>
+                          <label
+                            htmlFor="CartSpecialInstructions"
+                            className="cart-note__label small--text-center flex align-items-center"
+                          >
+                            <img
+                              src="https://img.icons8.com/plasticine/100/null/gender-neutral-user--v1.png"
+                              width={50}
+                            />{' '}
+                            {user?.firstName} {user?.lastName}
+                          </label>
+                        </h5>
+                        <Link href="tel:2348134460259">
+                          <button className="btn">call : 2348134460259</button>
+                        </Link>{' '}
+                        <div className="row my-3">
+                          <span className="col-6 col-sm-6 ">
+                            <strong>Price</strong>
+                          </span>
+                          <span className="col-6 col-sm-6 text-lg text-right">
+                            <span className="money">&#8358;{data?.price}</span>
+                          </span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="solid-border">
-                    <div className="row">
-                      <span className="col-12 col-sm-6 cart__subtotal-title">
-                        <strong>Price</strong>
-                      </span>
-                      <span className="col-12 col-sm-6 cart__subtotal-title cart__subtotal text-right">
-                        <span className="money">&#8358;{data?.price}</span>
-                      </span>
-                    </div>
-                    {/* <div className="cart__shipping">
-                      Shipping &amp; taxes calculated at checkout
-                    </div> */}
-                    <p className="cart_tearm">
-                      <label>
-                        <input
-                          type="checkbox"
-                          name="tearm"
-                          id="cartTearm"
-                          className="checkbox"
-                          value="tearm"
-                          required=""
-                        />
-                        I agree with the terms and conditions
-                      </label>
-                    </p>
-                    <input
-                      type="submit"
-                      name="checkout"
-                      id="cartCheckout"
-                      className="btn btn--small-wide checkout"
-                      value="Checkout"
-                      disabled="disabled"
-                    />
-                    {/* <div className="paymnet-img">
-                      <img src="/images/payment-img.jpg" alt="Payment" />
-                    </div> */}
                   </div>
                 </div>
               </div>

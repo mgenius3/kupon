@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { pool } = require('../configdb/db');
 const { tableExists } = require('../utils/checkTableExist');
 
@@ -131,7 +130,6 @@ const updatePackageStatus = async (id, status) => {
 };
 
 const setPackageReference = async (referenceId, id) => {
-  console.log(referenceId, id);
   try {
     let connection = await pool.getConnection();
     (await connection).beginTransaction();
@@ -154,6 +152,19 @@ const updatePackagePayment = async (paid, id) => {
   }
 };
 
+const countPackage = async () => {
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = 'SELECT COUNT(*) as count FROM logistics';
+    let [no_of_package] = await connection.query(query);
+    await connection.release();
+    return no_of_package[0].count;
+  } catch (err) {
+    throw err.message;
+  }
+};
+
 module.exports = {
   createTableLogistics,
   sendPackageDetails,
@@ -163,4 +174,5 @@ module.exports = {
   updatePackageStatus,
   setPackageReference,
   updatePackagePayment,
+  countPackage,
 };

@@ -152,6 +152,40 @@ function UserLayout({ children  }) {
                                             })
                                         }),
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                            href: "profile",
+                                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                                                style: {
+                                                    cursor: "pointer"
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                                                        src: "https://img.icons8.com/material-outlined/24/FD7E14/user.png",
+                                                        className: "icon"
+                                                    }),
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
+                                                        children: "My Profile"
+                                                    })
+                                                ]
+                                            })
+                                        }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                            href: "user",
+                                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                                                style: {
+                                                    cursor: "pointer"
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                                                        src: "https://img.icons8.com/stickers/100/null/user-skin-type-3.png",
+                                                        className: "icon"
+                                                    }),
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
+                                                        children: "User"
+                                                    })
+                                                ]
+                                            })
+                                        }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
                                             href: "logistics",
                                             children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                                                 style: {
@@ -159,7 +193,7 @@ function UserLayout({ children  }) {
                                                 },
                                                 children: [
                                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                        src: "https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png",
+                                                        src: "https://img.icons8.com/ios-glyphs/30/FD7E14/food-truck.png",
                                                         className: "icon"
                                                     }),
                                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
@@ -176,7 +210,7 @@ function UserLayout({ children  }) {
                                                 },
                                                 children: [
                                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
-                                                        src: "https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png",
+                                                        src: "https://img.icons8.com/material-outlined/24/FD7E14/shopping-cart--v1.png",
                                                         className: "icon"
                                                     }),
                                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
@@ -308,7 +342,7 @@ function logout() {
 /* harmony export */   "S": () => (/* binding */ shortenString)
 /* harmony export */ });
 function shortenString(str, maxLength) {
-    if (str.length > maxLength) {
+    if ((str === null || str === void 0 ? void 0 : str.length) > maxLength) {
         // Shorten the string and append ellipses
         return str.slice(0, maxLength - 3) + "...";
     } else {

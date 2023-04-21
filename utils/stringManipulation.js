@@ -1,5 +1,5 @@
 export function shortenString(str, maxLength) {
-  if (str.length > maxLength) {
+  if (str?.length > maxLength) {
     // Shorten the string and append ellipses
     return str.slice(0, maxLength - 3) + '...';
   } else {

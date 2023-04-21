@@ -321,7 +321,7 @@ function logout() {
 /* harmony export */   "S": () => (/* binding */ shortenString)
 /* harmony export */ });
 function shortenString(str, maxLength) {
-    if (str.length > maxLength) {
+    if ((str === null || str === void 0 ? void 0 : str.length) > maxLength) {
         // Shorten the string and append ellipses
         return str.slice(0, maxLength - 3) + "...";
     } else {

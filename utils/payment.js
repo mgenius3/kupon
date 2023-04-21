@@ -9,7 +9,7 @@ const initializePaystackTransaction = async (req, service, amount) => {
   const params = JSON.stringify({
     email: req.user.email,
     amount: amount * 100,
-    callback_url: `https://kupon.com.ng/dashboard/user/${service}`, // Set the redirect URL here
+    callback_url: `http://localhost:3000/dashboard/user/${service}`, // Set the redirect URL here
     metadata: {
       custom_fields: [
         {

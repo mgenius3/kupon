@@ -18,34 +18,6 @@ export default function Register() {
     formState: { errors },
   } = useForm();
 
-  // const addUserMutation = useMutation(
-  //   async (data) => {
-  //     const response = await fetch('/user/register', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     if (!response.ok) {
-  //       const res = await response.json();
-  //       throw new Error(res.msg);
-  //     }
-  //     const res = await response.json();
-  //     return res;
-  //   },
-  //   {
-  //     onSuccess: (data) => {
-  //       toast.success('successful');
-  //       localStorage.setItem('token', data);
-  //       router.push('/');
-  //     },
-  //     onError: (err) => {
-  //       toast.error(err.message);
-  //     },
-  //   }
-  // );
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
@@ -55,7 +27,6 @@ export default function Register() {
         // addUserMutation.mutate(data);
         setIsLoading(true);
         try {
-          console.log(data);
           const response = await fetch('/user/register', {
             method: 'POST',
             headers: {

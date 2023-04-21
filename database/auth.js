@@ -26,7 +26,7 @@ const createTableUser = async () => {
       ? null
       : await connection.query(`CREATE TABLE user (
       id INT NOT NULL AUTO_INCREMENT,
-      admin BIT DEFAULT 0,
+      admin VARCHAR(255) DEFAULT "no" ,
       firstName VARCHAR(255) NOT NULL,
       lastName VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
@@ -77,7 +77,7 @@ const getUsers = async () => {
   try {
     const query = 'SELECT * FROM user';
     const connection = await pool.getConnection();
-    const users = await connection.query(query);
+    const [users] = await connection.query(query);
     await connection.release();
 
     return users;
@@ -91,7 +91,6 @@ const getUser = async (id) => {
   (await connection).beginTransaction();
   let get_user = await connection.query(`SELECT * FROM user WHERE id = ${id}`);
   await connection.release();
-
   return get_user[0];
 };
 
@@ -118,6 +117,19 @@ const updateUserToken = async (id, token) => {
   }
 };
 
+const countPackage = async () => {
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = 'SELECT COUNT(*) as count FROM user';
+    let [no_of_package] = await connection.query(query);
+    await connection.release();
+    return no_of_package[0].count;
+  } catch (err) {
+    throw err.message;
+  }
+};
+
 module.exports = {
   createTableUser,
   registerUser,
@@ -125,4 +137,5 @@ module.exports = {
   getUser,
   getUserByEmail,
   updateUserToken,
+  countPackage,
 };

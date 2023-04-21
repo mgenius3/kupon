@@ -1,22 +1,23 @@
 const {
   registerUser,
   getUser,
+  getUsers,
   getUserByEmail,
   updateUserToken,
+  countPackage: userCountPackage,
 } = require('../database/auth');
+
+const { countPackage: sellCountPackage } = require('../database/logistics');
+const { countPackage: logisticsCountPackage } = require('../database/sell');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-
 const RegisterNewUser = async (req, res) => {
-  console.log(req.body);
   try {
     const { password } = req.body;
     let encryptedPassword = await bcrypt.hash(password, 10);
     //PASSWORD ENCRYPTION
     req.body.password = encryptedPassword;
     let new_user_id = await registerUser(req.body);
-
-    console.log(new_user_id);
 
     let [user] = await getUser(new_user_id);
 
@@ -44,7 +45,6 @@ const RegisterNewUser = async (req, res) => {
     //SEND UPDATED DATA FROM DB
     res.status(201).json(updatedUser.token);
   } catch (err) {
-    console.log(err);
     res.status(400).json({ msg: err });
   }
 };
@@ -87,7 +87,6 @@ const LoginUser = async (req, res) => {
       }
     }
   } catch (err) {
-    console.log(err.message);
     res.status(400).json({ msg: err.message });
   }
 };
@@ -103,4 +102,36 @@ const getUserById = async (req, res) => {
     res.status(400).json({ msg: err.message });
   }
 };
-module.exports = { RegisterNewUser, LoginUser, getUserById };
+
+const allUsers = async (req, res) => {
+  try {
+    const users = await getUsers();
+    res.status(200).json({ msg: users });
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+};
+
+const countPackages = async (req, res) => {
+  try {
+    const no_of_user_package = await userCountPackage();
+    const no_of_sell_package = await sellCountPackage();
+    const no_of_logistics_package = await logisticsCountPackage();
+    res.status(200).json({
+      msg: {
+        no_of_logistics_package,
+        no_of_sell_package,
+        no_of_user_package,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({ msg: err });
+  }
+};
+module.exports = {
+  RegisterNewUser,
+  LoginUser,
+  getUserById,
+  allUsers,
+  countPackages,
+};

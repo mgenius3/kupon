@@ -132,6 +132,20 @@ const deletePackage = async (id) => {
     throw err.message;
   }
 };
+
+const countPackage = async () => {
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = 'SELECT COUNT(*) as count FROM sell';
+
+    let [no_of_package] = await connection.query(query);
+    await connection.release();
+    return no_of_package[0].count;
+  } catch (err) {
+    throw err.message;
+  }
+};
 module.exports = {
   createTableSell,
   sendPackageDetails,
@@ -141,4 +155,5 @@ module.exports = {
   setPackageReference,
   updatePackagePayment,
   deletePackage,
+  countPackage,
 };
