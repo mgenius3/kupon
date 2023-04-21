@@ -1,15 +1,22 @@
 const https = require('https');
 const dotenv = require('dotenv');
+const url = require('url');
 
 const paystack = require('paystack');
 dotenv.config();
 paystack(process.env.PAYSTACK_SECRET_KEY);
 
 const initializePaystackTransaction = async (req, service, amount) => {
+  const parsedUrl = url.parse(
+    `${req.protocol}://${req.headers.host}${req.url}`
+  );
+  const domainUrl = parsedUrl.protocol + '//' + parsedUrl.host;
+
+  console.log(domainUrl);
   const params = JSON.stringify({
     email: req.user.email,
     amount: amount * 100,
-    callback_url: `http://localhost:3000/dashboard/user/${service}`, // Set the redirect URL here
+    callback_url: `${domainUrl}/dashboard/user/${service}`, // Set the redirect URL here
     metadata: {
       custom_fields: [
         {
