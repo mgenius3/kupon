@@ -1,13 +1,11 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/404": "pages/404.html",
   "/about": "pages/about.html",
   "/admin_register": "pages/admin_register.html",
   "/api/hello": "pages/api/hello.js",
   "/contact": "pages/contact.html",
-  "/dashboard/admin": "pages/dashboard/admin.html",
   "/dashboard/admin/logistics": "pages/dashboard/admin/logistics.html",
   "/dashboard/admin/market": "pages/dashboard/admin/market.html",
   "/dashboard/admin/profile": "pages/dashboard/admin/profile.html",
@@ -19,10 +17,11 @@
   "/": "pages/index.html",
   "/login": "pages/login.html",
   "/logistics": "pages/logistics.html",
+  "/logistics/send": "pages/logistics/send.html",
   "/market": "pages/market.html",
   "/market/sell": "pages/market/sell.html",
   "/market/shop/[product]": "pages/market/shop/[product].html",
   "/market/shop": "pages/market/shop.html",
   "/register": "pages/register.html",
-  "/logistics/send": "pages/logistics/send.html"
+  "/_error": "pages/_error.js"
 }

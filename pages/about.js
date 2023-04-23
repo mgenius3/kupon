@@ -145,9 +145,9 @@ export default function Home() {
                 }}
               >
                 The website&apos;s logistics services include transportation,
-                warehousing, and inventory management, among others. Kupon's
-                commitment to customer satisfaction is evident in its
-                user-friendly website design and excellent customer service.
+                warehousing, and inventory management, among others.
+                Kupon&apos;s commitment to customer satisfaction is evident in
+                its user-friendly website design and excellent customer service.
               </p>{' '}
               <br />
               <p

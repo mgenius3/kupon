@@ -5,23 +5,23 @@ import React, { Fragment } from 'react';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Carousel, Button, Col, Container, Row } from 'react-bootstrap';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 
-const TextContainer = styled.div`
-  background-color: #f8f8f8;
-  padding: 2rem;
-`;
+// const TextContainer = styled.div`
+//   background-color: #f8f8f8;
+//   padding: 2rem;
+// `;
 
-const Heading = styled.h2`
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-`;
+// const Heading = styled.h2`
+//   font-size: 2rem;
+//   font-weight: bold;
+//   margin-bottom: 1rem;
+// `;
 
-const Paragraph = styled.p`
-  font-size: 1.2rem;
-  line-height: 1.5;
-`;
+// const Paragraph = styled.p`
+//   font-size: 1.2rem;
+//   line-height: 1.5;
+// `;
 export default function Home() {
   return (
     <Fragment>

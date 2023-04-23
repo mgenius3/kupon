@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserLayout from '../../../components/admin/Layout';
 import { Modal, Button } from 'react-bootstrap';
 import 'react-toastify/dist/ReactToastify.css';
-import { Carousel } from 'react-bootstrap';
+// import { Carousel } from 'react-bootstrap';
 import { shortenString } from '../../../utils/stringManipulation';
 
 const UserLogistics = () => {
