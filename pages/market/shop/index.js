@@ -20,8 +20,6 @@ export default function Shop() {
     setAllData(data);
   }, [data]);
 
-  console.log(allData);
-  console.log(data);
   function searchData(name, e) {
     if (name == 'name') {
       if (e == '' || e == 'Other') setAllData(data);
@@ -33,7 +31,6 @@ export default function Shop() {
         );
       }
     } else if (name == 'condition') {
-      console.log(name);
       if (e == '' || e == 'Other') setAllData(data);
       else {
         setAllData(() =>
@@ -43,7 +40,6 @@ export default function Shop() {
         );
       }
     } else if (name == 'category') {
-      console.log(name);
       if (e == '' || e == 'Other') setAllData(data);
       else {
         setAllData(() =>
@@ -158,144 +154,155 @@ export default function Shop() {
         </div>
       </div>
 
-      <div className="grid-products row">
-        <div className=" col-lg-6 container">
-          <br />
-          <div className="row ">
-            <div className="col-6">
-              <label htmlFor="state">
-                Name <span></span>
-              </label>
-              <input
-                type="text"
-                className="form-control search_input"
-                onChange={(e) => searchData('name', e.target.value)}
-              />
-            </div>
-            <div className="form-group col-6 required">
-              <label htmlFor="state">
-                Condition <span></span>
-              </label>
-              <select onChange={(e) => searchData('condition', e.target.value)}>
-                <option disabled selected>
-                  {' '}
-                  --- Please Select ---{' '}
-                </option>
-                {Condition?.map((a, i) => (
-                  <option value={a} key={i}>
-                    {a}
+      {data ? (
+        <div className="grid-products row">
+          <div className=" col-lg-6 container">
+            <br />
+            <div className="row ">
+              <div className="col-6">
+                <label htmlFor="state">
+                  Name <span></span>
+                </label>
+                <input
+                  type="text"
+                  className="form-control search_input"
+                  onChange={(e) => searchData('name', e.target.value)}
+                />
+              </div>
+              <div className="form-group col-6 required">
+                <label htmlFor="state">
+                  Condition <span></span>
+                </label>
+                <select
+                  onChange={(e) => searchData('condition', e.target.value)}
+                >
+                  <option disabled selected>
+                    {' '}
+                    --- Please Select ---{' '}
                   </option>
-                ))}
-              </select>
-            </div>
-            <div className="form-group col-6 required">
-              <label htmlFor="state">
-                Category <span></span>
-              </label>
-              <select onChange={(e) => searchData('category', e.target.value)}>
-                <option disabled selected>
-                  {' '}
-                  --- Please Select ---{' '}
-                </option>
-                {sellCategory?.map((a, i) => (
-                  <option value={a} key={i}>
-                    {a}
+                  {Condition?.map((a, i) => (
+                    <option value={a} key={i}>
+                      {a}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group col-6 required">
+                <label htmlFor="state">
+                  Category <span></span>
+                </label>
+                <select
+                  onChange={(e) => searchData('category', e.target.value)}
+                >
+                  <option disabled selected>
+                    {' '}
+                    --- Please Select ---{' '}
                   </option>
-                ))}
-              </select>
+                  {sellCategory?.map((a, i) => (
+                    <option value={a} key={i}>
+                      {a}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="form-group col-6 required">
+                <label htmlFor="state">
+                  Price <span></span>
+                </label>
+                <select onChange={(e) => searchData('price', e.target.value)}>
+                  <option disabled selected>
+                    {' '}
+                    --- Please Select ---{' '}
+                  </option>
+                </select>
+              </div>
             </div>
-            <div className="form-group col-6 required">
-              <label htmlFor="state">
-                Price <span></span>
-              </label>
-              <select onChange={(e) => searchData('price', e.target.value)}>
-                <option disabled selected>
-                  {' '}
-                  --- Please Select ---{' '}
-                </option>
-              </select>
-            </div>
+
+            <br />
           </div>
+          <div className=" col-lg-6 row container">
+            {isLoading ? (
+              <div className="section text-center col-12">
+                <Spinner animation="grow" role="status" variant="danger">
+                  <span className="text-center">Loading...</span>
+                </Spinner>
+              </div>
+            ) : (
+              allData?.map((product, i) => (
+                <Link href={`/market/shop/${product?.id}`} key={i}>
+                  <div className="col-12 col-sm-6 col-md-4 col-lg-6 item grid-view-item style2">
+                    <div className="grid-view_image">
+                      {/*<!-- start product image -->*/}
+                      <div className="grid-view-item__link">
+                        {/*<!-- image -->*/}
+                        <img
+                          className="grid-view-item__image primary blur-up lazyload"
+                          dataSrc={`data:image/png;base64,${
+                            JSON.parse(product?.files)[0]
+                          }`}
+                          src={`data:image/png;base64,${
+                            JSON.parse(product?.files)[0]
+                          }`}
+                          alt="image"
+                          title="product"
+                          style={{ height: '250px' }}
+                        />
+                        {/*<!-- End image -->*/}
+                        {/*<!-- Hover image -->*/}
+                        <img
+                          className="grid-view-item__image hover blur-up lazyload"
+                          dataSrc={`data:image/png;base64,${
+                            JSON.parse(product.files)[1]
+                              ? JSON.parse(product.files)[1]
+                              : JSON.parse(product.files)[0]
+                          }`}
+                          src={`data:image/png;base64,${
+                            JSON.parse(product.files)[1]
+                              ? JSON.parse(product.files)[1]
+                              : JSON.parse(product.files)[0]
+                          }`}
+                          alt="image"
+                          title="product"
+                          style={{ height: '250px' }}
+                        />
 
-          <br />
-        </div>
-        <div className=" col-lg-6 row container">
-          {isLoading ? (
-            <div className="section text-center col-12">
-              <Spinner animation="grow" role="status" variant="danger">
-                <span className="text-center">Loading...</span>
-              </Spinner>
-            </div>
-          ) : (
-            allData?.map((product, i) => (
-              <Link href={`/market/shop/${product?.id}`} key={i}>
-                <div className="col-12 col-sm-6 col-md-4 col-lg-6 item grid-view-item style2">
-                  <div className="grid-view_image">
-                    {/*<!-- start product image -->*/}
-                    <div className="grid-view-item__link">
-                      {/*<!-- image -->*/}
-                      <img
-                        className="grid-view-item__image primary blur-up lazyload"
-                        dataSrc={`data:image/png;base64,${
-                          JSON.parse(product?.files)[0]
-                        }`}
-                        src={`data:image/png;base64,${
-                          JSON.parse(product?.files)[0]
-                        }`}
-                        alt="image"
-                        title="product"
-                        style={{ height: '250px' }}
-                      />
-                      {/*<!-- End image -->*/}
-                      {/*<!-- Hover image -->*/}
-                      <img
-                        className="grid-view-item__image hover blur-up lazyload"
-                        dataSrc={`data:image/png;base64,${
-                          JSON.parse(product.files)[1]
-                            ? JSON.parse(product.files)[1]
-                            : JSON.parse(product.files)[0]
-                        }`}
-                        src={`data:image/png;base64,${
-                          JSON.parse(product.files)[1]
-                            ? JSON.parse(product.files)[1]
-                            : JSON.parse(product.files)[0]
-                        }`}
-                        alt="image"
-                        title="product"
-                        style={{ height: '250px' }}
-                      />
-
-                      <div className="product-labels rectangular">
-                        <span className="lbl on-sale" title={product?.category}>
-                          {shortenString(product?.category, 20)}
-                        </span>{' '}
-                        <span className="lbl pr-label1">
-                          {product?.conditions}
-                        </span>
+                        <div className="product-labels rectangular">
+                          <span
+                            className="lbl on-sale"
+                            title={product?.category}
+                          >
+                            {shortenString(product?.category, 20)}
+                          </span>{' '}
+                          <span className="lbl pr-label1">
+                            {product?.conditions}
+                          </span>
+                        </div>
+                        {/*<!-- End product label -->*/}
                       </div>
-                      {/*<!-- End product label -->*/}
-                    </div>
-                    {/*<!-- end product image -->*/}
-                    {/*<!--start product details -->*/}
-                    <div className="product-details text-center mobile">
-                      {/*<!-- product name -->*/}
-                      <div className="product-name">
-                        <span>{product?.title}</span>
-                      </div>
-                      {/*<!-- End product name -->*/}
-                      {/*<!-- product price -->*/}
-                      <div className="product-price">
-                        {/* <span className="old-price">$500.00</span> */}
-                        <span className="price">&#8358;{product?.price}</span>
+                      {/*<!-- end product image -->*/}
+                      {/*<!--start product details -->*/}
+                      <div className="product-details text-center mobile">
+                        {/*<!-- product name -->*/}
+                        <div className="product-name">
+                          <span>{product?.title}</span>
+                        </div>
+                        {/*<!-- End product name -->*/}
+                        {/*<!-- product price -->*/}
+                        <div className="product-price">
+                          {/* <span className="old-price">$500.00</span> */}
+                          <span className="price">&#8358;{product?.price}</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))
-          )}
+                </Link>
+              ))
+            )}
+          </div>
         </div>
-      </div>
+      ) : (
+        <p className="page-width text-center"> No uploaded item yet</p>
+      )}
     </Layout>
   );
 }
