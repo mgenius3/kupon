@@ -9,7 +9,7 @@ import { Carousel } from 'react-bootstrap';
 export default function Home() {
   return (
     <Fragment>
-      <Layout title="Landing">
+      <Layout title="About Us - Landing">
         {/* {/*<!--Body Content-->*/}
         <div id="page-content">
           <div className="slideshow slideshow-wrapper pb-section sliderFull">
@@ -32,7 +32,7 @@ export default function Home() {
                       If you need to move goods across the country, consider
                       using Kupon Logistics Company
                     </span>
-                    <Link href="/logistics">
+                    <Link href="/logistics/send">
                       <span className="btn">
                         <img
                           src="https://img.icons8.com/ios-glyphs/30/FFFFFF/send.png"

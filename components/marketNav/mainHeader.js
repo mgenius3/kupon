@@ -101,7 +101,7 @@ export default function MainHeader() {
               listStyle: 'none',
             }}
           >
-            <Link href="/market/send">
+            <Link href="/market/sell">
               <p>
                 <b className="">Sell</b>{' '}
               </p>
@@ -168,7 +168,7 @@ export default function MainHeader() {
                     className="lvl1 parent dropdown"
                     style={{ cursor: 'pointer' }}
                   >
-                    <Link href="/contact-us">
+                    <Link href="/contact">
                       <p>
                         {' '}
                         Contact Us<i className="anm anm-angle-down-l mx-3"></i>

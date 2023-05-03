@@ -17,8 +17,9 @@ export default function Layout({ title, children }) {
         <link rel="shortcut icon" href="/images/kupon icon.png" />
       </Head>
       <ToastContainer position="bottom-center" />
-      {title == 'Login' ? null : title == 'Register' ? null : title ==
-        'Landing' ? (
+      {title == 'Login' ? null : title == 'Register' ? null : title?.includes(
+          'Landing'
+        ) ? (
         <MainNav />
       ) : title?.includes('Market') ? (
         <MarketNav />

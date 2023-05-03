@@ -313,7 +313,7 @@ function Layout({ title , children  }) {
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_toastify__WEBPACK_IMPORTED_MODULE_2__.ToastContainer, {
                 position: "bottom-center"
             }),
-            title == "Login" ? null : title == "Register" ? null : title == "Landing" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_mainNav_Nav__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {}) : (title === null || title === void 0 ? void 0 : title.includes("Market")) ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_marketNav_Nav__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {}) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_nav_Nav__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {}),
+            title == "Login" ? null : title == "Register" ? null : title?.includes("Landing") ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_mainNav_Nav__WEBPACK_IMPORTED_MODULE_4__/* ["default"] */ .Z, {}) : title?.includes("Market") ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_marketNav_Nav__WEBPACK_IMPORTED_MODULE_5__/* ["default"] */ .Z, {}) : /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_nav_Nav__WEBPACK_IMPORTED_MODULE_3__/* ["default"] */ .Z, {}),
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
                 className: "pageWrapper",
                 children: children
@@ -437,7 +437,7 @@ function MainHeader() {
                                 children: "Logistics"
                             }),
                             /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                href: "/market",
+                                href: "/market#marketcollection",
                                 className: "text-uppercase mx-3",
                                 children: "Market Place"
                             })
@@ -1680,7 +1680,7 @@ function MainHeader() {
                                 listStyle: "none"
                             },
                             children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/market/send",
+                                href: "/market/sell",
                                 children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                     children: [
                                         /*#__PURE__*/ jsx_runtime_.jsx("b", {
@@ -1781,7 +1781,7 @@ function MainHeader() {
                                                         cursor: "pointer"
                                                     },
                                                     children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/contact-us",
+                                                        href: "/contact",
                                                         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                                             children: [
                                                                 " ",
@@ -1896,7 +1896,7 @@ function MainHeader() {
                                                                 borderRadius: "50%",
                                                                 padding: "3px"
                                                             },
-                                                            children: (0,stringManipulation/* getInitials */.Q)(user === null || user === void 0 ? void 0 : user.firstName, user === null || user === void 0 ? void 0 : user.lastName)
+                                                            children: (0,stringManipulation/* getInitials */.Q)(user?.firstName, user?.lastName)
                                                         })
                                                     }),
                                                     avatarMenu ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
@@ -1906,7 +1906,7 @@ function MainHeader() {
                                                             left: "-50px"
                                                         },
                                                         children: [
-                                                            (user === null || user === void 0 ? void 0 : user.admin) == "yes" && /*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                            user?.admin == "yes" && /*#__PURE__*/ jsx_runtime_.jsx("li", {
                                                                 className: "dropdown-item",
                                                                 style: {
                                                                     cursor: "pointer"
@@ -3437,7 +3437,7 @@ function MainHeader() {
                                                                 borderRadius: "50%",
                                                                 padding: "3px"
                                                             },
-                                                            children: (0,stringManipulation/* getInitials */.Q)(user === null || user === void 0 ? void 0 : user.firstName, user === null || user === void 0 ? void 0 : user.lastName)
+                                                            children: (0,stringManipulation/* getInitials */.Q)(user?.firstName, user?.lastName)
                                                         })
                                                     }),
                                                     avatarMenu ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
@@ -3447,7 +3447,7 @@ function MainHeader() {
                                                             left: "-50px"
                                                         },
                                                         children: [
-                                                            (user === null || user === void 0 ? void 0 : user.admin) == "yes" && /*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                            user?.admin == "yes" && /*#__PURE__*/ jsx_runtime_.jsx("li", {
                                                                 className: "dropdown-item",
                                                                 style: {
                                                                     cursor: "pointer"
@@ -4587,7 +4587,7 @@ function logout() {
 /* harmony export */   "S": () => (/* binding */ shortenString)
 /* harmony export */ });
 function shortenString(str, maxLength) {
-    if ((str === null || str === void 0 ? void 0 : str.length) > maxLength) {
+    if (str?.length > maxLength) {
         // Shorten the string and append ellipses
         return str.slice(0, maxLength - 3) + "...";
     } else {
@@ -4596,8 +4596,8 @@ function shortenString(str, maxLength) {
     }
 }
 function getInitials(firstName, lastName) {
-    const firstInitial = firstName === null || firstName === void 0 ? void 0 : firstName.charAt(0);
-    const lastInitial = lastName === null || lastName === void 0 ? void 0 : lastName.charAt(0);
+    const firstInitial = firstName?.charAt(0);
+    const lastInitial = lastName?.charAt(0);
     if (!firstInitial && !lastInitial) return "nil";
     return firstInitial + lastInitial;
 }

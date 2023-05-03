@@ -120,8 +120,7 @@ function ImageUpload({ setFileUploadError , setFilesToUpload  }) {
         maxFiles: 2,
         maxSize: 512000,
         onDropRejected: (e)=>{
-            var ref;
-            let error = (ref = e[0]) === null || ref === void 0 ? void 0 : ref.errors[0].code;
+            let error = e[0]?.errors[0].code;
             setFileUploadError(error);
         },
         onDrop: (acceptedFiles)=>{
@@ -141,8 +140,7 @@ function ImageUpload({ setFileUploadError , setFilesToUpload  }) {
             const reader = new FileReader(); // create new file reader
             console.log("hello");
             reader.onload = ()=>{
-                var ref;
-                const base64 = reader === null || reader === void 0 ? void 0 : (ref = reader.result) === null || ref === void 0 ? void 0 : ref.split(",")[1]; // extract base64 data
+                const base64 = reader?.result?.split(",")[1]; // extract base64 data
                 upload_image[i] = base64;
                 setFilesToUpload(upload_image);
             };

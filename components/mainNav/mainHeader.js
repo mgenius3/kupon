@@ -28,7 +28,10 @@ export default function MainHeader() {
             <Nav.Link href="/logistics" className="text-uppercase mx-3">
               Logistics
             </Nav.Link>
-            <Nav.Link href="/market" className="text-uppercase mx-3">
+            <Nav.Link
+              href="/market#marketcollection"
+              className="text-uppercase mx-3"
+            >
               Market Place
             </Nav.Link>
           </Nav>

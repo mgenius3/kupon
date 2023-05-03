@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export default function Register() {
   const [data, setData] = useState({});
@@ -230,6 +231,20 @@ export default function Register() {
                           value="submit"
                         />
                       )}
+
+                      <p
+                        className="mb-4 text-center"
+                        style={{ color: 'black', cursor: 'pointer' }}
+                      >
+                        {/* <a href="#" id="RecoverPassword">
+                          Forgot your password?
+                        </a>{' '}
+                        &nbsp; | &nbsp; */}
+                        Already a memeber ?{' '}
+                        <Link href="/login" id="customer_register_link">
+                          <b style={{ color: '#6e0000' }}>sign in </b>
+                        </Link>
+                      </p>
                     </div>
                   </div>
                 </form>

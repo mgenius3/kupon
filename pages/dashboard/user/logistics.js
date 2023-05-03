@@ -88,7 +88,7 @@ const UserLogistics = () => {
                   {item?.status}
                 </td>
                 <td>
-                  {item?.paid ? (
+                  {item.paid ? (
                     'paid'
                   ) : (
                     <small

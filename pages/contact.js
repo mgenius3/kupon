@@ -5,7 +5,7 @@ import React, { Fragment } from 'react';
 export default function Home() {
   return (
     <Fragment>
-      <Layout title="Contact Us">
+      <Layout title="Contact Us - Landing">
         <div id="page-content">
           <div
             className="page section-header text-center"
@@ -17,49 +17,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="map-section map">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.317667632887!2d3.2714609087494293!3d6.6073913933589905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b906179f7ba83%3A0x4c3a0614ae53045c!2sShagari%20estate%2C%201%20D%20B%20St%2C%20Ipaja%20100276%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1681830606409!5m2!1sen!2sus"
-              height="350"
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-            <div className="container">
-              <div className="row">
-                <div className="map-section__overlay-wrapper">
-                  <div className="map-section__overlay">
-                    <h3 className="h4">Office Address</h3>
-                    <div className="rte-setting">
-                      <p>
-                        No 2 Molarin Close Off Church Street
-                        <br />
-                        Akinogun Shagari estate, Ipaja
-                        <br />
-                        Lagos, Nigeria
-                      </p>
-                      <p>
-                        Mon - Fri, 10am - 9pm
-                        <br />
-                        Saturday, 11am - 9pm
-                        <br />
-                        Sunday, 11am - 5pm
-                      </p>
-                    </div>
-                    <p>
-                      <a
-                        href="https://goo.gl/maps/ooiFmj8wnYo74ReP7"
-                        className="btn btn--secondary btn--small"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Get directions
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="bredcrumbWrap">
             <div className="container breadcrumbs">
               <Link href="/" title="Back to the home page">
@@ -68,11 +25,10 @@ export default function Home() {
               <span aria-hidden="true">›</span>
               <span>Contact Us</span>
             </div>
-          </div>
-
+          </div>{' '}
           <div className="container">
             <div className="row">
-              <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-4">
+              {/* <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-4">
                 <h2>Drop Us A Line</h2>
                 <p>
                   You can reach us through a telephone call or send message
@@ -162,7 +118,7 @@ export default function Home() {
                     </div>
                   </form>
                 </div>
-              </div>
+              </div> */}
               <div className="col-12 col-sm-12 col-md-4 col-lg-4">
                 <div className="open-hours">
                   <strong>Opening Hours</strong>
@@ -199,6 +155,49 @@ export default function Home() {
                   </li>
                 </ul>
                 <hr />
+              </div>
+            </div>
+          </div>
+          <div className="map-section map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.317667632887!2d3.2714609087494293!3d6.6073913933589905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b906179f7ba83%3A0x4c3a0614ae53045c!2sShagari%20estate%2C%201%20D%20B%20St%2C%20Ipaja%20100276%2C%20Lagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1681830606409!5m2!1sen!2sus"
+              height="350"
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
+            <div className="container">
+              <div className="row">
+                <div className="map-section__overlay-wrapper">
+                  <div className="map-section__overlay">
+                    <h3 className="h4">Office Address</h3>
+                    <div className="rte-setting">
+                      <p>
+                        No 2 Molarin Close Off Church Street
+                        <br />
+                        Akinogun Shagari estate, Ipaja
+                        <br />
+                        Lagos, Nigeria
+                      </p>
+                      <p>
+                        Mon - Fri, 10am - 9pm
+                        <br />
+                        Saturday, 11am - 9pm
+                        <br />
+                        Sunday, 11am - 5pm
+                      </p>
+                    </div>
+                    <p>
+                      <a
+                        href="https://goo.gl/maps/ooiFmj8wnYo74ReP7"
+                        className="btn btn--secondary btn--small"
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Get directions
+                      </a>
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

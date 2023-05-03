@@ -79,17 +79,23 @@ export default function Home() {
                     src="/images/slideshow-banners/cart.jpg"
                     alt="Summer Bikini Collection"
                     title="Summer Bikini Collection"
+                    style={{
+                      width: '100%',
+                      height: '60vh!important',
+                      objectFit: 'cover',
+                    }}
                   />
                   <div className="slideshow__text-wrap slideshow__overlay classic bottom">
                     <div className="slideshow__text-content bottom">
                       <div className="wrap-caption center">
                         <h2 className="h1 mega-title slideshow__title">
-                          <b style={{ color: '#e60000' }}>Kupon</b> Logistics
-                          Company
+                          <b style={{ color: '#e60000' }}>Kupon</b> Online
+                          <b> Marketplace</b>
                         </h2>
                         <span className="mega-subtitle slideshow__subtitle">
-                          If you need to move goods across the country, consider
-                          using Kupon Logistics Company
+                          If you&apos;re looking for a platform to sell your
+                          products online, consider listing them on Kupon
+                          Marketplace
                         </span>
                         <Link href="/market/sell">
                           <span className="btn">Sell Now</span>
@@ -107,6 +113,11 @@ export default function Home() {
                     src="/images/slideshow-banners/carts.jpg"
                     alt="Summer Bikini Collection"
                     title="Summer Bikini Collection"
+                    style={{
+                      width: '100%',
+                      height: '60vh!important',
+                      objectFit: 'cover',
+                    }}
                   />
                   <div className="slideshow__text-wrap slideshow__overlay classic bottom">
                     <div className="slideshow__text-content bottom">
@@ -116,9 +127,8 @@ export default function Home() {
                           <b> Marketplace</b>
                         </h2>
                         <span className="mega-subtitle slideshow__subtitle">
-                          If you&apos;re looking for a platform to sell your
-                          products online, consider listing them on Kupon
-                          Marketplace
+                          If you&apos;re looking for a platform to buy products
+                          online, kupon is your best option
                         </span>
                         <Link href="/market/shop">
                           <span className="btn">Buy Now</span>
@@ -130,22 +140,15 @@ export default function Home() {
               </div>
             </Slider>
           </div>
-          {/* {/*<!--End Home slider-->*/}
-          {/* {/*<!--Collection Tab slider-->*/}
-
-          {/*<!--Collection Tab slider-->*/}
-
-          {/*<!--End Collection Box slider-->*/}
-
-          {/*<!--Logo Slider-->*/}
-
-          {/*<!--End Logo Slider-->*/}
 
           {/*<!--Featured Product-->*/}
           <div className="product-rows section">
             <div className="container">
               <div className="row">
-                <div className="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div
+                  className="col-12 col-sm-12 col-md-12 col-lg-12"
+                  id="marketcollection"
+                >
                   <div className="section-header text-center">
                     <h2 className="h2">Featured collection</h2>
                     <p>Our most popular products based on sales</p>
@@ -165,75 +168,74 @@ export default function Home() {
                       </div>
                     ) : shuffleData?.length ? (
                       shuffleData?.map((product, i) => (
-                        <div
-                          className="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2"
-                          key={i}
-                        >
-                          <div className="grid-view_image">
-                            {/*<!-- start product image -->*/}
-                            <div className="grid-view-item__link">
-                              {/*<!-- image -->*/}
-                              <img
-                                className="grid-view-item__image primary blur-up lazyload"
-                                dataSrc={`data:image/png;base64,${
-                                  JSON.parse(product?.files)[0]
-                                }`}
-                                src={`data:image/png;base64,${
-                                  JSON.parse(product?.files)[0]
-                                }`}
-                                alt="image"
-                                title="product"
-                                style={{ height: '250px' }}
-                              />
-                              {/*<!-- End image -->*/}
-                              {/*<!-- Hover image -->*/}
-                              <img
-                                className="grid-view-item__image hover blur-up lazyload"
-                                dataSrc={`data:image/png;base64,${
-                                  JSON.parse(product.files)[1]
-                                    ? JSON.parse(product.files)[1]
-                                    : JSON.parse(product.files)[0]
-                                }`}
-                                src={`data:image/png;base64,${
-                                  JSON.parse(product.files)[1]
-                                    ? JSON.parse(product.files)[1]
-                                    : JSON.parse(product.files)[0]
-                                }`}
-                                alt="image"
-                                title="product"
-                                style={{ height: '250px' }}
-                              />
+                        <Link href={`/market/shop/${product?.id}`} key={i}>
+                          <div
+                            className="col-12 col-sm-12 col-md-4 col-lg-4 item grid-view-item style2"
+                            key={i}
+                          >
+                            <div className="grid-view_image">
+                              {/*<!-- start product image -->*/}
+                              <div className="grid-view-item__link">
+                                {/*<!-- image -->*/}
+                                <img
+                                  className="grid-view-item__image primary blur-up lazyload"
+                                  dataSrc={`data:image/png;base64,${
+                                    JSON.parse(product?.files)[0]
+                                  }`}
+                                  src={`data:image/png;base64,${
+                                    JSON.parse(product?.files)[0]
+                                  }`}
+                                  alt="image"
+                                  title="product"
+                                  style={{ height: '250px' }}
+                                />
+                                {/*<!-- End image -->*/}
+                                {/*<!-- Hover image -->*/}
+                                <img
+                                  className="grid-view-item__image hover blur-up lazyload"
+                                  dataSrc={`data:image/png;base64,${
+                                    JSON.parse(product.files)[1]
+                                      ? JSON.parse(product.files)[1]
+                                      : JSON.parse(product.files)[0]
+                                  }`}
+                                  src={`data:image/png;base64,${
+                                    JSON.parse(product.files)[1]
+                                      ? JSON.parse(product.files)[1]
+                                      : JSON.parse(product.files)[0]
+                                  }`}
+                                  alt="image"
+                                  title="product"
+                                  style={{ height: '250px' }}
+                                />
 
-                              <div className="product-labels rectangular">
-                                <span className="lbl on-sale">
-                                  {product?.category}
-                                </span>{' '}
-                                <span className="lbl pr-label1">
-                                  {product?.conditions}
-                                </span>
+                                <div className="product-labels rectangular">
+                                  <span className="lbl on-sale">
+                                    {product?.category}
+                                  </span>{' '}
+                                  <span className="lbl pr-label1">
+                                    {product?.conditions}
+                                  </span>
+                                </div>
+                                {/*<!-- End product label -->*/}
                               </div>
-                              {/*<!-- End product label -->*/}
-                            </div>
-                            {/*<!-- end product image -->*/}
-                            {/*<!--start product details -->*/}
-                            <div className="product-details hoverDetails text-center mobile">
-                              {/*<!-- product name -->*/}
-                              <div className="product-name">
-                                <a href="product-accordion.html">
-                                  {product?.title}
-                                </a>
-                              </div>
-                              {/*<!-- End product name -->*/}
-                              {/*<!-- product price -->*/}
-                              <div className="product-price">
-                                {/* <span className="old-price">$500.00</span> */}
-                                <span className="price">
-                                  &#8358;{product?.price}
-                                </span>
+                              {/*<!-- end product image -->*/}
+                              {/*<!--start product details -->*/}
+                              <div className="product-details text-center mobile">
+                                {/*<!-- product name -->*/}
+                                <div className="product-name">
+                                  <a>{product?.title}</a>
+                                </div>
+                                {/*<!-- End product name -->*/}
+                                {/*<!-- product price -->*/}
+                                <div className="">
+                                  <span className="">
+                                    &#8358;{product?.price}
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
+                        </Link>
                       ))
                     ) : (
                       <div className="section text-center col-12 d-flex justify-content-center">
@@ -255,47 +257,6 @@ export default function Home() {
             </div>
           </div>
           {/*<!--End Featured Product-->*/}
-
-          {/*<!--Store Feature-->*/}
-          <div className="store-feature section">
-            <div className="container">
-              <div className="row">
-                <div className="col-12 col-sm-12 col-md-12 col-lg-12">
-                  <ul className="display-table store-info">
-                    <li className="display-table-cell">
-                      <i className="icon anm anm-truck-l"></i>
-                      <h5>Fast Shipping &amp; Return</h5>
-                      <span className="sub-text">
-                        Provision of Fast Delivery of Ordes
-                      </span>
-                    </li>
-                    <li className="display-table-cell">
-                      <i className="icon anm anm-dollar-sign-r"></i>
-                      <h5>Money Guarantee</h5>
-                      <span className="sub-text">
-                        30 days money back guarantee
-                      </span>
-                    </li>
-                    <li className="display-table-cell">
-                      <i className="icon anm anm-comments-l"></i>
-                      <h5>Online Support</h5>
-                      <span className="sub-text">
-                        We support online 24/7 on day
-                      </span>
-                    </li>
-                    <li className="display-table-cell">
-                      <i className="icon anm anm-credit-card-front-r"></i>
-                      <h5>Secure Payments</h5>
-                      <span className="sub-text">
-                        All payment are Secured and trusted.
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* {/*<!--End Store Feature-->*/}
         </div>
         {/* {/*<!--End Body Content-->*/}
       </Layout>

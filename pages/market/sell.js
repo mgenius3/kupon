@@ -265,7 +265,7 @@ export default function Logistics() {
                           value="Place order"
                           type="submit"
                         >
-                          POST SELL
+                          PROCEED
                         </button>
                       )}
                     </div>

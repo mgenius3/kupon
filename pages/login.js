@@ -12,34 +12,6 @@ export default function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { handleSubmit } = useForm();
-  // const logInUserMutation = useMutation(
-  //   async (data) => {
-  //     const response = await fetch('/user/login', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(data),
-  //     });
-
-  //     if (!response.ok) {
-  //       const res = await response.json();
-  //       throw new Error(res.msg);
-  //     }
-  //     const res = await response.json();
-  //     return res;
-  //   },
-  //   {
-  //     onSuccess: (data) => {
-  //       toast.success('successful');
-  //       localStorage.setItem('token', data);
-  //       router.back();
-  //     },
-  //     onError: (err) => {
-  //       toast.error(err.message);
-  //     },
-  //   }
-  // );
 
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
@@ -139,13 +111,17 @@ export default function Login() {
                           value="Sign In"
                         />
                       )}
-                      <p className="mb-4">
-                        <a href="#" id="RecoverPassword">
+                      <p
+                        className="mb-4"
+                        style={{ color: 'black', cursor: 'pointer' }}
+                      >
+                        {/* <a href="#" id="RecoverPassword">
                           Forgot your password?
                         </a>{' '}
-                        &nbsp; | &nbsp;
+                        &nbsp; | &nbsp; */}
+                        New User ?{' '}
                         <Link href="/register" id="customer_register_link">
-                          Create account
+                          <b style={{ color: '#6e0000' }}>Create Account </b>
                         </Link>
                       </p>
                     </div>

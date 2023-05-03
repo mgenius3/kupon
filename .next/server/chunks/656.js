@@ -113,10 +113,10 @@ function UserLayout({ children  }) {
                                                         borderRadius: "50%",
                                                         padding: "3px"
                                                     },
-                                                    children: (0,_utils_stringManipulation__WEBPACK_IMPORTED_MODULE_10__/* .getInitials */ .Q)(user === null || user === void 0 ? void 0 : user.firstName, user === null || user === void 0 ? void 0 : user.lastName)
+                                                    children: (0,_utils_stringManipulation__WEBPACK_IMPORTED_MODULE_10__/* .getInitials */ .Q)(user?.firstName, user?.lastName)
                                                 }),
                                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
-                                                    children: (0,_utils_stringManipulation__WEBPACK_IMPORTED_MODULE_10__/* .shortenString */ .S)((user === null || user === void 0 ? void 0 : user.firstName) + " " + (user === null || user === void 0 ? void 0 : user.lastName), 15)
+                                                    children: (0,_utils_stringManipulation__WEBPACK_IMPORTED_MODULE_10__/* .shortenString */ .S)(user?.firstName + " " + user?.lastName, 15)
                                                 })
                                             ]
                                         }),
@@ -321,7 +321,7 @@ function logout() {
 /* harmony export */   "S": () => (/* binding */ shortenString)
 /* harmony export */ });
 function shortenString(str, maxLength) {
-    if ((str === null || str === void 0 ? void 0 : str.length) > maxLength) {
+    if (str?.length > maxLength) {
         // Shorten the string and append ellipses
         return str.slice(0, maxLength - 3) + "...";
     } else {
@@ -330,8 +330,8 @@ function shortenString(str, maxLength) {
     }
 }
 function getInitials(firstName, lastName) {
-    const firstInitial = firstName === null || firstName === void 0 ? void 0 : firstName.charAt(0);
-    const lastInitial = lastName === null || lastName === void 0 ? void 0 : lastName.charAt(0);
+    const firstInitial = firstName?.charAt(0);
+    const lastInitial = lastName?.charAt(0);
     if (!firstInitial && !lastInitial) return "nil";
     return firstInitial + lastInitial;
 }
