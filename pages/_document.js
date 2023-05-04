@@ -35,6 +35,13 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
           ></link>
+          <link rel="stylesheet" href="/styles/style.css" />
+          <link rel="stylesheet" href="/styles/account.css" />
+          <link rel="stylesheet" href="/styles/bootstrap.min.css" />
+          <link rel="stylesheet" href="/styles/globals.css" />
+          <link rel="stylesheet" href="/styles/Home.module.css" />
+          <link rel="stylesheet" href="/styles/plugins.css" />
+          <link rel="stylesheet" href="/styles/responsive.css" />
         </Head>
         <div
           id="modalOverly"
