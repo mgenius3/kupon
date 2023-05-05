@@ -8,7 +8,7 @@ const path = require('path');
 // dotenv.config();
 // const app = next({ dev });
 // const handle = app.getRequestHandler();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 const errorHandler = require('./middleware/errorHandler');
 const morgan = require('morgan');
 const { createTableUser } = require('./database/auth');

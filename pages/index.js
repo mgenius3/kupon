@@ -20,8 +20,8 @@ export default function Home() {
               <Carousel.Item interval={2500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
-                  dataSrc="/images/slideshow-banners/trucks.jpg"
-                  src="/images/slideshow-banners/trucks.jpg"
+                  dataSrc="/images/truck.png"
+                  src="/images/trucks.png"
                   alt="Kupon"
                   title="Kupon"
                   style={{
@@ -33,8 +33,8 @@ export default function Home() {
                 <Carousel.Caption>
                   <div className="">
                     <h2 className="h1 mega-title slideshow__title">
-                      <b style={{ color: '#e60000' }}>Kupon</b> Logistics
-                      Company
+                      <b style={{ color: '#e60000' }}>Kupon</b>{' '}
+                      <b className="land-text-slider">Logistics Company</b>
                     </h2>
                     <span className="mega-subtitle slideshow__subtitle">
                       If you need to move goods across the country, consider
@@ -56,8 +56,8 @@ export default function Home() {
               <Carousel.Item interval={2500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
-                  dataSrc="/images/slideshow-banners/cart.jpg"
-                  src="/images/slideshow-banners/cart.jpg"
+                  dataSrc="/images/cart.png"
+                  src="/images/cart.png"
                   alt="Kupon"
                   title="Kupon"
                   style={{
@@ -69,8 +69,8 @@ export default function Home() {
                 <Carousel.Caption>
                   <div className="">
                     <h2 className="h1 mega-title slideshow__title">
-                      <b style={{ color: '#e60000' }}>Kupon </b> Online
-                      <b> Marketplace</b>
+                      <b style={{ color: '#e60000' }}>Kupon </b>{' '}
+                      <b className="land-text-slider">Online Marketplace</b>
                     </h2>
                     <span className="mega-subtitle slideshow__subtitle">
                       If you&apos;re looking for a platform to sell your
@@ -95,7 +95,7 @@ export default function Home() {
 
           <Container>
             <Row style={{ marginBottom: '50px' }}>
-              <Col md={6} className="text-left text-md-left">
+              <Col md={6} className="text-left text-md-left align-items-center">
                 <h2
                   style={{
                     fontSize: '2rem',
@@ -130,7 +130,7 @@ export default function Home() {
                 className="d-flex justify-content-center align-items-center"
               >
                 <img
-                  src="/images/slideshow-banners/trucks.jpg"
+                  src="/images/truck_brand.png"
                   alt="placeholder"
                   className="img-fluid"
                 />
@@ -151,7 +151,7 @@ export default function Home() {
                 className="d-flex justify-content-center align-items-center"
               >
                 <img
-                  src="/images/slideshow-banners/cart.jpg"
+                  src="/images/cart.png"
                   alt="placeholder"
                   className="img-fluid"
                 />

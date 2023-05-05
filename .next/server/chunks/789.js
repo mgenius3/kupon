@@ -1635,7 +1635,7 @@ function MainHeader() {
                                 listStyle: "none"
                             },
                             children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/market",
+                                href: "/",
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                     children: " Home"
                                 })
@@ -3208,7 +3208,7 @@ function MainHeader() {
                                 listStyle: "none"
                             },
                             children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/logistics",
+                                href: "/",
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                     children: " Home"
                                 })
@@ -3304,7 +3304,7 @@ function MainHeader() {
                                                         cursor: "pointer"
                                                     },
                                                     children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/logistics",
+                                                        href: "/",
                                                         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                                             children: [
                                                                 " ",

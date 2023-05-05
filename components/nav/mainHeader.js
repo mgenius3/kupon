@@ -59,7 +59,7 @@ export default function MainHeader() {
               listStyle: 'none',
             }}
           >
-            <Link href="/logistics">
+            <Link href="/">
               <p> Home</p>
             </Link>
           </li>
@@ -132,7 +132,7 @@ export default function MainHeader() {
                     className="lvl1 parent megamenu"
                     style={{ cursor: 'pointer' }}
                   >
-                    <Link href="/logistics">
+                    <Link href="/">
                       <p>
                         {' '}
                         Home <i className="anm anm-angle-down-l mx-3"></i>

@@ -17,16 +17,21 @@ export default function Home() {
               <Carousel.Item interval={2500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
-                  dataSrc="/images/slideshow-banners/trucks.jpg"
-                  src="/images/slideshow-banners/trucks.jpg"
-                  alt="Shop Our New Collection"
-                  title="Shop Our New Collection"
+                  dataSrc="/images/truck.png"
+                  src="/images/trucks.png"
+                  alt="Kupon"
+                  title="Kupon"
+                  style={{
+                    width: '100%',
+                    height: '60vh!important',
+                    objectFit: 'cover',
+                  }}
                 />
                 <Carousel.Caption>
                   <div className="">
                     <h2 className="h1 mega-title slideshow__title">
-                      <b style={{ color: '#e60000' }}>Kupon</b> Logistics
-                      Company
+                      <b style={{ color: '#e60000' }}>Kupon</b>{' '}
+                      <b className="land-text-slider">Logistics Company</b>
                     </h2>
                     <span className="mega-subtitle slideshow__subtitle">
                       If you need to move goods across the country, consider
@@ -48,23 +53,28 @@ export default function Home() {
               <Carousel.Item interval={2500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
-                  dataSrc="/images/slideshow-banners/cart.jpg"
-                  src="/images/slideshow-banners/cart.jpg"
-                  alt="kupon"
-                  title="kupon"
+                  dataSrc="/images/cart.png"
+                  src="/images/cart.png"
+                  alt="Kupon"
+                  title="Kupon"
+                  style={{
+                    width: '100%',
+                    height: '60vh!important',
+                    objectFit: 'cover',
+                  }}
                 />
                 <Carousel.Caption>
                   <div className="">
                     <h2 className="h1 mega-title slideshow__title">
-                      <b style={{ color: '#e60000' }}>Kupon </b> Online
-                      <b> Marketplace</b>
+                      <b style={{ color: '#e60000' }}>Kupon </b>{' '}
+                      <b className="land-text-slider">Online Marketplace</b>
                     </h2>
                     <span className="mega-subtitle slideshow__subtitle">
                       If you&apos;re looking for a platform to sell your
                       products online, consider listing them on Kupon
                       Marketplace
                     </span>
-                    <Link href="/market">
+                    <Link href="/market/shop#marketcollection">
                       <span className="btn">
                         <img
                           src="https://img.icons8.com/ios/50/FFFFFF/shopping-cart--v1.png"

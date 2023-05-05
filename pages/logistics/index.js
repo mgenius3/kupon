@@ -80,7 +80,7 @@ export default function Logistics() {
 
         <div style={{ margin: '100px 0px', marginBottom: '130px' }}>
           <Container>
-            <Row>
+            <Row className="align-items-center">
               <Col md={8} className="align-items-center">
                 <h2
                   style={{
@@ -130,33 +130,29 @@ export default function Logistics() {
                   </li>
                 </ol>
               </Col>
-              <Col md={4}>
+              <Col md={4} className="align-items-center">
                 <Carousel>
                   <Carousel.Item interval={1000}>
                     <img
-                      className="blur-up lazyload bg-img land-image-slider"
-                      dataSrc="/images/newtruck.jpg"
-                      src="/images/newtruck.jpg"
+                      className="blur-up lazyload bg-img"
+                      dataSrc="/images/trucks.png"
+                      src="/images/trucks.png"
                       alt="Kupon"
                       title="Kupon"
                       style={{
                         width: '100%',
-                        height: '60vh!important',
-                        objectFit: 'cover',
                       }}
                     />
                   </Carousel.Item>
                   <Carousel.Item interval={1000}>
                     <img
-                      className="blur-up lazyload bg-img land-image-slider"
-                      dataSrc="/images/newtruck1.jpg"
-                      src="/images/newtruck1.jpg"
+                      className="blur-up lazyload bg-img"
+                      dataSrc="/images/trucks_brand.png"
+                      src="/images/truck_brand.png"
                       alt="Kupon"
                       title="Kupon"
                       style={{
                         width: '100%',
-                        height: '60vh!important',
-                        objectFit: 'cover',
                       }}
                     />
                   </Carousel.Item>
@@ -268,7 +264,7 @@ export default function Logistics() {
               className="d-flex justify-content-center align-items-center"
             >
               <img
-                src="/images/slideshow-banners/trucks.jpg"
+                src="/images/trucks.png"
                 alt="placeholder"
                 className="img-fluid"
               />
