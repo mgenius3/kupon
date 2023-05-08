@@ -60,7 +60,7 @@ export default function MainHeader() {
               listStyle: 'none',
             }}
           >
-            <Link href="/">
+            <Link href="/market">
               <p> Home</p>
             </Link>
           </li>
