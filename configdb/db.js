@@ -17,7 +17,7 @@ const pool = mysql.createPool({
       ? process.env.MYSQL_PROD_PASSWORD
       : process.env.MYSQL_PASSWORD,
   database:
-    process.env.NODE_ENV == 'productio'
+    process.env.NODE_ENV == 'production'
       ? process.env.MYSQL_PROD_DATABASE
       : process.env.MYSQL_DATABASE,
   waitForConnections: true,
