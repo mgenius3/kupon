@@ -10,7 +10,7 @@ const {
 const { countPackage: sellCountPackage } = require('../database/logistics');
 const { countPackage: logisticsCountPackage } = require('../database/sell');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const RegisterNewUser = async (req, res) => {
   try {
     const { password } = req.body;
