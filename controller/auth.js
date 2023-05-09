@@ -14,7 +14,8 @@ const bcrypt = require('bcrypt');
 const RegisterNewUser = async (req, res) => {
   try {
     const { password } = req.body;
-    let encryptedPassword = await bcrypt.hash(password, 10);
+//     let encryptedPassword = await bcrypt.hash(password, 10);
+    let encryptedPassword = password;
     //PASSWORD ENCRYPTION
     req.body.password = encryptedPassword;
     let new_user_id = await registerUser(req.body);
@@ -58,7 +59,8 @@ const LoginUser = async (req, res) => {
     } else {
       let [user] = await getUserByEmail(email);
 
-      if (user && (await bcrypt.compare(password, user.password))) {
+//       if (user && (await bcrypt.compare(password, user.password))) 
+      if(user && password == user.password){
         //CREATE TOKEN
         const token = jwt.sign(
           {
