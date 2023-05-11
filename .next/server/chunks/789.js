@@ -1570,7 +1570,10 @@ var stringManipulation = __webpack_require__(7893);
 var logout = __webpack_require__(5387);
 // EXTERNAL MODULE: external "next/router"
 var router_ = __webpack_require__(1853);
+// EXTERNAL MODULE: external "react-bootstrap"
+var external_react_bootstrap_ = __webpack_require__(358);
 ;// CONCATENATED MODULE: ./components/marketNav/mainHeader.js
+
 
 
 
@@ -1583,7 +1586,7 @@ function MainHeader() {
         if (false) {}
     });
     const { 0: user , 1: setUser  } = (0,external_react_.useState)({});
-    const { 0: openMobileNav , 1: setOpenMobileNav  } = (0,external_react_.useState)(false);
+    // const [openMobileNav, setOpenMobileNav] = useState(false);
     const { 0: avatarMenu , 1: setAvatarMenu  } = (0,external_react_.useState)(false);
     const router = (0,router_.useRouter)();
     (0,external_react_.useEffect)(()=>{
@@ -1601,243 +1604,55 @@ function MainHeader() {
         if (out) router.push("/login");
     };
     return(//  <!--Header-->
-    /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_.Fragment, {
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("aside", {
-                style: {
-                    position: "absolute",
-                    top: "0px",
-                    zIndex: "100",
-                    background: "white",
-                    padding: "20px 40px 10px 20px",
-                    width: "100%",
-                    display: openMobileNav == true ? "block" : "none"
-                },
-                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
-                    id: "",
-                    className: "site-nav medium center hidearrow",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                            onClick: ()=>setOpenMobileNav(false),
-                            src: "https://img.icons8.com/ios-glyphs/30/null/delete-sign.png",
-                            style: {
-                                position: "absolute",
-                                right: "20px",
-                                cursor: "pointer"
-                            }
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                            className: "lvl1 parent megamenu",
-                            style: {
-                                cursor: "pointer",
-                                padding: "10px",
-                                margin: "0px 10px",
-                                listStyle: "none"
-                            },
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/market",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                    children: " Home"
-                                })
-                            })
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                            className: "lvl1 parent megamenu",
-                            style: {
-                                cursor: "pointer",
-                                padding: "10px",
-                                margin: "0px 10px",
-                                listStyle: "none"
-                            },
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/market/shop",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                    children: "Shop"
-                                })
-                            })
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                            className: "lvl1 parent dropdown",
-                            style: {
-                                cursor: "pointer",
-                                padding: "10px",
-                                margin: "0px 10px",
-                                listStyle: "none"
-                            },
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/contact",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                    children: " Contact Us"
-                                })
-                            })
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                            className: "lvl1",
-                            style: {
-                                cursor: "pointer",
-                                padding: "10px",
-                                margin: "0px 10px",
-                                listStyle: "none"
-                            },
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/market/sell",
-                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                    children: [
-                                        /*#__PURE__*/ jsx_runtime_.jsx("b", {
-                                            className: "",
-                                            children: "Sell"
-                                        }),
-                                        " "
-                                    ]
-                                })
-                            })
+    /*#__PURE__*/ jsx_runtime_.jsx(external_react_.Fragment, {
+        children: /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar, {
+            bg: "light",
+            expand: "lg",
+            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Container, {
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Brand, {
+                        href: "/",
+                        children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                            src: "/images/kupon logo with text (1).png",
+                            width: "100",
+                            className: "d-inline-block align-top",
+                            alt: "Logo"
                         })
-                    ]
-                })
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "header-wrap classicHeader animated d-flex",
-                children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                    className: "container-fluid",
-                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        className: "row align-items-center",
-                        style: {
-                            padding: "20px 0px"
-                        },
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Toggle, {
+                        "aria-controls": "navbar-nav"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Navbar.Collapse, {
+                        id: "navbar-nav",
                         children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                className: "logo col-md-2 col-lg-2 d-none d-lg-block",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                    href: "/",
-                                    children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                        src: "/images/kupon logo with text (1).png",
-                                        alt: "Belle Multipurpose Html Template",
-                                        width: 100
-                                    })
-                                })
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                className: "col-2 col-sm-3 col-md-3 col-lg-8",
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Nav, {
+                                className: "mr-auto",
                                 children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                        className: "d-block d-lg-none",
-                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                                            type: "button",
-                                            className: "btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                                    className: "icon anm anm-times-l"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                                    src: "https://img.icons8.com/ios/50/1A1A1A/menu--v1.png",
-                                                    width: 20,
-                                                    onClick: ()=>setOpenMobileNav(true)
-                                                })
-                                            ]
-                                        })
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/market",
+                                        children: "Home"
                                     }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("nav", {
-                                        className: "grid__item",
-                                        id: "AccessibleNav",
-                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
-                                            id: "siteNav",
-                                            className: "site-nav medium center hidearrow",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                    className: "lvl1 parent megamenu",
-                                                    style: {
-                                                        cursor: "pointer"
-                                                    },
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/market",
-                                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                            children: [
-                                                                " ",
-                                                                "Home ",
-                                                                /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                                                    className: "anm anm-angle-down-l mx-3"
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                    className: "lvl1 parent megamenu",
-                                                    style: {
-                                                        cursor: "pointer"
-                                                    },
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/market/shop",
-                                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                            children: [
-                                                                "Shop ",
-                                                                /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                                                    className: "anm anm-angle-down-l mx-3"
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                    className: "lvl1 parent dropdown",
-                                                    style: {
-                                                        cursor: "pointer"
-                                                    },
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/contact",
-                                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                            children: [
-                                                                " ",
-                                                                "Contact Us",
-                                                                /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                                                    className: "anm anm-angle-down-l mx-3"
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                    className: "lvl1",
-                                                    style: {
-                                                        cursor: "pointer"
-                                                    },
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/market/sell",
-                                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                            children: [
-                                                                /*#__PURE__*/ jsx_runtime_.jsx("b", {
-                                                                    className: "",
-                                                                    children: "Sell"
-                                                                }),
-                                                                " "
-                                                            ]
-                                                        })
-                                                    })
-                                                })
-                                            ]
-                                        })
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/market/shop",
+                                        children: "Shop"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/contact",
+                                        children: "Contact Us"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/market/sell",
+                                        children: "Sell"
                                     })
                                 ]
                             }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                className: "col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo ",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                    className: "logo",
-                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                        href: "/",
-                                        children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                            src: "/images/kupon text for white bg.png",
-                                            alt: "kupon",
-                                            title: "kupon",
-                                            width: 70
-                                        })
-                                    })
-                                })
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                className: "col-4 col-sm-3 col-md-3 col-lg-2 justify-content-end",
+                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav, {
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
                                     className: "navbar navbar-expand-lg",
+                                    style: {
+                                        position: "relative",
+                                        zIndex: "100"
+                                    },
                                     children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                         className: "container-fluid",
                                         children: /*#__PURE__*/ jsx_runtime_.jsx("ul", {
@@ -1872,7 +1687,7 @@ function MainHeader() {
                                                                 fontSize: "15px",
                                                                 cursor: "pointer"
                                                             },
-                                                            className: "d-none d-sm-inline",
+                                                            className: "d-sm-inline",
                                                             children: [
                                                                 " ",
                                                                 "sign up",
@@ -1974,9 +1789,9 @@ function MainHeader() {
                             })
                         ]
                     })
-                })
+                ]
             })
-        ]
+        })
     }));
 };
 
@@ -3148,7 +2963,10 @@ var stringManipulation = __webpack_require__(7893);
 var logout = __webpack_require__(5387);
 // EXTERNAL MODULE: external "next/router"
 var router_ = __webpack_require__(1853);
+// EXTERNAL MODULE: external "react-bootstrap"
+var external_react_bootstrap_ = __webpack_require__(358);
 ;// CONCATENATED MODULE: ./components/nav/mainHeader.js
+
 
 
 
@@ -3161,7 +2979,7 @@ function MainHeader() {
         if (false) {}
     });
     const { 0: user , 1: setUser  } = (0,external_react_.useState)({});
-    const { 0: openMobileNav , 1: setOpenMobileNav  } = (0,external_react_.useState)(false);
+    // const [openMobileNav, setOpenMobileNav] = useState(false);
     const { 0: avatarMenu , 1: setAvatarMenu  } = (0,external_react_.useState)(false);
     const router = (0,router_.useRouter)();
     (0,external_react_.useEffect)(()=>{
@@ -3177,211 +2995,57 @@ function MainHeader() {
         if (out) router.push("/login");
     };
     return(//  <!--Header-->
-    /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_.Fragment, {
-        children: [
-            /*#__PURE__*/ jsx_runtime_.jsx("aside", {
-                style: {
-                    position: "absolute",
-                    top: "0px",
-                    zIndex: "100",
-                    background: "white",
-                    padding: "20px 40px 10px 20px",
-                    width: "100%",
-                    display: openMobileNav == true ? "block" : "none"
-                },
-                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
-                    id: "",
-                    className: "site-nav medium center hidearrow",
-                    children: [
-                        /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                            onClick: ()=>setOpenMobileNav(false),
-                            src: "https://img.icons8.com/ios-glyphs/30/null/delete-sign.png",
-                            style: {
-                                position: "absolute",
-                                right: "20px",
-                                cursor: "pointer"
-                            }
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                            className: "lvl1 parent megamenu",
-                            style: {
-                                cursor: "pointer",
-                                padding: "10px",
-                                margin: "0px 10px",
-                                listStyle: "none"
-                            },
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                    children: " Home"
-                                })
-                            })
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                            className: "lvl1 parent dropdown",
-                            style: {
-                                cursor: "pointer",
-                                padding: "10px",
-                                margin: "0px 10px",
-                                listStyle: "none"
-                            },
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/contact",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
-                                    children: " Contact Us"
-                                })
-                            })
-                        }),
-                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                            className: "lvl1",
-                            style: {
-                                cursor: "pointer",
-                                padding: "10px",
-                                margin: "0px 10px",
-                                listStyle: "none"
-                            },
-                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/logistics/send",
-                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                    children: [
-                                        /*#__PURE__*/ jsx_runtime_.jsx("b", {
-                                            className: "",
-                                            children: "Send Package"
-                                        }),
-                                        " "
-                                    ]
-                                })
-                            })
+    /*#__PURE__*/ jsx_runtime_.jsx(external_react_.Fragment, {
+        children: /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar, {
+            bg: "light",
+            expand: "lg",
+            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Container, {
+                children: [
+                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Brand, {
+                        href: "/",
+                        children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                            src: "/images/kupon logo with text (1).png",
+                            width: "100",
+                            className: "d-inline-block align-top",
+                            alt: "Logo"
                         })
-                    ]
-                })
-            }),
-            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                className: "header-wrap classicHeader animated d-flex",
-                children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                    className: "container-fluid",
-                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                        className: "row align-items-center",
-                        style: {
-                            padding: "20px 0px"
-                        },
+                    }),
+                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Toggle, {
+                        "aria-controls": "navbar-nav"
+                    }),
+                    /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Navbar.Collapse, {
+                        id: "navbar-nav",
                         children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                className: "logo col-md-2 col-lg-2 d-none d-lg-block",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                    href: "/",
-                                    children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                        src: "/images/kupon logo with text (1).png",
-                                        alt: "Belle Multipurpose Html Template",
-                                        width: 100
-                                    })
-                                })
-                            }),
-                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
-                                className: "col-2 col-sm-3 col-md-3 col-lg-8",
+                            /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Nav, {
+                                className: "mr-auto",
                                 children: [
-                                    /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                        className: "d-block d-lg-none",
-                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("button", {
-                                            type: "button",
-                                            className: "btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                                    className: "icon anm anm-times-l"
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                                    src: "https://img.icons8.com/ios/50/1A1A1A/menu--v1.png",
-                                                    width: 20,
-                                                    onClick: ()=>setOpenMobileNav(true)
-                                                })
-                                            ]
-                                        })
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/",
+                                        children: "Home"
                                     }),
-                                    /*#__PURE__*/ jsx_runtime_.jsx("nav", {
-                                        className: "grid__item",
-                                        id: "AccessibleNav",
-                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
-                                            id: "siteNav",
-                                            className: "site-nav medium center hidearrow",
-                                            children: [
-                                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                    className: "lvl1 parent megamenu",
-                                                    style: {
-                                                        cursor: "pointer"
-                                                    },
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/",
-                                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                            children: [
-                                                                " ",
-                                                                "Home ",
-                                                                /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                                                    className: "anm anm-angle-down-l mx-3"
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                    className: "lvl1 parent dropdown",
-                                                    style: {
-                                                        cursor: "pointer"
-                                                    },
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/contact",
-                                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                            children: [
-                                                                " ",
-                                                                "Contact Us",
-                                                                /*#__PURE__*/ jsx_runtime_.jsx("i", {
-                                                                    className: "anm anm-angle-down-l mx-3"
-                                                                })
-                                                            ]
-                                                        })
-                                                    })
-                                                }),
-                                                /*#__PURE__*/ jsx_runtime_.jsx("li", {
-                                                    className: "lvl1",
-                                                    style: {
-                                                        cursor: "pointer"
-                                                    },
-                                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                        href: "/logistics/send",
-                                                        children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
-                                                            children: [
-                                                                /*#__PURE__*/ jsx_runtime_.jsx("b", {
-                                                                    className: "",
-                                                                    children: "Send Package"
-                                                                }),
-                                                                " "
-                                                            ]
-                                                        })
-                                                    })
-                                                })
-                                            ]
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/about",
+                                        children: "About"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/contact",
+                                        children: "Contact Us"
+                                    }),
+                                    /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                        href: "/logistics/send",
+                                        children: /*#__PURE__*/ jsx_runtime_.jsx("b", {
+                                            children: "Send Package"
                                         })
                                     })
                                 ]
                             }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                className: "col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo ",
-                                children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                    className: "logo",
-                                    children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                        href: "/",
-                                        children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
-                                            src: "/images/kupon text for white bg.png",
-                                            alt: "kupon",
-                                            title: "kupon",
-                                            width: 70
-                                        })
-                                    })
-                                })
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx("div", {
-                                className: "col-4 col-sm-3 col-md-3 col-lg-2 justify-content-end",
+                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav, {
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
                                     className: "navbar navbar-expand-lg",
+                                    style: {
+                                        position: "relative",
+                                        zIndex: "100"
+                                    },
                                     children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                         className: "container-fluid",
                                         children: /*#__PURE__*/ jsx_runtime_.jsx("ul", {
@@ -3416,7 +3080,7 @@ function MainHeader() {
                                                                 fontSize: "15px",
                                                                 cursor: "pointer"
                                                             },
-                                                            className: "d-none d-sm-inline",
+                                                            className: "d-sm-inline",
                                                             children: [
                                                                 " ",
                                                                 "sign up",
@@ -3478,7 +3142,7 @@ function MainHeader() {
                                                                     cursor: "pointer"
                                                                 },
                                                                 children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                                    href: `/dashboard/user/profile`,
+                                                                    href: `/dashboard/user/market`,
                                                                     children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                                                                         children: [
                                                                             /*#__PURE__*/ jsx_runtime_.jsx("img", {
@@ -3518,9 +3182,9 @@ function MainHeader() {
                             })
                         ]
                     })
-                })
+                ]
             })
-        ]
+        })
     }));
 };
 

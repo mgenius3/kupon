@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode';
 import { getInitials } from '../../utils/stringManipulation';
 import logout from '../../utils/logout';
 import { useRouter } from 'next/router';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
 export default function MainHeader() {
   const [token] = useState(() => {
@@ -12,7 +13,7 @@ export default function MainHeader() {
     }
   });
   const [user, setUser] = useState({});
-  const [openMobileNav, setOpenMobileNav] = useState(false);
+  // const [openMobileNav, setOpenMobileNav] = useState(false);
   const [avatarMenu, setAvatarMenu] = useState(false);
   const router = useRouter();
 
@@ -34,7 +35,7 @@ export default function MainHeader() {
     //  <!--Header-->
     <Fragment>
       {/* mobile nav */}
-      <aside
+      {/* <aside
         style={{
           position: 'absolute',
           top: '0px',
@@ -108,14 +109,13 @@ export default function MainHeader() {
             </Link>
           </li>
         </ul>
-      </aside>
-      <div className="header-wrap classicHeader animated d-flex">
+      </aside> */}
+      {/* <div className="header-wrap classicHeader animated d-flex">
         <div className="container-fluid">
           <div
             className="row align-items-center"
             style={{ padding: '20px 0px' }}
           >
-            {/* <!--Desktop Logo--> */}
             <div className="logo col-md-2 col-lg-2 d-none d-lg-block">
               <Link href="/">
                 <img
@@ -126,7 +126,6 @@ export default function MainHeader() {
                 />
               </Link>
             </div>
-            {/* <!--End Desktop Logo--> */}
             <div className="col-2 col-sm-3 col-md-3 col-lg-8">
               <div className="d-block d-lg-none">
                 <button
@@ -141,9 +140,7 @@ export default function MainHeader() {
                   />
                 </button>
               </div>
-              {/* <!--Desktop Menu--> */}
               <nav className="grid__item" id="AccessibleNav">
-                {/* <!-- for mobile --> */}
                 <ul id="siteNav" className="site-nav medium center hidearrow">
                   <li
                     className="lvl1 parent megamenu"
@@ -188,9 +185,7 @@ export default function MainHeader() {
                   </li>
                 </ul>
               </nav>
-              {/* <!--End Desktop Menu--> */}
             </div>
-            {/* <!--Mobile Logo--> */}
             <div className="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo ">
               <div className="logo">
                 <Link href="/">
@@ -203,7 +198,6 @@ export default function MainHeader() {
                 </Link>
               </div>
             </div>
-            {/* <!--Mobile Logo--> */}
             <div className="col-4 col-sm-3 col-md-3 col-lg-2 justify-content-end">
               <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
@@ -211,7 +205,6 @@ export default function MainHeader() {
                     className="navbar-nav"
                     style={{ position: 'absolute', right: '0px' }}
                   >
-                    {/* <!-- Avatar Menu --> */}
                     {!Object.keys(user).length ? (
                       <li>
                         <Link href="/login">
@@ -323,7 +316,166 @@ export default function MainHeader() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      {/* <br />
+      <br />
+      <br /> */}
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="/">
+            <img
+              src="/images/kupon logo with text (1).png"
+              width="100"
+              className="d-inline-block align-top"
+              alt="Logo"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="navbar-nav" />
+          <Navbar.Collapse id="navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/market">Home</Nav.Link>
+              <Nav.Link href="/market/shop">Shop</Nav.Link>
+              <Nav.Link href="/contact">Contact Us</Nav.Link>
+              <Nav.Link href="/market/sell">Sell</Nav.Link>
+              {/* <NavDropdown title="Menu" id="navbar-dropdown">
+                <NavDropdown.Item href="/menu/item1">Item 1</NavDropdown.Item>
+                <NavDropdown.Item href="/menu/item2">Item 2</NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="/menu/item3">Item 3</NavDropdown.Item>
+              </NavDropdown> */}
+            </Nav>
+            <Nav>
+              {/* <img
+                  src="/path/to/avatar.png"
+                  width="30"
+                  height="30"
+                  className="d-inline-block align-top"
+                  alt="Avatar"
+                />
+                User Profile */}
+
+              <nav
+                className="navbar navbar-expand-lg"
+                style={{ position: 'relative', zIndex: '100' }}
+              >
+                <div className="container-fluid">
+                  <ul
+                    className="navbar-nav"
+                    style={{ position: 'absolute', right: '0px' }}
+                  >
+                    {/* <!-- Avatar Menu --> */}
+                    {!Object.keys(user).length ? (
+                      <li>
+                        <Link href="/login">
+                          <small
+                            style={{
+                              fontSize: '15px',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            {' '}
+                            sign in{' '}
+                          </small>
+                        </Link>
+                        <Link href="register">
+                          <small
+                            style={{
+                              backgroundColor: '#e64c00',
+                              color: 'white',
+                              padding: '2px',
+                              fontSize: '15px',
+                              cursor: 'pointer',
+                            }}
+                            className="d-sm-inline"
+                          >
+                            {' '}
+                            sign up{' '}
+                          </small>
+                        </Link>
+                      </li>
+                    ) : (
+                      <li className="nav-item dropdown">
+                        <a
+                          className="nav-link dropdown-toggle d-flex align-items-center"
+                          href="#"
+                          id="navbarDropdownMenuLink"
+                          role="button"
+                          data-mdb-toggle="dropdown"
+                          aria-expanded="false"
+                          onClick={() => setAvatarMenu(!avatarMenu)}
+                        >
+                          <p
+                            style={{
+                              color: 'white',
+                              backgroundColor: 'black',
+                              borderRadius: '50%',
+                              padding: '3px',
+                            }}
+                          >
+                            {getInitials(user?.firstName, user?.lastName)}
+                          </p>
+                        </a>
+                        {avatarMenu ? (
+                          <ul
+                            className="bg-light position-absolute"
+                            aria-labelledby="navbarDropdownMenuLink"
+                            style={{ left: '-50px' }}
+                          >
+                            {user?.admin == 'yes' && (
+                              <li
+                                className="dropdown-item"
+                                style={{ cursor: 'pointer' }}
+                              >
+                                <Link href={`/dashboard/admin/profile`}>
+                                  <span>
+                                    <img
+                                      src="https://img.icons8.com/ios/50/null/administrator-male--v1.png"
+                                      width={15}
+                                    />{' '}
+                                    Admin
+                                  </span>
+                                </Link>
+                              </li>
+                            )}
+                            <li
+                              className="dropdown-item"
+                              style={{ cursor: 'pointer' }}
+                            >
+                              <Link href={`/dashboard/user/market`}>
+                                <span>
+                                  <img
+                                    src="https://img.icons8.com/ios-filled/50/null/user.png"
+                                    width={15}
+                                  />{' '}
+                                  Profile
+                                </span>
+                              </Link>
+                            </li>
+
+                            <li
+                              className="dropdown-item"
+                              style={{ cursor: 'pointer' }}
+                              onClick={() => userlogout()}
+                            >
+                              <span>
+                                <img
+                                  src="https://img.icons8.com/ios-filled/50/null/logout-rounded.png"
+                                  width={15}
+                                />{' '}
+                                Logout
+                              </span>
+                            </li>
+                          </ul>
+                        ) : null}
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              </nav>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </Fragment>
   );
 }

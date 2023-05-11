@@ -632,7 +632,6 @@
     padding: 20px;
   }
   .slideshow .slick-slide img {
-    height: 80vh;
     object-fit: cover;
   }
 }
