@@ -97,7 +97,10 @@ export default function MainHeader() {
       </aside>
       <div className="header-wrap classicHeader animated d-flex">
         <div className="container-fluid">
-          <div className="row align-items-center">
+          <div
+            className="row align-items-center"
+            style={{ padding: '20px 0px' }}
+          >
             {/* <!--Desktop Logo--> */}
             <div className="logo col-md-2 col-lg-2 d-none d-lg-block">
               <Link href="/">

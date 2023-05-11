@@ -1635,7 +1635,7 @@ function MainHeader() {
                                 listStyle: "none"
                             },
                             children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                href: "/",
+                                href: "/market",
                                 children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                     children: " Home"
                                 })
@@ -1701,6 +1701,9 @@ function MainHeader() {
                     className: "container-fluid",
                     children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                         className: "row align-items-center",
+                        style: {
+                            padding: "20px 0px"
+                        },
                         children: [
                             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                 className: "logo col-md-2 col-lg-2 d-none d-lg-block",
@@ -3259,6 +3262,9 @@ function MainHeader() {
                     className: "container-fluid",
                     children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                         className: "row align-items-center",
+                        style: {
+                            padding: "20px 0px"
+                        },
                         children: [
                             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                 className: "logo col-md-2 col-lg-2 d-none d-lg-block",

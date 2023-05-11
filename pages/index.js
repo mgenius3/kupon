@@ -17,7 +17,7 @@ export default function Home() {
             style={{ marginBottom: '50px' }}
           >
             <Carousel>
-              <Carousel.Item interval={2500}>
+              <Carousel.Item interval={4500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
                   dataSrc="/images/truck.png"
@@ -53,7 +53,7 @@ export default function Home() {
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
-              <Carousel.Item interval={2500}>
+              <Carousel.Item interval={4500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
                   dataSrc="/images/cart.png"

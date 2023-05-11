@@ -75,8 +75,8 @@ export default function Home() {
                 <div className="blur-up lazyload bg-size">
                   <img
                     className="blur-up lazyload bg-img"
-                    dataSrc="/images/slideshow-banners/cart.jpg"
-                    src="/images/slideshow-banners/cart.jpg"
+                    dataSrc="/images/cart.png"
+                    src="/images/cart.png"
                     alt="Summer Bikini Collection"
                     title="Summer Bikini Collection"
                     style={{
@@ -117,6 +117,7 @@ export default function Home() {
                       width: '100%',
                       height: '60vh!important',
                       objectFit: 'cover',
+                      filter: 'brightness(120%)',
                     }}
                   />
                   <div className="slideshow__text-wrap slideshow__overlay classic bottom">
