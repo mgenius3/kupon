@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import ImageUpload from '../../utils/fileupload';
 import { statesInNigeria } from '../../utils/data';
 import PageAuthentication from '../../hooks/useAuth';
+import LoadingOverlay from '../../components/loadingOverlay';
 
 export default function Logistics() {
   const [data, setData] = useState({});
@@ -325,9 +326,10 @@ export default function Logistics() {
                     </fieldset>
                     <div className="order-button-payment">
                       {isLoading ? (
-                        <button className="btn" disabled>
-                          Loading...
-                        </button>
+                        // <button className="btn" disabled>
+                        //   Loading...
+                        // </button>
+                        <LoadingOverlay />
                       ) : (
                         <button
                           className="btn"
@@ -341,85 +343,6 @@ export default function Logistics() {
                   </form>
                 </div>
               </div>
-
-              {/* <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-              <div className="your-order-payment">
-                <hr />
-                <div className="your-payment">
-                  <h2 className="payment-title mb-3">payment method</h2>
-                  <div className="payment-method">
-                    <div className="payment-accordion">
-                      <div id="accordion" className="payment-section">
-                        <div className="card mb-2">
-                          <div className="card-header">
-                            <a
-                              className="card-link"
-                              data-toggle="collapse"
-                              href="#collapseOne"
-                            >
-                              Direct Bank Transfer{' '}
-                            </a>
-                          </div>
-                          <div>
-                            <div className="card-body">
-                              <p className="no-margin font-15">
-                                Make your payment directly into our bank
-                                account. Please use your Order ID as the payment
-                                reference. Your order won&apos;t be shipped
-                                until the funds have cleared in our account.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="card mb-2">
-                          <div className="card-header">
-                            <a
-                              className="collapsed card-link"
-                              data-toggle="collapse"
-                              href="#collapseTwo"
-                            >
-                              Cheque Payment
-                            </a>
-                          </div>
-                          <div>
-                            <div className="card-body">
-                              <p className="no-margin font-15">
-                                Please send your cheque to Store Name, Store
-                                Street, Store Town, Store State / County, Store
-                                Postcode.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="card margin-15px-bottom border-radius-none">
-                          <div className="card-header">
-                            <a
-                              className="collapsed card-link"
-                              data-toggle="collapse"
-                              href="#collapseThree"
-                            >
-                              {' '}
-                              PayStack{' '}
-                            </a>
-                          </div>
-                          <div>
-                            <div className="card-body">
-                              <p className="no-margin font-15">
-                                Pay via PayStack; you can pay with your credit
-                                card if you don&apos;t have a PayStack account.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="card mb-2">
-                          <div></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
             </div>
           </div>
         </div>

@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/qiLMKomDIo_9hzvg-Y31_/_buildManifest.js",
-    "static/qiLMKomDIo_9hzvg-Y31_/_ssgManifest.js"
+    "static/46UduGAvXhGfYnAmpq4PK/_buildManifest.js",
+    "static/46UduGAvXhGfYnAmpq4PK/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -38,7 +38,7 @@
       "static/chunks/webpack-0d4613980ae4ed9b.js",
       "static/chunks/framework-4556c45dd113b893.js",
       "static/chunks/main-7feab3f544c289f7.js",
-      "static/css/b5f9c52318bf9593.css",
+      "static/css/a49496f26950f89f.css",
       "static/chunks/pages/_app-debee4dabd5a573b.js"
     ],
     "/_error": [
@@ -214,7 +214,7 @@
       "static/chunks/207-0e4f4136012a3074.js",
       "static/chunks/162-d6f50754a8505b45.js",
       "static/chunks/971-c6cff3f12ac5229f.js",
-      "static/chunks/pages/logistics/send-9c836841770373d2.js"
+      "static/chunks/pages/logistics/send-e766e233f1e87e02.js"
     ],
     "/market": [
       "static/chunks/webpack-0d4613980ae4ed9b.js",
@@ -244,7 +244,7 @@
       "static/chunks/207-0e4f4136012a3074.js",
       "static/chunks/162-d6f50754a8505b45.js",
       "static/chunks/971-c6cff3f12ac5229f.js",
-      "static/chunks/pages/market/sell-1fb7fbb60572d9d0.js"
+      "static/chunks/pages/market/sell-e9590f65b69ed807.js"
     ],
     "/market/shop": [
       "static/chunks/webpack-0d4613980ae4ed9b.js",

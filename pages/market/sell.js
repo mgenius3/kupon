@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ImageUpload from '../../utils/fileupload';
 import PageAuthentication from '../../hooks/useAuth';
+import LoadingOverlay from '../../components/loadingOverlay';
 
 import {
   statesInNigeria,
@@ -256,9 +257,10 @@ export default function Logistics() {
                     </fieldset>
                     <div className="order-button-payment">
                       {isLoading ? (
-                        <button className="btn" disabled>
-                          Loading...
-                        </button>
+                        // <button className="btn" disabled>
+                        //   Loading...
+                        // </button>
+                        <LoadingOverlay />
                       ) : (
                         <button
                           className="btn"
