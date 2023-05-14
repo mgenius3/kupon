@@ -75,7 +75,7 @@ const registerUser = async ({
 
 const getUsers = async () => {
   try {
-    const query = 'SELECT * FROM user';
+    const query = 'SELECT * FROM user ORDER BY created_at DESC';
     const connection = await pool.getConnection();
     const [users] = await connection.query(query);
     await connection.release();
@@ -130,6 +130,17 @@ const countPackage = async () => {
   }
 };
 
+const deleteUser = async (id) => {
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = 'DELETE FROM user WHERE id = ?';
+    await pool.query(query, [id]);
+    await connection.release();
+  } catch (err) {
+    throw err.message;
+  }
+};
 module.exports = {
   createTableUser,
   registerUser,
@@ -138,4 +149,5 @@ module.exports = {
   getUserByEmail,
   updateUserToken,
   countPackage,
+  deleteUser,
 };

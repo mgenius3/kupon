@@ -42,6 +42,7 @@ react_toastify__WEBPACK_IMPORTED_MODULE_7__ = (__webpack_async_dependencies__.th
 
 
 function UserLayout({ children  }) {
+    const { 0: noOfLogisticsisPending , 1: setNoOfLogisticsIsPending  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
     const { 0: token  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(()=>{
         if (false) {}
     });
@@ -62,6 +63,29 @@ function UserLayout({ children  }) {
         let out = (0,_utils_logout__WEBPACK_IMPORTED_MODULE_9__/* ["default"] */ .Z)();
         if (out) router.push("/login");
     };
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(()=>{
+        const fetchLogistics = async ()=>{
+            try {
+                const response = await fetch("/admin/logistics", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    const res = await response.json();
+                    throw new Error(res.msg);
+                }
+                const res1 = await response.json();
+                //pass pending logistics to user
+                setNoOfLogisticsIsPending(res1.msg?.filter((a)=>a.status == "pending").length);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetchLogistics();
+    }, []);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
         children: [
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_head__WEBPACK_IMPORTED_MODULE_6___default()), {
@@ -196,8 +220,12 @@ function UserLayout({ children  }) {
                                                         src: "https://img.icons8.com/ios-glyphs/30/FD7E14/food-truck.png",
                                                         className: "icon"
                                                     }),
-                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
-                                                        children: "Logistics"
+                                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("b", {
+                                                        children: [
+                                                            "Logistics(",
+                                                            noOfLogisticsisPending,
+                                                            ")"
+                                                        ]
                                                     })
                                                 ]
                                             })

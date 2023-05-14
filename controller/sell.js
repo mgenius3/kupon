@@ -55,6 +55,9 @@ const receiveUserPackage = async (req, res) => {
     userPackage.forEach(
       (pack) => (pack.paid = convertBufferToBoolean(pack.paid))
     );
+
+    userPackage = userPackage.filter((a) => a.paid);
+
     res.status(200).json({ msg: userPackage });
   } catch (err) {
     res.status(400).json({ msg: err.message });
@@ -63,7 +66,10 @@ const receiveUserPackage = async (req, res) => {
 const receivePackage = async (req, res) => {
   try {
     const user = await getAllSell();
-    res.status(200).json({ msg: user });
+    user.forEach((pack) => (pack.paid = convertBufferToBoolean(pack.paid)));
+
+    let paid_user_package = user.filter((a) => a.paid);
+    res.status(200).json({ msg: paid_user_package });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

@@ -5,6 +5,7 @@ const {
   getUserByEmail,
   updateUserToken,
   countPackage: userCountPackage,
+  deleteUser,
 } = require('../database/auth');
 
 const { countPackage: sellCountPackage } = require('../database/logistics');
@@ -14,7 +15,7 @@ const jwt = require('jsonwebtoken');
 const RegisterNewUser = async (req, res) => {
   try {
     const { password } = req.body;
-//     let encryptedPassword = await bcrypt.hash(password, 10);
+    //     let encryptedPassword = await bcrypt.hash(password, 10);
     let encryptedPassword = password;
     //PASSWORD ENCRYPTION
     req.body.password = encryptedPassword;
@@ -59,8 +60,8 @@ const LoginUser = async (req, res) => {
     } else {
       let [user] = await getUserByEmail(email);
 
-//       if (user && (await bcrypt.compare(password, user.password))) 
-      if(user && password == user.password){
+      //       if (user && (await bcrypt.compare(password, user.password)))
+      if (user && password == user.password) {
         //CREATE TOKEN
         const token = jwt.sign(
           {
@@ -130,10 +131,21 @@ const countPackages = async (req, res) => {
     res.status(400).json({ msg: err });
   }
 };
+const delUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await deleteUser(id);
+    res.status(200).json({ msg: 'user account deleted successfully' });
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+};
+
 module.exports = {
   RegisterNewUser,
   LoginUser,
   getUserById,
   allUsers,
   countPackages,
+  delUser,
 };

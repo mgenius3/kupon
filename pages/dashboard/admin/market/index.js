@@ -2,9 +2,14 @@ import React, { useState, useEffect } from 'react';
 import UserLayout from '../../../../components/admin/Layout';
 import { Modal, Button } from 'react-bootstrap';
 import 'react-toastify/dist/ReactToastify.css';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+import ConfirmationInput from '../../../../components/Confirmation';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Carousel } from 'react-bootstrap';
 const UserLogistics = () => {
+  const router = useRouter();
+
   const [token] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('token');
@@ -15,6 +20,10 @@ const UserLogistics = () => {
   // const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState();
+
+  //to display confirmation input
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false);
+  const [hideConfirmationModal, setHideConfirmationModal] = useState(true);
 
   useEffect(() => {
     const fetchLogistics = async () => {
@@ -48,6 +57,30 @@ const UserLogistics = () => {
   };
   const handleModalClose = () => setShowModal(false);
 
+  const deletePackage = async () => {
+    // setIsLoadingDeleteStatus(true);
+    try {
+      const response = await fetch(`/admin/market/delete/${modalData?.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        // setIsLoadingDeleteStatus(false);
+        const res = await response.json();
+        throw new Error(res?.msg);
+      }
+      const res = await response.json();
+      toast.success(res?.msg);
+      // setIsLoadingDeleteStatus(false);
+      router.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <UserLayout>
       <div className="table-responsive">
@@ -203,12 +236,45 @@ const UserLogistics = () => {
               </tfoot>
             </table>
           </Modal.Body>
+
+          <Modal.Footer className="justify-content-start">
+            <Button
+              variant="danger"
+              onClick={() => {
+                handleModalClose();
+                setHideConfirmationModal(true);
+                setDeleteConfirmation(true);
+              }}
+              style={{ background: 'red', color: 'white' }}
+            >
+              Delete
+            </Button>
+          </Modal.Footer>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleModalClose}>
               Close
             </Button>
           </Modal.Footer>
         </Modal>
+
+        {deleteConfirmation ? (
+          <Modal show={hideConfirmationModal}>
+            <ConfirmationInput
+              setConfirmation={setDeleteConfirmation}
+              action={deletePackage}
+              title={`to delete package of id :.'${modalData?.id}'`}
+            />
+
+            <Modal.Footer>
+              <Button
+                variant="error"
+                onClick={() => setHideConfirmationModal(false)}
+              >
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        ) : null}
       </div>
     </UserLayout>
   );

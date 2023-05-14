@@ -386,67 +386,289 @@ function Search() {
     }));
 };
 
+// EXTERNAL MODULE: ./node_modules/next/link.js
+var next_link = __webpack_require__(1664);
+var link_default = /*#__PURE__*/__webpack_require__.n(next_link);
+// EXTERNAL MODULE: external "jwt-decode"
+var external_jwt_decode_ = __webpack_require__(5567);
+var external_jwt_decode_default = /*#__PURE__*/__webpack_require__.n(external_jwt_decode_);
+// EXTERNAL MODULE: ./utils/stringManipulation.js
+var stringManipulation = __webpack_require__(7893);
+// EXTERNAL MODULE: ./utils/logout.js
+var logout = __webpack_require__(5387);
+// EXTERNAL MODULE: external "next/router"
+var router_ = __webpack_require__(1853);
 // EXTERNAL MODULE: external "react-bootstrap"
 var external_react_bootstrap_ = __webpack_require__(358);
 ;// CONCATENATED MODULE: ./components/mainNav/mainHeader.js
 
+// import React from 'react';
+// import { Navbar, Nav } from 'react-bootstrap';
+// export default function MainHeader() {
+//   return (
+//     <>
+//       <Navbar bg="light" expand="md" className="py-3">
+//         <Navbar.Brand href="#home">
+//           <img
+//             src="/images/kupon logo with text (1).png"
+//             width="80"
+//             className="d-inline-block align-top"
+//             alt="Your Logo"
+//           />
+//         </Navbar.Brand>
+//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+//         <Navbar.Collapse id="basic-navbar-nav">
+//           <Nav className="ml-auto">
+//             <Nav.Link href="/" className="text-uppercase mx-3">
+//               Home
+//             </Nav.Link>
+//             <Nav.Link href="/about#about" className="text-uppercase mx-3">
+//               About Us
+//             </Nav.Link>
+//             <Nav.Link href="/contact" className="text-uppercase mx-3">
+//               Contact Us
+//             </Nav.Link>
+//             <Nav.Link href="/logistics" className="text-uppercase mx-3">
+//               Logistics
+//             </Nav.Link>
+//             <Nav.Link
+//               href="/market#marketcollection"
+//               className="text-uppercase mx-3"
+//             >
+//               Market Place
+//             </Nav.Link>
+//           </Nav>
+//         </Navbar.Collapse>
+//       </Navbar>
+//     </>
+//   );
+// }
+
+
+
+
+
 
 
 function MainHeader() {
-    return /*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+    const { 0: token  } = (0,external_react_.useState)(()=>{
+        if (false) {}
+    });
+    const { 0: user , 1: setUser  } = (0,external_react_.useState)({});
+    const { 0: avatarMenu , 1: setAvatarMenu  } = (0,external_react_.useState)(false);
+    const router = (0,router_.useRouter)();
+    (0,external_react_.useEffect)(()=>{
+        try {
+            let decoded = external_jwt_decode_default()(token);
+            setUser(decoded);
+        } catch (err) {
+            console.log(err);
+        }
+    }, [
+        token
+    ]);
+    const userlogout = ()=>{
+        let out = (0,logout/* default */.Z)();
+        if (out) router.push("/login");
+    };
+    return(//  <!--Header-->
+    /*#__PURE__*/ jsx_runtime_.jsx(external_react_.Fragment, {
         children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Navbar, {
             bg: "light",
-            expand: "md",
-            className: "py-3",
+            expand: "lg",
             children: [
                 /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Brand, {
-                    href: "#home",
+                    href: "/",
                     children: /*#__PURE__*/ jsx_runtime_.jsx("img", {
                         src: "/images/kupon logo with text (1).png",
-                        width: "80",
+                        width: "100",
                         className: "d-inline-block align-top",
-                        alt: "Your Logo"
+                        alt: "Logo"
                     })
                 }),
                 /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Toggle, {
-                    "aria-controls": "basic-navbar-nav"
+                    "aria-controls": "navbar-nav"
                 }),
-                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar.Collapse, {
-                    id: "basic-navbar-nav",
-                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Nav, {
-                        className: "ml-auto",
-                        children: [
-                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                href: "/",
-                                className: "text-uppercase mx-3",
-                                children: "Home"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                href: "/about#about",
-                                className: "text-uppercase mx-3",
-                                children: "About Us"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                href: "/contact",
-                                className: "text-uppercase mx-3",
-                                children: "Contact Us"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                href: "/logistics",
-                                className: "text-uppercase mx-3",
-                                children: "Logistics"
-                            }),
-                            /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                href: "/market#marketcollection",
-                                className: "text-uppercase mx-3",
-                                children: "Market Place"
+                /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Navbar.Collapse, {
+                    id: "navbar-nav",
+                    children: [
+                        /*#__PURE__*/ (0,jsx_runtime_.jsxs)(external_react_bootstrap_.Nav, {
+                            className: "mr-auto",
+                            children: [
+                                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                    href: "/market",
+                                    className: "text-uppercase mx-3",
+                                    children: "Home"
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                    href: "/market/shop",
+                                    className: "text-uppercase mx-3",
+                                    children: "About Us"
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                    href: "/contact",
+                                    className: "text-uppercase mx-3",
+                                    children: "Contact Us"
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                    href: "/logistics",
+                                    className: "text-uppercase mx-3",
+                                    children: "Logistics"
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
+                                    href: "/market",
+                                    className: "text-uppercase mx-3",
+                                    children: "Market Place"
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav, {
+                            children: /*#__PURE__*/ jsx_runtime_.jsx("nav", {
+                                className: "navbar navbar-expand-lg",
+                                style: {
+                                    position: "relative",
+                                    zIndex: "100"
+                                },
+                                children: /*#__PURE__*/ jsx_runtime_.jsx("div", {
+                                    className: "container-fluid",
+                                    children: /*#__PURE__*/ jsx_runtime_.jsx("ul", {
+                                        className: "navbar-nav",
+                                        style: {
+                                            position: "absolute",
+                                            right: "0px"
+                                        },
+                                        children: !Object.keys(user).length ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
+                                            children: [
+                                                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                                    href: "/login",
+                                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("small", {
+                                                        style: {
+                                                            fontSize: "15px",
+                                                            cursor: "pointer"
+                                                        },
+                                                        children: [
+                                                            " ",
+                                                            "sign in",
+                                                            " "
+                                                        ]
+                                                    })
+                                                }),
+                                                /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                                    href: "register",
+                                                    children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("small", {
+                                                        style: {
+                                                            backgroundColor: "#e64c00",
+                                                            color: "white",
+                                                            padding: "2px",
+                                                            fontSize: "15px",
+                                                            cursor: "pointer",
+                                                            borderRadius: "3px"
+                                                        },
+                                                        className: "d-sm-inline",
+                                                        children: [
+                                                            " ",
+                                                            "sign\xa0up",
+                                                            " "
+                                                        ]
+                                                    })
+                                                })
+                                            ]
+                                        }) : /*#__PURE__*/ (0,jsx_runtime_.jsxs)("li", {
+                                            className: "nav-item dropdown",
+                                            children: [
+                                                /*#__PURE__*/ jsx_runtime_.jsx("a", {
+                                                    className: "nav-link dropdown-toggle d-flex align-items-center",
+                                                    href: "#",
+                                                    id: "navbarDropdownMenuLink",
+                                                    role: "button",
+                                                    "data-mdb-toggle": "dropdown",
+                                                    "aria-expanded": "false",
+                                                    onClick: ()=>setAvatarMenu(!avatarMenu),
+                                                    children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
+                                                        style: {
+                                                            color: "white",
+                                                            backgroundColor: "black",
+                                                            borderRadius: "50%",
+                                                            padding: "3px"
+                                                        },
+                                                        children: (0,stringManipulation/* getInitials */.Q)(user?.firstName, user?.lastName)
+                                                    })
+                                                }),
+                                                avatarMenu ? /*#__PURE__*/ (0,jsx_runtime_.jsxs)("ul", {
+                                                    className: "bg-light position-absolute",
+                                                    "aria-labelledby": "navbarDropdownMenuLink",
+                                                    style: {
+                                                        left: "-50px"
+                                                    },
+                                                    children: [
+                                                        user?.admin == "yes" && /*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                            className: "dropdown-item",
+                                                            style: {
+                                                                cursor: "pointer"
+                                                            },
+                                                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                                                href: `/dashboard/admin/profile`,
+                                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                                                    children: [
+                                                                        /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                                                            src: "https://img.icons8.com/ios/50/null/administrator-male--v1.png",
+                                                                            width: 15
+                                                                        }),
+                                                                        " ",
+                                                                        "Admin"
+                                                                    ]
+                                                                })
+                                                            })
+                                                        }),
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                            className: "dropdown-item",
+                                                            style: {
+                                                                cursor: "pointer"
+                                                            },
+                                                            children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
+                                                                href: `/dashboard/user/profile`,
+                                                                children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                                                    children: [
+                                                                        /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                                                            src: "https://img.icons8.com/ios-filled/50/null/user.png",
+                                                                            width: 15
+                                                                        }),
+                                                                        " ",
+                                                                        "Profile"
+                                                                    ]
+                                                                })
+                                                            })
+                                                        }),
+                                                        /*#__PURE__*/ jsx_runtime_.jsx("li", {
+                                                            className: "dropdown-item",
+                                                            style: {
+                                                                cursor: "pointer"
+                                                            },
+                                                            onClick: ()=>userlogout(),
+                                                            children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
+                                                                children: [
+                                                                    /*#__PURE__*/ jsx_runtime_.jsx("img", {
+                                                                        src: "https://img.icons8.com/ios-filled/50/null/logout-rounded.png",
+                                                                        width: 15
+                                                                    }),
+                                                                    " ",
+                                                                    "Logout"
+                                                                ]
+                                                            })
+                                                        })
+                                                    ]
+                                                }) : null
+                                            ]
+                                        })
+                                    })
+                                })
                             })
-                        ]
-                    })
+                        })
+                    ]
                 })
             ]
         })
-    });
+    }));
 };
 
 ;// CONCATENATED MODULE: ./components/mainNav/mobileHeader.js
@@ -1586,7 +1808,6 @@ function MainHeader() {
         if (false) {}
     });
     const { 0: user , 1: setUser  } = (0,external_react_.useState)({});
-    // const [openMobileNav, setOpenMobileNav] = useState(false);
     const { 0: avatarMenu , 1: setAvatarMenu  } = (0,external_react_.useState)(false);
     const router = (0,router_.useRouter)();
     (0,external_react_.useEffect)(()=>{
@@ -1685,12 +1906,13 @@ function MainHeader() {
                                                                 color: "white",
                                                                 padding: "2px",
                                                                 fontSize: "15px",
-                                                                cursor: "pointer"
+                                                                cursor: "pointer",
+                                                                borderRadius: "3px"
                                                             },
                                                             className: "d-sm-inline",
                                                             children: [
                                                                 " ",
-                                                                "sign up",
+                                                                "sign\xa0up",
                                                                 " "
                                                             ]
                                                         })
@@ -1749,7 +1971,7 @@ function MainHeader() {
                                                                     cursor: "pointer"
                                                                 },
                                                                 children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                                    href: `/dashboard/user/market`,
+                                                                    href: `/dashboard/user/profile`,
                                                                     children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                                                                         children: [
                                                                             /*#__PURE__*/ jsx_runtime_.jsx("img", {
@@ -3078,12 +3300,13 @@ function MainHeader() {
                                                                 color: "white",
                                                                 padding: "2px",
                                                                 fontSize: "15px",
-                                                                cursor: "pointer"
+                                                                cursor: "pointer",
+                                                                borderRadius: "3px"
                                                             },
                                                             className: "d-sm-inline",
                                                             children: [
                                                                 " ",
-                                                                "sign up",
+                                                                "sign\xa0up",
                                                                 " "
                                                             ]
                                                         })
@@ -3142,7 +3365,7 @@ function MainHeader() {
                                                                     cursor: "pointer"
                                                                 },
                                                                 children: /*#__PURE__*/ jsx_runtime_.jsx((link_default()), {
-                                                                    href: `/dashboard/user/market`,
+                                                                    href: `/dashboard/user/profile`,
                                                                     children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("span", {
                                                                         children: [
                                                                             /*#__PURE__*/ jsx_runtime_.jsx("img", {

@@ -71,7 +71,7 @@ const sendPackageDetails = async (data) => {
 };
 
 const getAllSell = async () => {
-  const query = 'SELECT * FROM sell';
+  const query = 'SELECT * FROM sell ORDER BY created_at DESC';
   const connection = await pool.getConnection();
   const users = await connection.query(query);
   await connection.release();

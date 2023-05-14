@@ -54,23 +54,8 @@ export default function MainHeader() {
               <Nav.Link href="/logistics/send">
                 <b>Send Package</b>
               </Nav.Link>
-              {/* <NavDropdown title="Menu" id="navbar-dropdown">
-                <NavDropdown.Item href="/menu/item1">Item 1</NavDropdown.Item>
-                <NavDropdown.Item href="/menu/item2">Item 2</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="/menu/item3">Item 3</NavDropdown.Item>
-              </NavDropdown> */}
             </Nav>
             <Nav>
-              {/* <img
-                  src="/path/to/avatar.png"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="Avatar"
-                />
-                User Profile */}
-
               <nav
                 className="navbar navbar-expand-lg"
                 style={{ position: 'relative', zIndex: '100' }}
@@ -102,11 +87,12 @@ export default function MainHeader() {
                               padding: '2px',
                               fontSize: '15px',
                               cursor: 'pointer',
+                              borderRadius: '3px',
                             }}
                             className="d-sm-inline"
                           >
                             {' '}
-                            sign up{' '}
+                            sign&nbsp;up{' '}
                           </small>
                         </Link>
                       </li>
@@ -158,7 +144,7 @@ export default function MainHeader() {
                               className="dropdown-item"
                               style={{ cursor: 'pointer' }}
                             >
-                              <Link href={`/dashboard/user/market`}>
+                              <Link href={`/dashboard/user/profile`}>
                                 <span>
                                   <img
                                     src="https://img.icons8.com/ios-filled/50/null/user.png"

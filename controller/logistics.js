@@ -6,6 +6,7 @@ const {
   updatePackagePayment,
   getAllPackage,
   updatePackageStatus,
+  deleteLogisticsPackage,
 } = require('../database/logistics');
 const {
   initializePaystackTransaction,
@@ -91,10 +92,21 @@ const payment = async (req, res) => {
     res.status(400).json({ msg: err.message });
   }
 };
+
+const deleteUserPackage = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await deleteLogisticsPackage(id);
+    res.status(200).json({ msg: 'deleted successfully' });
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+};
 module.exports = {
   PackageSent,
   ReceiveUserPackage,
   getAllPackages,
   packageStatusUpdate,
   payment,
+  deleteUserPackage,
 };

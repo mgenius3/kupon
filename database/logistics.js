@@ -90,7 +90,7 @@ const sendPackageDetails = async (data) => {
 };
 
 const getAllPackage = async () => {
-  const query = 'SELECT * FROM logistics';
+  const query = 'SELECT * FROM logistics ORDER BY created_at DESC';
   const connection = await pool.getConnection();
   const [users] = await connection.query(query);
   await connection.release();
@@ -165,6 +165,18 @@ const countPackage = async () => {
   }
 };
 
+const deleteLogisticsPackage = async (id) => {
+  try {
+    let connection = await pool.getConnection();
+    (await connection).beginTransaction();
+    const query = 'DELETE FROM logistics WHERE id = ?';
+    await pool.query(query, [id]);
+    await connection.release();
+  } catch (err) {
+    throw err.message;
+  }
+};
+
 module.exports = {
   createTableLogistics,
   sendPackageDetails,
@@ -175,4 +187,5 @@ module.exports = {
   setPackageReference,
   updatePackagePayment,
   countPackage,
+  deleteLogisticsPackage,
 };

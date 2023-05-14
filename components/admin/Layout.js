@@ -10,6 +10,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function UserLayout({ children }) {
+  const [noOfLogisticsisPending, setNoOfLogisticsIsPending] = useState(null);
+
   const [token] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('token');
@@ -33,6 +35,34 @@ function UserLayout({ children }) {
     if (out) router.push('/login');
   };
 
+  useEffect(() => {
+    const fetchLogistics = async () => {
+      try {
+        const response = await fetch('/admin/logistics', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          const res = await response.json();
+          throw new Error(res.msg);
+        }
+        const res = await response.json();
+
+        //pass pending logistics to user
+
+        setNoOfLogisticsIsPending(
+          res.msg?.filter((a) => a.status == 'pending').length
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchLogistics();
+  }, []);
   return (
     <Fragment>
       <Head>
@@ -92,15 +122,7 @@ function UserLayout({ children }) {
                   <b>My Profile</b>
                 </span>
               </Link>
-              {/* <Link href="/dashboard/admin">
-                <span style={{ cursor: 'pointer' }}>
-                  <img
-                    src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
-                    className="icon"
-                  />
-                  <b>Chart</b>
-                </span>
-              </Link> */}
+
               <Link href="user">
                 <span style={{ cursor: 'pointer' }}>
                   <img
@@ -117,7 +139,7 @@ function UserLayout({ children }) {
                     src="https://img.icons8.com/ios-glyphs/30/FD7E14/food-truck.png"
                     className="icon"
                   />
-                  <b>Logistics</b>
+                  <b>Logistics({noOfLogisticsisPending})</b>
                 </span>
               </Link>
 

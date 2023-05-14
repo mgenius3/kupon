@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 import { Carousel } from 'react-bootstrap';
+
 const UserLogistics = () => {
   const [token] = useState(() => {
     if (typeof window !== 'undefined') {
@@ -22,9 +23,11 @@ const UserLogistics = () => {
 
   //to display confirmation input
   const [confirmation, setConfirmation] = useState(false);
+  const [deleteConfirmation, setDeleteConfirmation] = useState(false);
   const [hideConfirmationModal, setHideConfirmationModal] = useState(true);
   //update status
   const [isLoadingUpdateStatus, setIsLoadingUpdateStatus] = useState(false);
+  // const [isLoadingDeleteStatus, setIsLoadingDeleteStatus] = useState(false);
 
   useEffect(() => {
     const fetchLogistics = async () => {
@@ -44,7 +47,7 @@ const UserLogistics = () => {
         }
         const res = await response.json();
         setData(res.msg);
-        console.log(res.msg);
+        //pass pending logistics to user
       } catch (err) {
         console.log(err);
       }
@@ -87,6 +90,31 @@ const UserLogistics = () => {
     }
   };
 
+  const deletePackage = async () => {
+    // setIsLoadingDeleteStatus(true);
+    try {
+      const response = await fetch(`/admin/logistics/delete/${modalData?.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        // setIsLoadingDeleteStatus(false);
+        const res = await response.json();
+        throw new Error(res?.msg);
+      }
+      const res = await response.json();
+      toast.success(res?.msg);
+      // setIsLoadingDeleteStatus(false);
+      router.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <UserLayout>
       <div className="table-responsive">
@@ -100,31 +128,40 @@ const UserLogistics = () => {
               <th scope="col">Address(Sender)</th>
               <th scope="col">Address(receiver)</th>
               <th scope="col">Status</th>
+              <th scope="col">Paid</th>
             </tr>
           </thead>
           <tbody>
             {data?.map((item) => (
-              <tr
-                key={item?.id}
-                onClick={() => handleModalOpen(item)}
-                style={{ cursor: 'pointer' }}
-              >
-                <td>{item?.id}</td>
-                <td>{shortenString(item?.pickupAddress, 20)}</td>
-                <td>{shortenString(item?.deliveryAddress, 20)}</td>
-                <td
-                  style={{
-                    color:
-                      item?.status == 'pending'
-                        ? 'red'
-                        : item?.status == 'in transit'
-                        ? '#f1c40f'
-                        : 'green',
-                  }}
+              <>
+                <tr
+                  key={item?.id}
+                  onClick={() => handleModalOpen(item)}
+                  style={{ cursor: 'pointer' }}
                 >
-                  {item?.status}
-                </td>
-              </tr>
+                  <td>{item?.id}</td>
+                  <td>{shortenString(item?.pickupAddress, 20)}</td>
+                  <td>{shortenString(item?.deliveryAddress, 20)}</td>
+                  <td
+                    style={{
+                      color:
+                        item?.status == 'pending'
+                          ? 'red'
+                          : item?.status == 'in transit'
+                          ? '#f1c40f'
+                          : 'green',
+                    }}
+                  >
+                    {item?.status}
+                  </td>
+                  <td>
+                    <b style={{ color: `${item?.paid ? 'green' : 'red'}` }}>
+                      {' '}
+                      {item?.paid ? 'true' : 'false'}{' '}
+                    </b>
+                  </td>
+                </tr>
+              </>
             ))}
           </tbody>
         </table>
@@ -257,8 +294,21 @@ const UserLogistics = () => {
               </tfoot>
             </table>
           </Modal.Body>
+          <Modal.Footer className="justify-content-start">
+            <Button
+              variant="danger"
+              onClick={() => {
+                handleModalClose();
+                setHideConfirmationModal(true);
+                setDeleteConfirmation(true);
+              }}
+              style={{ background: 'red', color: 'white' }}
+            >
+              Delete
+            </Button>
+          </Modal.Footer>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleModalClose}>
+            <Button variant="error" onClick={handleModalClose}>
               Close
             </Button>
           </Modal.Footer>
@@ -273,6 +323,22 @@ const UserLogistics = () => {
                 modalData?.status == 'pending' ? 'in transit' : 'delivered'
               }'`}
             />
+            <Modal.Footer>
+              <Button variant="error" onClick={() => handleModalClose()}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        ) : null}
+
+        {deleteConfirmation ? (
+          <Modal show={hideConfirmationModal}>
+            <ConfirmationInput
+              setConfirmation={setDeleteConfirmation}
+              action={deletePackage}
+              title={`to delete logistics package of id :.'${modalData?.id}'`}
+            />
+
             <Modal.Footer>
               <Button
                 variant="error"
