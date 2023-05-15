@@ -24,7 +24,9 @@ const UserLogistics = () => {
   //to display confirmation input
   const [confirmation, setConfirmation] = useState(false);
   const [deleteConfirmation, setDeleteConfirmation] = useState(false);
-  const [hideConfirmationModal, setHideConfirmationModal] = useState(true);
+  // const [hideConfirmationModal, setHideConfirmationModal] = useState(true);
+  const [hideDeleteConfirmationModal, setHideDeleteConfirmationModal] =
+    useState(true);
   //update status
   const [isLoadingUpdateStatus, setIsLoadingUpdateStatus] = useState(false);
   // const [isLoadingDeleteStatus, setIsLoadingDeleteStatus] = useState(false);
@@ -186,7 +188,6 @@ const UserLogistics = () => {
                   borderRadius: '5px',
                   cursor: 'pointer',
                 }}
-                onClick={() => setConfirmation(true)}
                 disabled={modalData?.status == 'delivered' ? true : false}
               >
                 ...
@@ -299,7 +300,7 @@ const UserLogistics = () => {
               variant="danger"
               onClick={() => {
                 handleModalClose();
-                setHideConfirmationModal(true);
+                setHideDeleteConfirmationModal(true);
                 setDeleteConfirmation(true);
               }}
               style={{ background: 'red', color: 'white' }}
@@ -315,7 +316,7 @@ const UserLogistics = () => {
         </Modal>
 
         {confirmation ? (
-          <Modal show={hideConfirmationModal}>
+          <Modal show={true}>
             <ConfirmationInput
               setConfirmation={setConfirmation}
               action={updateStatus}
@@ -324,7 +325,7 @@ const UserLogistics = () => {
               }'`}
             />
             <Modal.Footer>
-              <Button variant="error" onClick={() => handleModalClose()}>
+              <Button variant="error" onClick={() => setConfirmation(false)}>
                 Close
               </Button>
             </Modal.Footer>
@@ -332,7 +333,7 @@ const UserLogistics = () => {
         ) : null}
 
         {deleteConfirmation ? (
-          <Modal show={hideConfirmationModal}>
+          <Modal show={hideDeleteConfirmationModal}>
             <ConfirmationInput
               setConfirmation={setDeleteConfirmation}
               action={deletePackage}
@@ -342,7 +343,7 @@ const UserLogistics = () => {
             <Modal.Footer>
               <Button
                 variant="error"
-                onClick={() => setHideConfirmationModal(false)}
+                onClick={() => setHideDeleteConfirmationModal(false)}
               >
                 Close
               </Button>

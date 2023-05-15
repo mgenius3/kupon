@@ -67,7 +67,6 @@ const registerUser = async ({
     ]);
     return new_registered_user[0].insertId;
   } catch (err) {
-    console.log(err);
     if (err.code == 'ER_DUP_ENTRY') err.message = 'email already exist';
     throw err.message;
   }
@@ -141,6 +140,7 @@ const deleteUser = async (id) => {
     throw err.message;
   }
 };
+
 module.exports = {
   createTableUser,
   registerUser,

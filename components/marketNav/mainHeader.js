@@ -30,6 +30,7 @@ export default function MainHeader() {
     if (out) router.push('/login');
   };
 
+  console.log(user);
   return (
     //  <!--Header-->
     <Fragment>

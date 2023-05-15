@@ -1824,6 +1824,7 @@ function MainHeader() {
         let out = (0,logout/* default */.Z)();
         if (out) router.push("/login");
     };
+    console.log(user);
     return(//  <!--Header-->
     /*#__PURE__*/ jsx_runtime_.jsx(external_react_.Fragment, {
         children: /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Navbar, {

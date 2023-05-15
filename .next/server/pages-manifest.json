@@ -16,12 +16,12 @@
   "/dashboard/user/market": "pages/dashboard/user/market.html",
   "/dashboard/user/profile": "pages/dashboard/user/profile.html",
   "/": "pages/index.html",
-  "/logistics": "pages/logistics.html",
   "/login": "pages/login.html",
+  "/logistics": "pages/logistics.html",
   "/logistics/send": "pages/logistics/send.html",
   "/market": "pages/market.html",
   "/market/sell": "pages/market/sell.html",
-  "/market/shop": "pages/market/shop.html",
   "/market/shop/[product]": "pages/market/shop/[product].html",
+  "/market/shop": "pages/market/shop.html",
   "/register": "pages/register.html"
 }
