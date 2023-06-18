@@ -314,9 +314,6 @@ export default function Logistics() {
                     </fieldset>
                     <div className="order-button-payment">
                       {isLoading ? (
-                        // <button className="btn" disabled>
-                        //   Loading...
-                        // </button>
                         <LoadingOverlay />
                       ) : (
                         <button
