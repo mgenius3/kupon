@@ -1,23 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { shortenString } from '../../../../utils/stringManipulation';
-import UserLayout from '../../../../components/admin/Layout';
-import { Modal, Button } from 'react-bootstrap';
-import ConfirmationInput from '../../../../components/Confirmation';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router';
-import { Carousel } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import { shortenString } from "../../../../utils/stringManipulation";
+import UserLayout from "../../../../components/admin/Layout";
+import { Modal, Button } from "react-bootstrap";
+import ConfirmationInput from "../../../../components/Confirmation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import { Carousel } from "react-bootstrap";
 
 const UserLogistics = () => {
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
 
   const router = useRouter();
   const [data, setData] = useState([]);
-  // const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState();
 
@@ -35,10 +34,10 @@ const UserLogistics = () => {
     const fetchLogistics = async () => {
       try {
         console.log(data);
-        const response = await fetch('/admin/logistics', {
-          method: 'GET',
+        const response = await fetch("/admin/logistics", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         });
@@ -66,15 +65,15 @@ const UserLogistics = () => {
   const updateStatus = async () => {
     setIsLoadingUpdateStatus(true);
     try {
-      const response = await fetch('/admin/logistics/update_status', {
-        method: 'PATCH',
+      const response = await fetch("/admin/logistics/update_status", {
+        method: "PATCH",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           id: modalData?.id,
-          status: modalData?.status == 'pending' ? 'in transit' : 'delivered',
+          status: modalData?.status == "pending" ? "in transit" : "delivered",
         }),
       });
 
@@ -96,9 +95,9 @@ const UserLogistics = () => {
     // setIsLoadingDeleteStatus(true);
     try {
       const response = await fetch(`/admin/logistics/delete/${modalData?.id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -139,7 +138,7 @@ const UserLogistics = () => {
                 <tr
                   key={item?.id}
                   onClick={() => handleModalOpen(item)}
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: "pointer" }}
                 >
                   <td>{item?.id}</td>
                   <td>{shortenString(item?.pickupAddress, 20)}</td>
@@ -147,19 +146,19 @@ const UserLogistics = () => {
                   <td
                     style={{
                       color:
-                        item?.status == 'pending'
-                          ? 'red'
-                          : item?.status == 'in transit'
-                          ? '#f1c40f'
-                          : 'green',
+                        item?.status == "pending"
+                          ? "red"
+                          : item?.status == "in transit"
+                          ? "#f1c40f"
+                          : "green",
                     }}
                   >
                     {item?.status}
                   </td>
                   <td>
-                    <b style={{ color: `${item?.paid ? 'green' : 'red'}` }}>
-                      {' '}
-                      {item?.paid ? 'true' : 'false'}{' '}
+                    <b style={{ color: `${item?.paid ? "green" : "red"}` }}>
+                      {" "}
+                      {item?.paid ? "true" : "false"}{" "}
                     </b>
                   </td>
                 </tr>
@@ -169,7 +168,7 @@ const UserLogistics = () => {
         </table>
       </div>
 
-      <div style={{ overflow: 'auto' }}>
+      <div style={{ overflow: "auto" }}>
         <Modal show={showModal} onHide={handleModalClose}>
           <Modal.Header closeButton>
             <Modal.Title>Logistics Details</Modal.Title>
@@ -178,17 +177,17 @@ const UserLogistics = () => {
               <button
                 style={{
                   backgroundColor:
-                    modalData?.status == 'pending'
-                      ? 'red'
-                      : modalData?.status == 'in transit'
-                      ? '#f1c40f'
-                      : 'green',
-                  color: 'white',
-                  padding: '2px 10px',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
+                    modalData?.status == "pending"
+                      ? "red"
+                      : modalData?.status == "in transit"
+                      ? "#f1c40f"
+                      : "green",
+                  color: "white",
+                  padding: "2px 10px",
+                  borderRadius: "5px",
+                  cursor: "pointer",
                 }}
-                disabled={modalData?.status == 'delivered' ? true : false}
+                disabled={modalData?.status == "delivered" ? true : false}
               >
                 ...
               </button>
@@ -196,18 +195,18 @@ const UserLogistics = () => {
               <button
                 style={{
                   backgroundColor:
-                    modalData?.status == 'pending'
-                      ? 'red'
-                      : modalData?.status == 'in transit'
-                      ? '#f1c40f'
-                      : 'green',
-                  color: 'white',
-                  padding: '2px 3px',
-                  borderRadius: '5px',
-                  cursor: 'pointer',
+                    modalData?.status == "pending"
+                      ? "red"
+                      : modalData?.status == "in transit"
+                      ? "#f1c40f"
+                      : "green",
+                  color: "white",
+                  padding: "2px 3px",
+                  borderRadius: "5px",
+                  cursor: "pointer",
                 }}
                 onClick={() => setConfirmation(true)}
-                disabled={modalData?.status == 'delivered' ? true : false}
+                disabled={modalData?.status == "delivered" ? true : false}
               >
                 {modalData?.status}
               </button>
@@ -215,19 +214,19 @@ const UserLogistics = () => {
           </Modal.Header>
           <Modal.Body>
             <Carousel className="w-screen">
-              {typeof modalData?.files == 'string'
+              {typeof modalData?.files == "string"
                 ? JSON.parse(modalData?.files).map((image, index) => (
                     <Carousel.Item key={index}>
                       <img
                         className="d-block w-100"
                         src={`data:image/png;base64,${image}`}
                         alt={`Product ${modalData.title}`}
-                        style={{ height: 'auto' }}
+                        style={{ height: "auto" }}
                       />
                     </Carousel.Item>
                   ))
                 : null}
-            </Carousel>{' '}
+            </Carousel>{" "}
             <br />
             <table className="table">
               <thead>Sender Details</thead>
@@ -291,7 +290,7 @@ const UserLogistics = () => {
               </tbody>
               <tfoot>
                 <th>Package Code</th>
-                <td>{modalData?.receiverCode}</td>
+                <td>{modalData?.packageCode}</td>
               </tfoot>
             </table>
           </Modal.Body>
@@ -303,7 +302,7 @@ const UserLogistics = () => {
                 setHideDeleteConfirmationModal(true);
                 setDeleteConfirmation(true);
               }}
-              style={{ background: 'red', color: 'white' }}
+              style={{ background: "red", color: "white" }}
             >
               Delete
             </Button>
@@ -321,7 +320,7 @@ const UserLogistics = () => {
               setConfirmation={setConfirmation}
               action={updateStatus}
               title={`to update logistics status '${
-                modalData?.status == 'pending' ? 'in transit' : 'delivered'
+                modalData?.status == "pending" ? "in transit" : "delivered"
               }'`}
             />
             <Modal.Footer>

@@ -39,7 +39,7 @@ function Footer() {
                                             children: [
                                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("li", {
                                                     children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {
-                                                        href: "/",
+                                                        href: "/home",
                                                         children: "Home"
                                                     })
                                                 }),
@@ -402,47 +402,6 @@ var router_ = __webpack_require__(1853);
 var external_react_bootstrap_ = __webpack_require__(358);
 ;// CONCATENATED MODULE: ./components/mainNav/mainHeader.js
 
-// import React from 'react';
-// import { Navbar, Nav } from 'react-bootstrap';
-// export default function MainHeader() {
-//   return (
-//     <>
-//       <Navbar bg="light" expand="md" className="py-3">
-//         <Navbar.Brand href="#home">
-//           <img
-//             src="/images/kupon logo with text (1).png"
-//             width="80"
-//             className="d-inline-block align-top"
-//             alt="Your Logo"
-//           />
-//         </Navbar.Brand>
-//         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-//         <Navbar.Collapse id="basic-navbar-nav">
-//           <Nav className="ml-auto">
-//             <Nav.Link href="/" className="text-uppercase mx-3">
-//               Home
-//             </Nav.Link>
-//             <Nav.Link href="/about#about" className="text-uppercase mx-3">
-//               About Us
-//             </Nav.Link>
-//             <Nav.Link href="/contact" className="text-uppercase mx-3">
-//               Contact Us
-//             </Nav.Link>
-//             <Nav.Link href="/logistics" className="text-uppercase mx-3">
-//               Logistics
-//             </Nav.Link>
-//             <Nav.Link
-//               href="/market#marketcollection"
-//               className="text-uppercase mx-3"
-//             >
-//               Market Place
-//             </Nav.Link>
-//           </Nav>
-//         </Navbar.Collapse>
-//       </Navbar>
-//     </>
-//   );
-// }
 
 
 
@@ -496,12 +455,12 @@ function MainHeader() {
                             className: "mr-auto",
                             children: [
                                 /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                    href: "/market",
+                                    href: "/home",
                                     className: "text-uppercase mx-3",
                                     children: "Home"
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                    href: "/market/shop",
+                                    href: "/market/about",
                                     className: "text-uppercase mx-3",
                                     children: "About Us"
                                 }),
@@ -587,7 +546,7 @@ function MainHeader() {
                                                     children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                                         style: {
                                                             color: "white",
-                                                            backgroundColor: "black",
+                                                            background: "#904D00",
                                                             borderRadius: "50%",
                                                             padding: "3px"
                                                         },
@@ -1851,7 +1810,7 @@ function MainHeader() {
                                 className: "mr-auto",
                                 children: [
                                     /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                        href: "/market",
+                                        href: "/home",
                                         children: "Home"
                                     }),
                                     /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
@@ -1933,7 +1892,7 @@ function MainHeader() {
                                                         children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                                             style: {
                                                                 color: "white",
-                                                                backgroundColor: "black",
+                                                                background: "#904D00",
                                                                 borderRadius: "50%",
                                                                 padding: "3px"
                                                             },
@@ -3243,7 +3202,7 @@ function MainHeader() {
                                 className: "mr-auto",
                                 children: [
                                     /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                        href: "/",
+                                        href: "/home",
                                         children: "Home"
                                     }),
                                     /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
@@ -3327,7 +3286,7 @@ function MainHeader() {
                                                         children: /*#__PURE__*/ jsx_runtime_.jsx("p", {
                                                             style: {
                                                                 color: "white",
-                                                                backgroundColor: "black",
+                                                                background: "#904D00",
                                                                 borderRadius: "50%",
                                                                 padding: "3px"
                                                             },

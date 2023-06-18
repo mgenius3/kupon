@@ -1,5 +1,5 @@
-const fs = require('fs');
-const { pool } = require('../configdb/db');
+const fs = require("fs");
+const { pool } = require("../configdb/db");
 
 //check if table exist before create one
 const tableExists = async (tableName) => {
@@ -11,7 +11,7 @@ const tableExists = async (tableName) => {
     conn.release();
     return rows.length > 0;
   } catch (err) {
-    console.error('Error checking if table exists:', err);
+    console.error("Error checking if table exists:", err);
     return false;
   }
 };
@@ -21,7 +21,7 @@ const createTableUser = async () => {
   try {
     const connection = await pool.getConnection();
     await connection.beginTransaction();
-    let checkUsertableExists = await tableExists('user');
+    let checkUsertableExists = await tableExists("user");
     const user_table = checkUsertableExists
       ? null
       : await connection.query(`CREATE TABLE user (
@@ -67,14 +67,14 @@ const registerUser = async ({
     ]);
     return new_registered_user[0].insertId;
   } catch (err) {
-    if (err.code == 'ER_DUP_ENTRY') err.message = 'email already exist';
+    if (err.code == "ER_DUP_ENTRY") err.message = "email already exist";
     throw err.message;
   }
 };
 
 const getUsers = async () => {
   try {
-    const query = 'SELECT * FROM user ORDER BY created_at DESC';
+    const query = "SELECT * FROM user ORDER BY created_at DESC";
     const connection = await pool.getConnection();
     const [users] = await connection.query(query);
     await connection.release();
@@ -120,7 +120,7 @@ const countPackage = async () => {
   try {
     let connection = await pool.getConnection();
     (await connection).beginTransaction();
-    const query = 'SELECT COUNT(*) as count FROM user';
+    const query = "SELECT COUNT(*) as count FROM user";
     let [no_of_package] = await connection.query(query);
     await connection.release();
     return no_of_package[0].count;
@@ -133,7 +133,7 @@ const deleteUser = async (id) => {
   try {
     let connection = await pool.getConnection();
     (await connection).beginTransaction();
-    const query = 'DELETE FROM user WHERE id = ?';
+    const query = "DELETE FROM user WHERE id = ?";
     await pool.query(query, [id]);
     await connection.release();
   } catch (err) {

@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '../../../components/Layout';
-import { Spinner } from 'react-bootstrap';
-import Link from 'next/link';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchData } from '../../../store/store';
-import { sellCategory, Condition } from '../../../utils/data';
-import { shortenString } from '../../../utils/stringManipulation';
-import { Carousel } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import Layout from "../../../components/Layout";
+import { Spinner } from "react-bootstrap";
+import Link from "next/link";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchData } from "../../../store/store";
+import { shortenString } from "../../../utils/stringManipulation";
+import { getInitials } from "../../../utils/stringManipulation";
+import jwtDecode from "jwt-decode";
+
 export default function Shop() {
+  const [token] = useState(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
+    }
+  });
+  const [user, setUser] = useState({});
   const [allData, setAllData] = useState([]);
   const dispatch = useDispatch();
   let { data, isLoading } = useSelector((state) => state);
@@ -20,9 +27,18 @@ export default function Shop() {
     setAllData(data);
   }, [data]);
 
+  useEffect(() => {
+    try {
+      let decoded = jwtDecode(token);
+      setUser(decoded);
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
   function searchData(name, e) {
-    if (name == 'name') {
-      if (e == '' || e == 'Other') setAllData(data);
+    if (name == "name") {
+      if (e == "" || e == "Other") setAllData(data);
       else {
         setAllData(() =>
           data.filter((product) =>
@@ -30,8 +46,8 @@ export default function Shop() {
           )
         );
       }
-    } else if (name == 'condition') {
-      if (e == '' || e == 'Other') setAllData(data);
+    } else if (name == "condition") {
+      if (e == "" || e == "Other") setAllData(data);
       else {
         setAllData(() =>
           data.filter((product) =>
@@ -39,8 +55,8 @@ export default function Shop() {
           )
         );
       }
-    } else if (name == 'category') {
-      if (e == '' || e == 'Other') setAllData(data);
+    } else if (name == "category") {
+      if (e == "" || e == "Other") setAllData(data);
       else {
         setAllData(() =>
           data.filter((product) =>
@@ -52,10 +68,41 @@ export default function Shop() {
   }
   return (
     <Layout title="Shop - Market">
-      <div
-        className="slideshow slideshow-wrapper pb-section sliderFull"
-        style={{ marginBottom: '50px' }}
-      >
+      <div className="market_search-input">
+        {/* <img
+                  src="/path/to/image-icon.png"
+                  alt="Image Icon"
+                  className="market_icon-left"
+                /> */}
+        <em
+          style={{
+            color: "white",
+            background: "#904D00",
+            borderRadius: "50%",
+            padding: "3px",
+          }}
+          className="market_icon-left"
+        >
+          {user?.firstName && user?.lastName
+            ? getInitials(user?.firstName, user?.lastName)
+            : null}
+        </em>
+        <input
+          type="text"
+          placeholder="Search..."
+          className="market_input-field"
+          onChange={(e) => searchData("name", e.target.value)}
+        />
+        <span className="market_icon-right">
+          <img
+            width="24"
+            height="24"
+            src="https://img.icons8.com/material-outlined/24/search--v1.png"
+            alt="search--v1"
+          />
+        </span>
+      </div>
+      {/* <div className="slideshow slideshow-wrapper pb-section sliderFull">
         <Carousel>
           <Carousel.Item interval={10000}>
             <img
@@ -65,28 +112,49 @@ export default function Shop() {
               alt="Kupon"
               title="Kupon"
               style={{
-                width: '100%',
-                height: '60vh!important',
-                objectFit: 'cover',
+                width: "100%",
+                height: "30vh!important",
+                objectFit: "cover",
               }}
             />
             <Carousel.Caption>
               <h2 className="h1 mega-title slideshow__title">
-                <b style={{ color: '#e60000' }}>
-                  {' '}
+                <b style={{ color: "#e60000" }}>
+                  {" "}
                   <img
                     src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/64/null/external-find-technology-in-daily-life-parzival-1997-flat-parzival-1997.png"
                     width={30}
                   />
                   Find
-                </b>{' '}
+                </b>{" "}
                 In kupon
               </h2>
               <input
                 type="text"
                 className="form-control search_input"
-                onChange={(e) => searchData('name', e.target.value)}
+                onChange={(e) => searchData("name", e.target.value)}
               />
+              <div className="market_search-input">
+                <em
+                  style={{
+                    color: "white",
+                    backgroundColor: "black",
+                    borderRadius: "50%",
+                    padding: "3px",
+                  }}
+                  className="market_icon-left"
+                >
+                  {getInitials(user?.firstName, user?.lastName)}
+                </em>
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="market_input-field"
+                />
+                <span className="market_icon-right">
+                  <i className="fas fa-search"></i>
+                </span>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={10000}>
@@ -97,53 +165,70 @@ export default function Shop() {
               alt="Kupon"
               title="Kupon"
               style={{
-                width: '100%',
-                height: '60vh!important',
-                objectFit: 'cover',
+                width: "100%",
+                height: "30vh!important",
+                objectFit: "cover",
               }}
             />
             <Carousel.Caption>
               <h2 className="h1 mega-title slideshow__title">
-                <b style={{ color: '#e60000' }}>
-                  {' '}
+                <b style={{ color: "#e60000" }}>
+                  {" "}
                   <img
                     src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/64/null/external-find-technology-in-daily-life-parzival-1997-flat-parzival-1997.png"
                     width={30}
                   />
                   Find
-                </b>{' '}
+                </b>{" "}
                 In kupon
               </h2>
               <input
                 type="text"
                 className="form-control search_input"
-                onChange={(e) => searchData('name', e.target.value)}
+                onChange={(e) => searchData("name", e.target.value)}
               />
+              <div className="market_search-input">
+                <img
+                  src="/path/to/image-icon.png"
+                  alt="Image Icon"
+                  className="market_icon-left"
+                />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="market_input-field"
+                />
+                <span className="market_icon-right">
+                  <i className="fas fa-search"></i>
+                </span>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-      </div>
-      <Link href="/market/sell">
+      </div> */}
+      {/* <Link href="/market/sell">
         <div
           className="container"
           style={{
-            padding: '20px',
-            fontSize: '50px',
-            backgroundColor: '#f54337',
-            color: 'white',
-            textAlign: 'center',
-            cursor: 'pointer',
+            padding: "20px",
+            fontSize: "50px",
+            backgroundColor: "#f54337",
+            color: "white",
+            textAlign: "center",
+            cursor: "pointer",
+            position: "relative",
+            top: "-15px",
           }}
         >
-          POST SELL{' '}
+          POST SELL{" "}
           <img
             src="https://img.icons8.com/ios/50/FFFFFF/shopping-cart--v1.png"
             className="mx-2"
           />
         </div>
-      </Link>
+      </Link> */}
 
-      <div id="page-content" style={{ marginTop: '80px' }}>
+      {/* <div id="page-content" style={{ marginTop: "80px" }}>
         <div classNameName="page section-header text-center">
           <div className="page-title">
             <div className="wrapper">
@@ -152,13 +237,13 @@ export default function Shop() {
             <br />
           </div>
         </div>
-      </div>
+      </div> */}
 
       {data ? (
         <div className="grid-products row">
           <div className=" col-lg-6 container">
             <br />
-            <div className="row ">
+            {/* <div className="row ">
               <div className="col-6">
                 <label htmlFor="state">
                   Name <span></span>
@@ -166,7 +251,7 @@ export default function Shop() {
                 <input
                   type="text"
                   className="form-control search_input"
-                  onChange={(e) => searchData('name', e.target.value)}
+                  onChange={(e) => searchData("name", e.target.value)}
                 />
               </div>
               <div className="form-group col-6 required">
@@ -174,11 +259,11 @@ export default function Shop() {
                   Condition <span></span>
                 </label>
                 <select
-                  onChange={(e) => searchData('condition', e.target.value)}
+                  onChange={(e) => searchData("condition", e.target.value)}
                 >
                   <option disabled selected>
-                    {' '}
-                    --- Please Select ---{' '}
+                    {" "}
+                    --- Please Select ---{" "}
                   </option>
                   {Condition?.map((a, i) => (
                     <option value={a} key={i}>
@@ -192,11 +277,11 @@ export default function Shop() {
                   Category <span></span>
                 </label>
                 <select
-                  onChange={(e) => searchData('category', e.target.value)}
+                  onChange={(e) => searchData("category", e.target.value)}
                 >
                   <option disabled selected>
-                    {' '}
-                    --- Please Select ---{' '}
+                    {" "}
+                    --- Please Select ---{" "}
                   </option>
                   {sellCategory?.map((a, i) => (
                     <option value={a} key={i}>
@@ -209,14 +294,14 @@ export default function Shop() {
                 <label htmlFor="state">
                   Price <span></span>
                 </label>
-                <select onChange={(e) => searchData('price', e.target.value)}>
+                <select onChange={(e) => searchData("price", e.target.value)}>
                   <option disabled selected>
-                    {' '}
-                    --- Please Select ---{' '}
+                    {" "}
+                    --- Please Select ---{" "}
                   </option>
                 </select>
               </div>
-            </div>
+            </div> */}
 
             <br />
           </div>
@@ -233,8 +318,13 @@ export default function Shop() {
                   <div className="col-12 col-sm-6 col-md-4 col-lg-6 item grid-view-item style2">
                     <div className="grid-view_image">
                       {/*<!-- start product image -->*/}
-                      <div className="grid-view-item__link">
-                        {/*<!-- image -->*/}
+                      <div
+                        className="grid-view-item__link"
+                        style={{
+                          borderRadius: "12px",
+                          border: "0.5px solid #cacdd1",
+                        }}
+                      >
                         <img
                           className="grid-view-item__image primary blur-up lazyload"
                           dataSrc={`data:image/png;base64,${
@@ -245,7 +335,7 @@ export default function Shop() {
                           }`}
                           alt="image"
                           title="product"
-                          style={{ height: '250px' }}
+                          style={{ height: "250px" }}
                         />
                         {/*<!-- End image -->*/}
                         {/*<!-- Hover image -->*/}
@@ -263,7 +353,7 @@ export default function Shop() {
                           }`}
                           alt="image"
                           title="product"
-                          style={{ height: '250px' }}
+                          style={{ height: "250px" }}
                         />
 
                         <div className="product-labels rectangular">
@@ -272,7 +362,7 @@ export default function Shop() {
                             title={product?.category}
                           >
                             {shortenString(product?.category, 20)}
-                          </span>{' '}
+                          </span>{" "}
                           <span className="lbl pr-label1">
                             {product?.conditions}
                           </span>

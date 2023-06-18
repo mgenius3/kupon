@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -12,7 +12,7 @@ export default function Footer() {
                 <h4 className="h4">Quick Link</h4>
                 <ul>
                   <li>
-                    <Link href="/">Home</Link>
+                    <Link href="/home">Home</Link>
                   </li>
                   <li>
                     <Link href="/about">About Us</Link>
@@ -57,19 +57,19 @@ export default function Footer() {
                   <li className="phone">
                     <i className="icon anm anm-phone-s"> </i>
                     <Link href="tel:07033717055">
-                      <p style={{ cursor: 'pointer' }}> 07033717055</p>
+                      <p style={{ cursor: "pointer" }}> 07033717055</p>
                     </Link>
                   </li>
                   <li>
                     <i className="icon anm anm-phone-s"> </i>
                     <Link href="tel:234 9117331396">
-                      <p style={{ cursor: 'pointer' }}> 09117331396</p>
+                      <p style={{ cursor: "pointer" }}> 09117331396</p>
                     </Link>
                   </li>
                   <li className="email">
                     <i className="icon anm anm-envelope-l"> </i>
                     <Link href="mailto: kuponlogistics@gmail.com">
-                      <p style={{ cursor: 'pointer' }}>
+                      <p style={{ cursor: "pointer" }}>
                         kuponlogistics@gmail.com
                       </p>
                     </Link>

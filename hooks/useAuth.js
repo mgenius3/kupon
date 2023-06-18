@@ -1,19 +1,21 @@
 // import jwtDecode from 'jwt-decode';
-import jwt from 'jsonwebtoken';
-import { useRouter } from 'next/router';
-
-import { useEffect } from 'react';
+import jwt from "jsonwebtoken";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const PageAuthentication = ({ children }) => {
   let router = useRouter();
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (typeof window !== 'undefined') {
-        const token = localStorage.getItem('token');
+      if (typeof window !== "undefined") {
+        const token = localStorage.getItem("token");
+        let key = "kupon";
         try {
-          jwt.verify(token, process.env.NEXT_PUBLIC_TOKEN_KEY);
+          jwt.verify(token, "kupon");
         } catch (err) {
-          router.push('/login');
+          console.log(err);
+          console.log(process.env.NEXT_PUBLIC_TOKEN_KEY);
+          router.push("/login");
         }
       }
     }, 0);

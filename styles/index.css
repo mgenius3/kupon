@@ -1,0 +1,110 @@
+#index {
+  width: 90%;
+  margin: 100px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+#index > .d1 {
+  width: 40%;
+}
+#index > .d2 {
+  width: 50%;
+}
+#index > .d1 h1 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 60px;
+  color: #904d00;
+  /* text-align: center; */
+}
+
+#index > .d1 > .p1 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 28px;
+  color: #904d00;
+}
+
+#index > .d1 > .d1 {
+  display: flex;
+  margin: 50px 0px;
+}
+
+#index > .d1 > .d1 > span {
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5px;
+  padding: 7px 15px;
+  border-radius: 5px;
+}
+#index > .d1 > .d1 > span > p {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+#index > .d2 img {
+  width: 100%;
+  height: 100%;
+}
+
+#index > .d2 .carousel,
+#index > .d2 .carousel-item,
+#index > .d2 .carousel-inner {
+  height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  #index > .d1 {
+    width: 100% !important;
+  }
+  #index > .d2 {
+    width: 100% !important;
+  }
+  #index > .d1 > .d1 {
+    text-align: center;
+    margin: 50px auto;
+  }
+
+  #index > .d1 > .d1 > span img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  #index > .d1 h1 {
+    text-align: center;
+    font-size: 42px;
+    line-height: 56px;
+  }
+  #index > .d1 > .p1 {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  #index > .d1 {
+    width: 80%;
+    margin: auto;
+  }
+  #index > .d2 {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  #index {
+    width: 2000px !important;
+    margin: 100px auto;
+  }
+}

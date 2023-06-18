@@ -1,13 +1,13 @@
-const fs = require('fs');
-const { pool } = require('../configdb/db');
-const { tableExists } = require('../utils/checkTableExist');
+const fs = require("fs");
+const { pool } = require("../configdb/db");
+const { tableExists } = require("../utils/checkTableExist");
 
 //create table user
 const createTableSell = async () => {
   try {
     const connection = await pool.getConnection();
     await connection.beginTransaction();
-    let checkUsertableExists = await tableExists('sell');
+    let checkUsertableExists = await tableExists("sell");
     const user_table = checkUsertableExists
       ? null
       : await connection.query(`CREATE TABLE sell (
@@ -71,7 +71,7 @@ const sendPackageDetails = async (data) => {
 };
 
 const getAllSell = async () => {
-  const query = 'SELECT * FROM sell ORDER BY created_at DESC';
+  const query = "SELECT * FROM sell ORDER BY created_at DESC";
   const connection = await pool.getConnection();
   const users = await connection.query(query);
   await connection.release();
@@ -123,9 +123,10 @@ const updatePackagePayment = async (paid, id) => {
 
 const deletePackage = async (id) => {
   try {
+    console.log(id);
     let connection = await pool.getConnection();
     (await connection).beginTransaction();
-    const query = 'DELETE FROM sell WHERE id = ?';
+    const query = "DELETE FROM sell WHERE id = ?";
     await pool.query(query, [id]);
     await connection.release();
   } catch (err) {
@@ -137,7 +138,7 @@ const countPackage = async () => {
   try {
     let connection = await pool.getConnection();
     (await connection).beginTransaction();
-    const query = 'SELECT COUNT(*) as count FROM sell';
+    const query = "SELECT COUNT(*) as count FROM sell";
 
     let [no_of_package] = await connection.query(query);
     await connection.release();
@@ -146,6 +147,7 @@ const countPackage = async () => {
     throw err.message;
   }
 };
+
 module.exports = {
   createTableSell,
   sendPackageDetails,

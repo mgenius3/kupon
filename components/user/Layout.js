@@ -1,18 +1,18 @@
-import React, { useRef, useState, useEffect, Fragment } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { getInitials, shortenString } from '../../utils/stringManipulation';
-import jwtDecode from 'jwt-decode';
-import logout from '../../utils/logout';
-import PageAuthentication from '../../hooks/useAuth';
-import Head from 'next/head';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useRef, useState, useEffect, Fragment } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { getInitials, shortenString } from "../../utils/stringManipulation";
+import jwtDecode from "jwt-decode";
+import logout from "../../utils/logout";
+import PageAuthentication from "../../hooks/useAuth";
+import Head from "next/head";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UserLayout({ children }) {
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
   const [user, setUser] = useState();
@@ -30,7 +30,7 @@ function UserLayout({ children }) {
 
   const userlogout = () => {
     let out = logout();
-    if (out) router.push('/login');
+    if (out) router.push("/login");
   };
   return (
     <Fragment>
@@ -50,29 +50,29 @@ function UserLayout({ children }) {
               <span>
                 <span
                   style={{
-                    color: 'white',
-                    backgroundColor: 'black',
-                    borderRadius: '50%',
-                    padding: '3px',
+                    color: "white",
+                    backgroundColor: "black",
+                    borderRadius: "50%",
+                    padding: "3px",
                   }}
                 >
                   {getInitials(user?.firstName, user?.lastName)}
                 </span>
                 <p>
-                  {shortenString(user?.firstName + ' ' + user?.lastName, 15)}
+                  {shortenString(user?.firstName + " " + user?.lastName, 15)}
                 </p>
               </span>
 
               <img
                 id="cancel"
                 src="https://img.icons8.com/ios/50/FD7E14/cancel.png"
-                onClick={() => asideRef.current.classList.remove('menu')}
+                onClick={() => asideRef.current.classList.remove("menu")}
               />
             </div>
 
             <div className="side_links">
-              <Link href="/">
-                <span style={{ cursor: 'pointer' }}>
+              <Link href="/home">
+                <span style={{ cursor: "pointer" }}>
                   <img
                     src="https://img.icons8.com/ios-glyphs/30/FD7E14/home-page--v1.png"
                     className="icon"
@@ -82,7 +82,7 @@ function UserLayout({ children }) {
               </Link>
 
               <Link href="profile">
-                <span style={{ cursor: 'pointer' }}>
+                <span style={{ cursor: "pointer" }}>
                   <img
                     src="https://img.icons8.com/material-outlined/24/FD7E14/user.png"
                     className="icon"
@@ -92,9 +92,9 @@ function UserLayout({ children }) {
               </Link>
 
               <Link href="logistics">
-                <span style={{ cursor: 'pointer' }}>
+                <span style={{ cursor: "pointer" }}>
                   <img
-                    src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
+                    src="https://img.icons8.com/ios-glyphs/30/FD7E14/food-truck.png"
                     className="icon"
                   />
                   <b>Logistics</b>
@@ -102,9 +102,9 @@ function UserLayout({ children }) {
               </Link>
 
               <Link href="market">
-                <span style={{ cursor: 'pointer' }}>
+                <span style={{ cursor: "pointer" }}>
                   <img
-                    src="https://img.icons8.com/material-outlined/24/FD7E14/dashboard-layout.png"
+                    src="https://img.icons8.com/material-outlined/24/FD7E14/shopping-cart--v1.png"
                     className="icon"
                   />
                   <b>Market</b>
@@ -121,7 +121,7 @@ function UserLayout({ children }) {
                 </span>
               </Link> */}
 
-              <span style={{ cursor: 'pointer' }} onClick={() => userlogout()}>
+              <span style={{ cursor: "pointer" }} onClick={() => userlogout()}>
                 <img
                   src="https://img.icons8.com/ios/50/FD7E14/logout-rounded--v1.png"
                   className="icon"
@@ -141,13 +141,13 @@ function UserLayout({ children }) {
                 <img
                   id="menu"
                   src="https://img.icons8.com/ios-filled/50/000000/menu--v1.png"
-                  onClick={() => asideRef.current.classList.add('menu')}
+                  onClick={() => asideRef.current.classList.add("menu")}
                 />
                 {/* <div className="alert alert-primary" role="alert">
                 <h3 className="h1 text-center"> Admin</h3>
               </div> */}
                 <h3>User - Settings</h3>
-                <p style={{ opacity: '0.7' }}>Manage your personal settings</p>
+                <p style={{ opacity: "0.7" }}>Manage your personal settings</p>
               </div>
               {/* <nav>
                 <ul style={{ listStyle: 'none', margin: '10px' }}>

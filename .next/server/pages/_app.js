@@ -21,9 +21,6 @@ __webpack_require__.r(__webpack_exports__);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_store_store__WEBPACK_IMPORTED_MODULE_2__]);
 _store_store__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__)[0];
 
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { ReactQueryDevtools } from 'react-query/devtools';
-// import { QueryClientProvider, QueryClient } from 'react-query';
 
 
 // import { createContext } from 'react';
@@ -33,13 +30,9 @@ _store_store__WEBPACK_IMPORTED_MODULE_2__ = (__webpack_async_dependencies__.then
 
 
 
-// import { Fragment } from 'react';
-// const initialState = []
-// const Shop = createContext({
-//   state : initialState,
-//   updateState:
-// });
-// const queryClient = new QueryClient();
+
+
+
 function MyApp({ Component , pageProps  }) {
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_redux__WEBPACK_IMPORTED_MODULE_1__.Provider, {
         store: _store_store__WEBPACK_IMPORTED_MODULE_2__/* .store */ .h,

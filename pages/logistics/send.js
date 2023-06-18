@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '../../components/Layout';
-import { useForm } from 'react-hook-form';
+import React, { useState, useEffect } from "react";
+import Layout from "../../components/Layout";
+import { useForm } from "react-hook-form";
 // import { useMutation } from 'react-query';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ImageUpload from '../../utils/fileupload';
-import { statesInNigeria } from '../../utils/data';
-import PageAuthentication from '../../hooks/useAuth';
-import LoadingOverlay from '../../components/loadingOverlay';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ImageUpload from "../../utils/fileupload";
+import { statesInNigeria } from "../../utils/data";
+import PageAuthentication from "../../hooks/useAuth";
+import LoadingOverlay from "../../components/loadingOverlay";
 
 export default function Logistics() {
   const [data, setData] = useState({});
@@ -16,19 +16,19 @@ export default function Logistics() {
   const [isLoading, setIsLoading] = useState(false);
 
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
 
   useEffect(() => {
     toast.error(fileUploadError);
-    setData({ ...data, ['files']: JSON.stringify(filesToUpload) });
+    setData({ ...data, ["files"]: JSON.stringify(filesToUpload) });
   }, [filesToUpload]);
 
   const {
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
 
   const handleInputChange = (e) => {
@@ -40,10 +40,10 @@ export default function Logistics() {
     setIsLoading(true);
     try {
       console.log(data);
-      const response = await fetch('/logistic/send', {
-        method: 'POST',
+      const response = await fetch("/logistic/send", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
@@ -66,7 +66,7 @@ export default function Logistics() {
   return (
     <PageAuthentication>
       <Layout>
-        <div id="page-content" style={{ margin: '50px 0px' }}>
+        <div id="page-content" style={{ margin: "50px 0px" }}>
           <div className="page section-header text-center">
             <div className="page-title">
               <div className="wrapper">
@@ -109,6 +109,18 @@ export default function Logistics() {
                       <div className="row">
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-firstname">
+                            Package Name <span className="required-f">*</span>
+                          </label>
+                          <input
+                            name="packageName"
+                            id="input-packageName"
+                            type="text"
+                            required
+                            onChange={handleInputChange}
+                          />
+                        </div>
+                        <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
+                          <label htmlFor="input-firstname">
                             First Name <span className="required-f">*</span>
                           </label>
                           <input
@@ -131,8 +143,6 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           />
                         </div>
-                      </div>
-                      <div className="row">
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-email">
                             E-Mail <span className="required-f">*</span>
@@ -158,10 +168,6 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           />
                         </div>
-                      </div>
-                    </fieldset>
-                    <fieldset>
-                      <div className="row">
                         <div className="form-group col-md-6 col-lg-6 col-xl-6">
                           <label htmlFor="input-company">Company</label>
                           <input
@@ -183,8 +189,6 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           />
                         </div>
-                      </div>
-                      <div className="row">
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-city">
                             Pickup City <span className="required-f">*</span>
@@ -199,7 +203,7 @@ export default function Logistics() {
                         </div>
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-zone">
-                            Pickup Region / State{' '}
+                            Pickup Region / State{" "}
                             <span className="required-f">*</span>
                           </label>
                           <select
@@ -216,8 +220,7 @@ export default function Logistics() {
                             ))}
                           </select>
                         </div>
-                      </div>
-                      <div className="row">
+
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-telephone">
                             Telephone (Receiver)
@@ -245,7 +248,7 @@ export default function Logistics() {
                         </div>
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-address-1">
-                            Delivery Address{' '}
+                            Delivery Address{" "}
                             <span className="required-f">*</span>
                           </label>
                           <input
@@ -270,7 +273,7 @@ export default function Logistics() {
                         </div>
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-zone">
-                            Delivery Region / State{' '}
+                            Delivery Region / State{" "}
                             <span className="required-f">*</span>
                           </label>
                           <select
@@ -279,8 +282,8 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           >
                             <option disabled selected>
-                              {' '}
-                              --- Please Select ---{' '}
+                              {" "}
+                              --- Please Select ---{" "}
                             </option>
                             {statesInNigeria?.map((state, i) => (
                               <option value={state} key={i}>
@@ -289,30 +292,15 @@ export default function Logistics() {
                             ))}
                           </select>
                         </div>
-                        <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
-                          <label htmlFor="input-address-1">
-                            Receiver Code <span className="required-f">*</span>
-                          </label>
-                          <input
-                            name="receiverCode"
-                            type="number"
-                            required
-                            onChange={handleInputChange}
-                          />
-                          {errors.receiverCode && (
-                            <div className="text-danger text-center">
-                              {errors.receiverCode.message}
-                            </div>
-                          )}
-                        </div>
                       </div>
                     </fieldset>
+                    <fieldset></fieldset>
 
                     <fieldset>
                       <div className="row">
                         <div className="form-group col-md-12 col-lg-12 col-xl-12">
                           <label htmlFor="input-company">
-                            Package Description{' '}
+                            Package Description{" "}
                             <span className="required-f">*</span>
                           </label>
                           <textarea

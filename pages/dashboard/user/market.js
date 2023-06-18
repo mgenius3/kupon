@@ -1,16 +1,16 @@
-import React, { useEffect, useState, Fragment } from 'react';
-import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
-import UserLayout from '../../../components/user/Layout';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ConfirmationInput from '../../../components/Confirmation';
-import { Modal } from 'react-bootstrap';
-import { useRouter } from 'next/router';
+import React, { useEffect, useState, Fragment } from "react";
+import { Container, Row, Col, Card, Button, Carousel } from "react-bootstrap";
+import UserLayout from "../../../components/user/Layout";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ConfirmationInput from "../../../components/Confirmation";
+import { Modal } from "react-bootstrap";
+import { useRouter } from "next/router";
 
 const UserMarket = () => {
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
   const router = useRouter();
@@ -23,10 +23,10 @@ const UserMarket = () => {
   useEffect(() => {
     const fetchSell = async () => {
       try {
-        const response = await fetch('/sell/user/package', {
-          method: 'GET',
+        const response = await fetch("/sell/user/package", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         });
@@ -47,9 +47,9 @@ const UserMarket = () => {
   const pay = async (id) => {
     try {
       const response = await fetch(`/sell/pay/${id}`, {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -69,9 +69,9 @@ const UserMarket = () => {
     setIsLoading(true);
     try {
       const response = await fetch(`/sell/delete/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -98,14 +98,14 @@ const UserMarket = () => {
               <Col sm={12} md={12} lg={6} key={product.id}>
                 <Card className="product-card">
                   <Carousel>
-                    {typeof product?.files == 'string'
+                    {typeof product?.files == "string"
                       ? JSON.parse(product?.files).map((image, index) => (
                           <Carousel.Item key={index}>
                             <img
                               className="d-block w-100"
                               src={`data:image/png;base64,${image}`}
                               alt={`Product ${product.title}`}
-                              style={{ height: 'auto' }}
+                              style={{ height: "auto" }}
                             />
                           </Carousel.Item>
                         ))
@@ -121,19 +121,19 @@ const UserMarket = () => {
                   </Card.Body>
                   <Card.Footer>
                     <Card.Text>
-                      Created on:{' '}
+                      Created on:{" "}
                       {new Date(product?.created_at).toLocaleDateString()}
                     </Card.Text>
                     <div className="d-flex justify-content-between">
-                      {product.paid ? (
+                      {product?.paid ? (
                         <Button disabled variant="primary">
                           PAID
                         </Button>
-                      ) : (
+                      ) : product?.paid == false ? (
                         <Button variant="info" onClick={() => pay(product?.id)}>
                           PAY NOW
                         </Button>
-                      )}
+                      ) : null}
                       {isLoading ? (
                         <Button variant="error" disabled>
                           ...

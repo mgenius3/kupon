@@ -1,0 +1,142 @@
+#shop {
+  margin: auto;
+}
+
+#shop > div > div {
+  margin: 30px auto;
+}
+
+#shop > div > .market_prod_head {
+}
+
+#shop > div > .market_prod_head > h1 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 38px;
+  color: #7e7570;
+}
+
+#shop > div > .market_prod_head > p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 28px;
+  color: #000000;
+}
+
+#shop > div > .market_prod_img {
+  display: flex;
+}
+
+#shop > div > .market_prod_img .market_prod_pics_main {
+  width: 340px;
+  height: 355px;
+  border-radius: 18px;
+  margin: 5px 20px 5px 0px;
+}
+
+#shop > div > .market_prod_img .market_prod_pics_main > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 28px;
+}
+
+#shop > div > .market_prod_img .market_prod_pics_sub {
+  width: 164px;
+  height: 150px;
+}
+
+#shop > div > .market_prod_img .market_prod_pics_sub > img {
+  width: 100%;
+  height: 100%;
+  margin: 10px 0px;
+  border-radius: 18px;
+  cursor: pointer;
+}
+
+#shop > div > .market_prod_description > h3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #6d3900;
+  padding: 0px 0px 10px 0px;
+  width: 200px;
+  border-bottom: 1px solid #6d3900;
+}
+
+#shop > div > .market_prod_description > p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #3e3833;
+}
+
+#shop > div > .market_prod_seller_details {
+}
+
+#shop > div > .market_prod_seller_details > .d1 {
+  display: flex;
+  align-items: flex-end;
+}
+#shop > div > .market_prod_seller_details > .d1 > p {
+  margin: 10px;
+}
+#shop > div > .market_prod_seller_details > .d1 > .p2 {
+  display: flex;
+  flex-direction: column;
+}
+
+#shop > div > .market_prod_seller_details > .d1 > .p3 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  /* identical to box height, or 145% */
+  color: #51443b;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+#shop > div > .market_prod_seller_details > .d1 > .p3:active {
+  position: relative;
+  top: 3px;
+}
+
+#shop > div > .market_prod_seller_details > .d2 p {
+  padding: 15px 20px;
+  background: #fd901a;
+  border-radius: 100px;
+  color: white;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  #shop > div > .market_prod_img {
+    flex-wrap: wrap;
+  }
+  #shop > div > .market_prod_img .market_prod_pics_sub {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  #shop > div > .market_prod_img .market_prod_pics_sub > img {
+    width: 45% !important;
+  }
+  #shop > div > .market_prod_img .market_prod_pics_main {
+    width: 90%;
+  }
+}

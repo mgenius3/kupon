@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
+import React, { useState } from "react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
 // import { useMutation } from 'react-query';
-import { useRouter } from 'next/router';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Layout from '../components/Layout';
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Layout from "../components/Layout";
 
 export default function Login() {
   const [data, setData] = useState({});
@@ -17,13 +17,12 @@ export default function Login() {
     setData({ ...data, [e.target.name]: e.target.value });
   };
   const submitLoginDetails = async () => {
-    // logInUserMutation.mutate(data);
     setIsLoading(true);
     try {
-      const response = await fetch('/user/login', {
-        method: 'POST',
+      const response = await fetch("/user/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
@@ -34,7 +33,7 @@ export default function Login() {
         throw new Error(res.msg);
       }
       const res = await response.json();
-      localStorage.setItem('token', res);
+      localStorage.setItem("token", res);
       setIsLoading(false);
       router.back();
     } catch (err) {
@@ -113,15 +112,15 @@ export default function Login() {
                       )}
                       <p
                         className="mb-4"
-                        style={{ color: 'black', cursor: 'pointer' }}
+                        style={{ color: "black", cursor: "pointer" }}
                       >
                         {/* <a href="#" id="RecoverPassword">
                           Forgot your password?
                         </a>{' '}
                         &nbsp; | &nbsp; */}
-                        New User ?{' '}
+                        New User ?{" "}
                         <Link href="/register" id="customer_register_link">
-                          <b style={{ color: '#6e0000' }}>Create Account </b>
+                          <b style={{ color: "#6e0000" }}>Create Account </b>
                         </Link>
                       </p>
                     </div>

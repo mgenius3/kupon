@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import Layout from '../components/Layout';
-// import { useMutation } from 'react-query';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import Layout from "../components/Layout";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Register() {
   const [data, setData] = useState({});
@@ -22,16 +21,17 @@ export default function Register() {
   const handleInputChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value });
   };
+
   const submitNewUser = async () => {
-    if (data.password !== '' && data.cpassword !== '') {
+    if (data.password !== "" && data.cpassword !== "") {
       if (data.password == data.cpassword) {
         // addUserMutation.mutate(data);
         setIsLoading(true);
         try {
-          const response = await fetch('/user/register', {
-            method: 'POST',
+          const response = await fetch("/user/register", {
+            method: "POST",
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(data),
           });
@@ -42,20 +42,20 @@ export default function Register() {
             throw new Error(res.msg);
           }
           const res = await response.json();
-          toast.success('successful');
-          localStorage.setItem('token', res);
+          toast.success("successful");
+          localStorage.setItem("token", res);
           setIsLoading(false);
-          router.push('/');
+          router.push("/");
         } catch (err) {
           setIsLoading(false);
           toast.error(err.message);
         }
         // return res;
       } else {
-        toast.error('password and confirm password are not equal');
+        toast.error("password and confirm password are not equal");
       }
     } else {
-      toast.error('please fill in the details correctly');
+      toast.error("please fill in the details correctly");
     }
   };
   return (
@@ -120,17 +120,17 @@ export default function Register() {
                           id="input-telephone"
                           type="tel"
                           required
-                          {...register('telephone', {
-                            required: 'Please enter telephone number',
+                          {...register("telephone", {
+                            required: "Please enter telephone number",
                             minLength: {
                               value: 11,
                               message:
-                                'telephone number must be exacty 11 numbers',
+                                "telephone number must be exacty 11 numbers",
                             },
                             maxLength: {
                               value: 11,
                               message:
-                                'telephone number must be exacty 11 numbers',
+                                "telephone number must be exacty 11 numbers",
                             },
                           })}
                           onChange={handleInputChange}
@@ -163,12 +163,12 @@ export default function Register() {
                           type="email"
                           name="email"
                           placeholder=""
-                          {...register('email', {
-                            required: 'Please enter email',
+                          {...register("email", {
+                            required: "Please enter email",
                             pattern: {
                               value:
                                 /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
-                              message: 'Please enter valid email',
+                              message: "Please enter valid email",
                             },
                           })}
                           onChange={handleInputChange}
@@ -183,12 +183,12 @@ export default function Register() {
                           defaultValue=""
                           name="password"
                           id="password"
-                          {...register('password', {
-                            required: 'Please enter password',
+                          {...register("password", {
+                            required: "Please enter password",
                             minLength: {
                               value: 6,
                               message:
-                                'password should be more than 6 characters',
+                                "password should be more than 6 characters",
                             },
                           })}
                           onChange={handleInputChange}
@@ -234,15 +234,15 @@ export default function Register() {
 
                       <p
                         className="mb-4 text-center"
-                        style={{ color: 'black', cursor: 'pointer' }}
+                        style={{ color: "black", cursor: "pointer" }}
                       >
                         {/* <a href="#" id="RecoverPassword">
                           Forgot your password?
                         </a>{' '}
                         &nbsp; | &nbsp; */}
-                        Already a memeber ?{' '}
+                        Already a memeber ?{" "}
                         <Link href="/login" id="customer_register_link">
-                          <b style={{ color: '#6e0000' }}>sign in </b>
+                          <b style={{ color: "#6e0000" }}>sign in </b>
                         </Link>
                       </p>
                     </div>

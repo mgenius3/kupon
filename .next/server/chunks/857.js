@@ -43,6 +43,7 @@ react_toastify__WEBPACK_IMPORTED_MODULE_7__ = (__webpack_async_dependencies__.th
 
 function UserLayout({ children  }) {
     const { 0: noOfLogisticsisPending , 1: setNoOfLogisticsIsPending  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
+    const { 0: noOfContactMessages , 1: setNoOfContactMessages  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null);
     const { 0: token  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(()=>{
         if (false) {}
     });
@@ -84,7 +85,29 @@ function UserLayout({ children  }) {
                 console.log(err);
             }
         };
+        const fetchMessages = async ()=>{
+            try {
+                const response = await fetch("/admin/all_contact_message", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                if (!response.ok) {
+                    const res = await response.json();
+                    throw new Error(res.msg);
+                }
+                const res1 = await response.json();
+                console.log(res1.msg);
+                //pass pending logistics to user
+                setNoOfContactMessages(res1.msg?.length);
+            } catch (err) {
+                console.log(err);
+            }
+        };
         fetchLogistics();
+        fetchMessages();
     }, []);
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
         children: [
@@ -159,7 +182,7 @@ function UserLayout({ children  }) {
                                     className: "side_links",
                                     children: [
                                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
-                                            href: "/",
+                                            href: "/home",
                                             children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                                                 style: {
                                                     cursor: "pointer"
@@ -247,6 +270,27 @@ function UserLayout({ children  }) {
                                                 ]
                                             })
                                         }),
+                                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {
+                                            href: "messages",
+                                            children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                                                style: {
+                                                    cursor: "pointer"
+                                                },
+                                                children: [
+                                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                                                        src: "https://img.icons8.com/ios/50/messages-mac.png",
+                                                        className: "icon"
+                                                    }),
+                                                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("b", {
+                                                        children: [
+                                                            "Messages(",
+                                                            noOfContactMessages,
+                                                            ")"
+                                                        ]
+                                                    })
+                                                ]
+                                            })
+                                        }),
                                         /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                                             style: {
                                                 cursor: "pointer"
@@ -304,45 +348,6 @@ function UserLayout({ children  }) {
 
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } });
-
-/***/ }),
-
-/***/ 5985:
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(997);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(9344);
-/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1853);
-/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(6689);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-
-// import jwtDecode from 'jwt-decode';
-
-
-
-const PageAuthentication = ({ children  })=>{
-    let router = (0,next_router__WEBPACK_IMPORTED_MODULE_2__.useRouter)();
-    (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(()=>{
-        const timer = setTimeout(()=>{
-            if (false) {}
-        }, 0);
-        return ()=>clearTimeout(timer);
-    }, []);
-    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-            children: children
-        })
-    });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PageAuthentication);
-
 
 /***/ }),
 

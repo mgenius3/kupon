@@ -1,14 +1,14 @@
-import Layout from '../../components/Layout';
-import Link from 'next/link';
-import $ from 'jquery';
-import React, { Fragment, useEffect, useState } from 'react';
+import Layout from "../../components/Layout";
+import Link from "next/link";
+import $ from "jquery";
+import React, { Fragment, useEffect, useState } from "react";
 // import 'slick-carousel/slick/slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchData } from '../../store/store';
-import Spinner from 'react-bootstrap/Spinner';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchData } from "../../store/store";
+import Spinner from "react-bootstrap/Spinner";
 
 export default function Home() {
   const [shuffleData, setShuffleData] = useState();
@@ -21,12 +21,12 @@ export default function Home() {
   let { data, isLoading } = useSelector((state) => state);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window?.addEventListener('scroll', handleScroll); // add scroll event listener on component mount
+    if (typeof window !== "undefined") {
+      window?.addEventListener("scroll", handleScroll); // add scroll event listener on component mount
     }
     return () => {
-      if (typeof window !== 'undefined') {
-        window?.removeEventListener('scroll', handleScroll); // remove scroll event listener on component unmount
+      if (typeof window !== "undefined") {
+        window?.removeEventListener("scroll", handleScroll); // remove scroll event listener on component unmount
       }
     };
   }, []);
@@ -49,15 +49,14 @@ export default function Home() {
     }
   }, [data]);
 
-  console.log(shuffleData);
   function handleScroll() {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       if (window?.innerWidth > 1199) {
-        const headerWrap = $('.header-wrap');
+        const headerWrap = $(".header-wrap");
         if (window?.pageYOffset > 145) {
-          headerWrap.addClass('stickyNav animated fadeInDown');
+          headerWrap.addClass("stickyNav animated fadeInDown");
         } else {
-          headerWrap.removeClass('stickyNav fadeInDown');
+          headerWrap.removeClass("stickyNav fadeInDown");
         }
       }
     }
@@ -80,16 +79,16 @@ export default function Home() {
                     alt="Summer Bikini Collection"
                     title="Summer Bikini Collection"
                     style={{
-                      width: '100%',
-                      height: '60vh!important',
-                      objectFit: 'cover',
+                      width: "100%",
+                      height: "60vh!important",
+                      objectFit: "cover",
                     }}
                   />
                   <div className="slideshow__text-wrap slideshow__overlay classic bottom">
                     <div className="slideshow__text-content bottom">
                       <div className="wrap-caption center">
                         <h2 className="h1 mega-title slideshow__title">
-                          <b style={{ color: '#e60000' }}>Kupon</b> Online
+                          <b style={{ color: "#e60000" }}>Kupon</b> Online
                           <b> Marketplace</b>
                         </h2>
                         <span className="mega-subtitle slideshow__subtitle">
@@ -114,17 +113,17 @@ export default function Home() {
                     alt="Summer Bikini Collection"
                     title="Summer Bikini Collection"
                     style={{
-                      width: '100%',
-                      height: '60vh!important',
-                      objectFit: 'cover',
-                      filter: 'brightness(120%)',
+                      width: "100%",
+                      height: "60vh!important",
+                      objectFit: "cover",
+                      filter: "brightness(120%)",
                     }}
                   />
                   <div className="slideshow__text-wrap slideshow__overlay classic bottom">
                     <div className="slideshow__text-content bottom">
                       <div className="wrap-caption center">
                         <h2 className="h1 mega-title slideshow__title">
-                          <b style={{ color: '#e60000' }}>Kupon</b> Online
+                          <b style={{ color: "#e60000" }}>Kupon</b> Online
                           <b> Marketplace</b>
                         </h2>
                         <span className="mega-subtitle slideshow__subtitle">
@@ -176,7 +175,13 @@ export default function Home() {
                           >
                             <div className="grid-view_image">
                               {/*<!-- start product image -->*/}
-                              <div className="grid-view-item__link">
+                              <div
+                                className="grid-view-item__link"
+                                style={{
+                                  borderRadius: "12px",
+                                  border: "0.5px solid #cacdd1",
+                                }}
+                              >
                                 {/*<!-- image -->*/}
                                 <img
                                   className="grid-view-item__image primary blur-up lazyload"
@@ -188,7 +193,7 @@ export default function Home() {
                                   }`}
                                   alt="image"
                                   title="product"
-                                  style={{ height: '250px' }}
+                                  style={{ height: "250px" }}
                                 />
                                 {/*<!-- End image -->*/}
                                 {/*<!-- Hover image -->*/}
@@ -206,13 +211,13 @@ export default function Home() {
                                   }`}
                                   alt="image"
                                   title="product"
-                                  style={{ height: '250px' }}
+                                  style={{ height: "250px" }}
                                 />
 
                                 <div className="product-labels rectangular">
                                   <span className="lbl on-sale">
                                     {product?.category}
-                                  </span>{' '}
+                                  </span>{" "}
                                   <span className="lbl pr-label1">
                                     {product?.conditions}
                                   </span>

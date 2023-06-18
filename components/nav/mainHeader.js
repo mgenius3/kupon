@@ -1,15 +1,15 @@
-import React, { useState, Fragment, useEffect } from 'react';
-import Link from 'next/link';
-import jwtDecode from 'jwt-decode';
-import { getInitials } from '../../utils/stringManipulation';
-import logout from '../../utils/logout';
-import { useRouter } from 'next/router';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import React, { useState, Fragment, useEffect } from "react";
+import Link from "next/link";
+import jwtDecode from "jwt-decode";
+import { getInitials } from "../../utils/stringManipulation";
+import logout from "../../utils/logout";
+import { useRouter } from "next/router";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 export default function MainHeader() {
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
   const [user, setUser] = useState({});
@@ -28,7 +28,7 @@ export default function MainHeader() {
 
   const userlogout = () => {
     let out = logout();
-    if (out) router.push('/login');
+    if (out) router.push("/login");
   };
   return (
     //  <!--Header-->
@@ -48,7 +48,7 @@ export default function MainHeader() {
           <Navbar.Toggle aria-controls="navbar-nav" />
           <Navbar.Collapse id="navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/home">Home</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/contact">Contact Us</Nav.Link>
               <Nav.Link href="/logistics/send">
@@ -58,12 +58,12 @@ export default function MainHeader() {
             <Nav>
               <nav
                 className="navbar navbar-expand-lg"
-                style={{ position: 'relative', zIndex: '100' }}
+                style={{ position: "relative", zIndex: "100" }}
               >
                 <div className="container-fluid">
                   <ul
                     className="navbar-nav"
-                    style={{ position: 'absolute', right: '0px' }}
+                    style={{ position: "absolute", right: "0px" }}
                   >
                     {/* <!-- Avatar Menu --> */}
                     {!Object.keys(user).length ? (
@@ -71,28 +71,28 @@ export default function MainHeader() {
                         <Link href="/login">
                           <small
                             style={{
-                              fontSize: '15px',
-                              cursor: 'pointer',
+                              fontSize: "15px",
+                              cursor: "pointer",
                             }}
                           >
-                            {' '}
-                            sign in{' '}
+                            {" "}
+                            sign in{" "}
                           </small>
                         </Link>
                         <Link href="register">
                           <small
                             style={{
-                              backgroundColor: '#e64c00',
-                              color: 'white',
-                              padding: '2px',
-                              fontSize: '15px',
-                              cursor: 'pointer',
-                              borderRadius: '3px',
+                              backgroundColor: "#e64c00",
+                              color: "white",
+                              padding: "2px",
+                              fontSize: "15px",
+                              cursor: "pointer",
+                              borderRadius: "3px",
                             }}
                             className="d-sm-inline"
                           >
-                            {' '}
-                            sign&nbsp;up{' '}
+                            {" "}
+                            sign&nbsp;up{" "}
                           </small>
                         </Link>
                       </li>
@@ -109,10 +109,10 @@ export default function MainHeader() {
                         >
                           <p
                             style={{
-                              color: 'white',
-                              backgroundColor: 'black',
-                              borderRadius: '50%',
-                              padding: '3px',
+                              color: "white",
+                              background: "#904D00",
+                              borderRadius: "50%",
+                              padding: "3px",
                             }}
                           >
                             {getInitials(user?.firstName, user?.lastName)}
@@ -122,19 +122,19 @@ export default function MainHeader() {
                           <ul
                             className="bg-light position-absolute"
                             aria-labelledby="navbarDropdownMenuLink"
-                            style={{ left: '-50px' }}
+                            style={{ left: "-50px" }}
                           >
-                            {user?.admin == 'yes' && (
+                            {user?.admin == "yes" && (
                               <li
                                 className="dropdown-item"
-                                style={{ cursor: 'pointer' }}
+                                style={{ cursor: "pointer" }}
                               >
                                 <Link href={`/dashboard/admin/profile`}>
                                   <span>
                                     <img
                                       src="https://img.icons8.com/ios/50/null/administrator-male--v1.png"
                                       width={15}
-                                    />{' '}
+                                    />{" "}
                                     Admin
                                   </span>
                                 </Link>
@@ -142,14 +142,14 @@ export default function MainHeader() {
                             )}
                             <li
                               className="dropdown-item"
-                              style={{ cursor: 'pointer' }}
+                              style={{ cursor: "pointer" }}
                             >
                               <Link href={`/dashboard/user/profile`}>
                                 <span>
                                   <img
                                     src="https://img.icons8.com/ios-filled/50/null/user.png"
                                     width={15}
-                                  />{' '}
+                                  />{" "}
                                   Profile
                                 </span>
                               </Link>
@@ -157,14 +157,14 @@ export default function MainHeader() {
 
                             <li
                               className="dropdown-item"
-                              style={{ cursor: 'pointer' }}
+                              style={{ cursor: "pointer" }}
                               onClick={() => userlogout()}
                             >
                               <span>
                                 <img
                                   src="https://img.icons8.com/ios-filled/50/null/logout-rounded.png"
                                   width={15}
-                                />{' '}
+                                />{" "}
                                 Logout
                               </span>
                             </li>

@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '../../components/Layout';
-import { useForm } from 'react-hook-form';
+import React, { useState, useEffect } from "react";
+import Layout from "../../components/Layout";
+import { useForm } from "react-hook-form";
 // import { useMutation } from 'react-query';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ImageUpload from '../../utils/fileupload';
-import PageAuthentication from '../../hooks/useAuth';
-import LoadingOverlay from '../../components/loadingOverlay';
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ImageUpload from "../../utils/fileupload";
+import PageAuthentication from "../../hooks/useAuth";
+import LoadingOverlay from "../../components/loadingOverlay";
 
 import {
   statesInNigeria,
   Condition,
   sellCategory,
   sellMaterials,
-} from '../../utils/data';
+} from "../../utils/data";
 
 export default function Logistics() {
   const [data, setData] = useState({});
@@ -22,14 +22,14 @@ export default function Logistics() {
   const [isLoading, setIsLoading] = useState();
 
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
 
   useEffect(() => {
     toast.error(fileUploadError);
-    setData({ ...data, ['files']: JSON.stringify(filesToUpload) });
+    setData({ ...data, ["files"]: JSON.stringify(filesToUpload) });
   }, [filesToUpload]);
 
   const { handleSubmit } = useForm();
@@ -42,10 +42,10 @@ export default function Logistics() {
     // sellPackageMutation.mutate(data);
     setIsLoading(true);
     try {
-      const response = await fetch('/sell', {
-        method: 'POST',
+      const response = await fetch("/sell", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
@@ -57,7 +57,7 @@ export default function Logistics() {
         throw new Error(res.msg);
       }
       const res = await response.json();
-      localStorage.setItem('token', res);
+      localStorage.setItem("token", res);
       if (window !== undefined) window.location.replace(`${res.msg}`);
       setIsLoading(false);
     } catch (err) {
@@ -69,7 +69,7 @@ export default function Logistics() {
   return (
     <PageAuthentication>
       <Layout title="Sell - Market">
-        <div id="page-content" style={{ margin: '50px 0px' }}>
+        <div id="page-content" style={{ margin: "50px 0px" }}>
           <div className="page section-header text-center">
             <div className="page-title">
               <div className="wrapper">
@@ -151,8 +151,8 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           >
                             <option disabled selected>
-                              {' '}
-                              --- Please Select ---{' '}
+                              {" "}
+                              --- Please Select ---{" "}
                             </option>
                             {statesInNigeria?.map((state, i) => (
                               <option value={state} key={i}>
@@ -174,8 +174,8 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           >
                             <option disabled selected>
-                              {' '}
-                              --- Please Select ---{' '}
+                              {" "}
+                              --- Please Select ---{" "}
                             </option>
                             {sellCategory?.map((category, i) => (
                               <option value={category} key={i}>
@@ -195,8 +195,8 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           >
                             <option disabled selected>
-                              {' '}
-                              --- Please Select ---{' '}
+                              {" "}
+                              --- Please Select ---{" "}
                             </option>
                             {sellMaterials?.map((material, i) => (
                               <option value={material} key={i}>
@@ -216,8 +216,8 @@ export default function Logistics() {
                             onChange={handleInputChange}
                           >
                             <option disabled selected>
-                              {' '}
-                              --- Please Select ---{' '}
+                              {" "}
+                              --- Please Select ---{" "}
                             </option>
                             {Condition?.map((condition, i) => (
                               <option value={condition} key={i}>
@@ -228,7 +228,7 @@ export default function Logistics() {
                         </div>
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-city">
-                            Price (&#8358;){' '}
+                            Price (&#8358;){" "}
                             <span className="required-f">*</span>
                           </label>
                           <input
@@ -243,7 +243,7 @@ export default function Logistics() {
                       <div className="row">
                         <div className="form-group col-md-12 col-lg-12 col-xl-12">
                           <label htmlFor="input-company">
-                            Package Description{' '}
+                            Package Description{" "}
                             <span className="required-f">*</span>
                           </label>
                           <textarea

@@ -16,30 +16,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_document__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(6859);
 
-// import Document, { Html, Head, Main, NextScript } from 'next/document';
-// class MyDocument extends Document {
-//   render() {
-//     return (
-//       <Html>
-//         <Head>
-//           <script src="/js/vendor/jquery-3.3.1.min.js"></script>
-//           <script src="/js/vendor/modernizr-3.6.0.min.js"></script>
-//           <script src="/js/vendor/jquery.cookie.js"></script>
-//           <script src="/js/vendor/wow.min.js"></script>
-//           <script src="/js/bootstrap.min.js"></script>
-//           <script src="/js/plugins.js"></script>
-//           <script src="/js/popper.min.js"></script>
-//           <script src="/js/lazysizes.js"></script>
-//           <script src="/js/main.js"></script>
-//         </Head>
-//         <body>
-//           <Main />
-//           <NextScript />
-//         </body>
-//       </Html>
-//     );
-//   }
-// }
 
 class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__["default"] {
     render() {
@@ -78,6 +54,10 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__["default"] {
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
                             rel: "stylesheet",
                             href: "/styles/responsive.css"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                            rel: "stylesheet",
+                            href: "/styles/shop.css"
                         })
                     ]
                 }),

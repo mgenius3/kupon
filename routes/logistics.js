@@ -1,14 +1,16 @@
-const verifyToken = require('../middleware/auth');
-const router = require('express').Router();
+const verifyToken = require("../middleware/auth");
+const router = require("express").Router();
 
 const {
   PackageSent,
   ReceiveUserPackage,
   payment,
-} = require('../controller/logistics');
+  trackPackageSent,
+} = require("../controller/logistics");
 
-router.use(verifyToken);
-router.post('/send', PackageSent);
-router.get('/user', ReceiveUserPackage);
-router.get('/pay/:id', verifyToken, payment);
+router.post("/send", verifyToken, PackageSent);
+router.get("/user", verifyToken, ReceiveUserPackage);
+router.get("/pay/:id", verifyToken, payment);
+router.post("/track_package", trackPackageSent);
+
 module.exports = router;

@@ -1,15 +1,50 @@
-import Link from 'next/link';
-import Layout from '../components/Layout';
+import Link from "next/link";
+import Layout from "../components/Layout";
 // import Link from 'next/link';
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function Home() {
+  const [data, setData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleInputChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value });
+  };
+
+  const submitPackageMessage = async () => {
+    setIsLoading(true);
+    try {
+      console.log(data);
+      const response = await fetch("/user/contact_message", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const res = await response.json();
+        setIsLoading(false);
+        throw new Error(res.msg);
+      }
+      const res = await response.json();
+      setIsLoading(false);
+      toast.success(res.msg);
+    } catch (err) {
+      setIsLoading(false);
+      toast.error(err.message);
+    }
+  };
   return (
     <Fragment>
       <Layout title="Contact Us - Landing">
         <div id="page-content">
           <div
             className="page section-header text-center"
-            style={{ margin: '60px 0px' }}
+            style={{ margin: "60px 0px" }}
           >
             <div className="page-title">
               <div className="wrapper">
@@ -25,32 +60,27 @@ export default function Home() {
               <span aria-hidden="true">›</span>
               <span>Contact Us</span>
             </div>
-          </div>{' '}
+          </div>{" "}
           <div className="container">
             <div className="row">
-              {/* <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-4">
+              <div className="col-12 col-sm-12 col-md-8 col-lg-8 mb-4">
                 <h2>Drop Us A Line</h2>
                 <p>
                   You can reach us through a telephone call or send message
-                  below{' '}
+                  below{" "}
                 </p>
                 <div className="formFeilds contact-form form-vertical">
-                  <form
-                    action="http://annimexweb.com/items/belle/assets/php/mail.php"
-                    method="post"
-                    id="contact_form"
-                    className="contact-form"
-                  >
+                  <form className="contact-form">
                     <div className="row">
                       <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div className="form-group">
                           <input
                             type="text"
                             id="ContactFormName"
-                            name="name"
+                            name="fullName"
                             placeholder="Name"
-                            value=""
-                            required=""
+                            required
+                            onChange={handleInputChange}
                           />
                         </div>
                       </div>
@@ -61,8 +91,8 @@ export default function Home() {
                             id="ContactFormEmail"
                             name="email"
                             placeholder="Email"
-                            value=""
-                            required=""
+                            required
+                            onChange={handleInputChange}
                           />
                         </div>
                       </div>
@@ -71,17 +101,17 @@ export default function Home() {
                       <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div className="form-group">
                           <input
-                            required=""
+                            required
                             type="tel"
                             id="ContactFormPhone"
-                            name="phone"
+                            name="telephone"
                             pattern="[0-9\-]*"
                             placeholder="Phone Number"
-                            value=""
+                            onChange={handleInputChange}
                           />
                         </div>
                       </div>
-                      <div className="col-12 col-sm-12 col-md-6 col-lg-6">
+                      {/* <div className="col-12 col-sm-12 col-md-6 col-lg-6">
                         <div className="form-group">
                           <input
                             required=""
@@ -92,7 +122,7 @@ export default function Home() {
                             value=""
                           />
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="row">
                       <div className="col-12 col-sm-12 col-md-12 col-lg-12">
@@ -103,22 +133,33 @@ export default function Home() {
                             id="ContactFormMessage"
                             name="message"
                             placeholder="Your Message"
+                            onChange={handleInputChange}
                           ></textarea>
                         </div>
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-12 col-sm-12 col-md-12 col-lg-12">
-                        <input
-                          type="submit"
-                          className="btn"
-                          value="Send Message"
-                        />
+                        {isLoading ? (
+                          <input
+                            type="submit"
+                            className="btn"
+                            value="loading ..."
+                            disabled
+                          />
+                        ) : (
+                          <input
+                            type="submit"
+                            className="btn"
+                            value="Send Message"
+                            onClick={submitPackageMessage}
+                          />
+                        )}
                       </div>
                     </div>
                   </form>
                 </div>
-              </div> */}
+              </div>
               <div className="col-12 col-sm-12 col-md-4 col-lg-4">
                 <div className="open-hours">
                   <strong>Opening Hours</strong>

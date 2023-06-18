@@ -1,20 +1,21 @@
-import React, { useRef, useState, useEffect, Fragment } from 'react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { getInitials, shortenString } from '../../utils/stringManipulation';
-import jwtDecode from 'jwt-decode';
-import logout from '../../utils/logout';
-import PageAuthentication from '../../hooks/useAuth';
-import Head from 'next/head';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useRef, useState, useEffect, Fragment } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { getInitials, shortenString } from "../../utils/stringManipulation";
+import jwtDecode from "jwt-decode";
+import logout from "../../utils/logout";
+import PageAuthentication from "../../hooks/useAuth";
+import Head from "next/head";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UserLayout({ children }) {
   const [noOfLogisticsisPending, setNoOfLogisticsIsPending] = useState(null);
+  const [noOfContactMessages, setNoOfContactMessages] = useState(null);
 
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
   const [user, setUser] = useState();
@@ -32,16 +33,16 @@ function UserLayout({ children }) {
 
   const userlogout = () => {
     let out = logout();
-    if (out) router.push('/login');
+    if (out) router.push("/login");
   };
 
   useEffect(() => {
     const fetchLogistics = async () => {
       try {
-        const response = await fetch('/admin/logistics', {
-          method: 'GET',
+        const response = await fetch("/admin/logistics", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         });
@@ -55,13 +56,40 @@ function UserLayout({ children }) {
         //pass pending logistics to user
 
         setNoOfLogisticsIsPending(
-          res.msg?.filter((a) => a.status == 'pending').length
+          res.msg?.filter((a) => a.status == "pending").length
         );
       } catch (err) {
         console.log(err);
       }
     };
+
+    const fetchMessages = async () => {
+      try {
+        const response = await fetch("/admin/all_contact_message", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          const res = await response.json();
+          throw new Error(res.msg);
+        }
+        const res = await response.json();
+        console.log(res.msg);
+
+        //pass pending logistics to user
+
+        setNoOfContactMessages(res.msg?.length);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     fetchLogistics();
+    fetchMessages();
   }, []);
   return (
     <Fragment>
@@ -81,30 +109,30 @@ function UserLayout({ children }) {
               <span>
                 <span
                   style={{
-                    color: 'white',
-                    backgroundColor: 'black',
-                    borderRadius: '50%',
-                    padding: '3px',
+                    color: "white",
+                    backgroundColor: "black",
+                    borderRadius: "50%",
+                    padding: "3px",
                   }}
                 >
                   {getInitials(user?.firstName, user?.lastName)}
                 </span>
                 <p>
-                  Admin -{' '}
-                  {shortenString(user?.firstName + ' ' + user?.lastName, 10)}
+                  Admin -{" "}
+                  {shortenString(user?.firstName + " " + user?.lastName, 10)}
                 </p>
               </span>
 
               <img
                 id="cancel"
                 src="https://img.icons8.com/ios/50/FD7E14/cancel.png"
-                onClick={() => asideRef.current.classList.remove('menu')}
+                onClick={() => asideRef.current.classList.remove("menu")}
               />
             </div>
 
             <div className="side_links">
-              <Link href="/">
-                <span style={{ cursor: 'pointer' }}>
+              <Link href="/home">
+                <span style={{ cursor: "pointer" }}>
                   <img
                     src="https://img.icons8.com/ios-glyphs/30/FD7E14/home-page--v1.png"
                     className="icon"
@@ -114,7 +142,7 @@ function UserLayout({ children }) {
               </Link>
 
               <Link href="profile">
-                <span style={{ cursor: 'pointer' }}>
+                <span style={{ cursor: "pointer" }}>
                   <img
                     src="https://img.icons8.com/material-outlined/24/FD7E14/user.png"
                     className="icon"
@@ -124,7 +152,7 @@ function UserLayout({ children }) {
               </Link>
 
               <Link href="user">
-                <span style={{ cursor: 'pointer' }}>
+                <span style={{ cursor: "pointer" }}>
                   <img
                     src="https://img.icons8.com/stickers/100/null/user-skin-type-3.png"
                     className="icon"
@@ -134,7 +162,7 @@ function UserLayout({ children }) {
               </Link>
 
               <Link href="logistics">
-                <span style={{ cursor: 'pointer' }}>
+                <span style={{ cursor: "pointer" }}>
                   <img
                     src="https://img.icons8.com/ios-glyphs/30/FD7E14/food-truck.png"
                     className="icon"
@@ -144,7 +172,7 @@ function UserLayout({ children }) {
               </Link>
 
               <Link href="market">
-                <span style={{ cursor: 'pointer' }}>
+                <span style={{ cursor: "pointer" }}>
                   <img
                     src="https://img.icons8.com/material-outlined/24/FD7E14/shopping-cart--v1.png"
                     className="icon"
@@ -153,7 +181,18 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
-              <span style={{ cursor: 'pointer' }} onClick={() => userlogout()}>
+              <Link href="messages">
+                <span style={{ cursor: "pointer" }}>
+                  <img
+                    src="https://img.icons8.com/ios/50/messages-mac.png"
+                    className="icon"
+                  />
+
+                  <b>Messages({noOfContactMessages})</b>
+                </span>
+              </Link>
+
+              <span style={{ cursor: "pointer" }} onClick={() => userlogout()}>
                 <img
                   src="https://img.icons8.com/ios/50/FD7E14/logout-rounded--v1.png"
                   className="icon"
@@ -169,11 +208,11 @@ function UserLayout({ children }) {
                 <img
                   id="menu"
                   src="https://img.icons8.com/ios-filled/50/000000/menu--v1.png"
-                  onClick={() => asideRef.current.classList.add('menu')}
+                  onClick={() => asideRef.current.classList.add("menu")}
                 />
 
                 <h3>Admin - Settings</h3>
-                <p style={{ opacity: '0.7' }}>
+                <p style={{ opacity: "0.7" }}>
                   Manage your personal and organization settings
                 </p>
               </div>

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Layout from '../../../components/Layout';
-import { useRouter } from 'next/router';
-import { Carousel, Alert, Card } from 'react-bootstrap';
-import PageAuthentication from '../../../hooks/useAuth';
-import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+import Layout from "../../../components/Layout";
+import { useRouter } from "next/router";
+import { Alert } from "react-bootstrap";
+import PageAuthentication from "../../../hooks/useAuth";
+import Link from "next/link";
+import { getInitials } from "../../../utils/stringManipulation";
 export default function Cart() {
   const router = useRouter();
   const { query } = router;
@@ -11,22 +12,24 @@ export default function Cart() {
   const [data, setData] = useState({});
   const [user, setUser] = useState();
   const [error, setError] = useState();
+  const [imagetoshow, setImagetoshow] = useState(0);
+  const [checkcopy, setCheckCopy] = useState(false);
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
 
   useEffect(() => {
     fetch(`/sell/${product}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
@@ -40,14 +43,14 @@ export default function Cart() {
 
   useEffect(() => {
     fetch(`/user/${data?.sellerId}`, {
-      method: 'GET',
+      method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
         return response.json();
       })
@@ -59,107 +62,124 @@ export default function Cart() {
       });
   }, [data]);
 
-  console.log(typeof data?.files);
+  function handleCopy(copy_code) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard
+        .writeText(copy_code)
+        .then(() => {
+          setCheckCopy(true);
+          console.log("URL copied to clipboard!");
+        })
+        .catch((error) => {
+          console.error("Failed to copy URL to clipboard:", error);
+        });
+    } else {
+      fallbackCopyToClipboard(copy_code);
+    }
+  }
+
+  function fallbackCopyToClipboard(copy_code) {
+    const textArea = document.createElement("textarea");
+    textArea.value = copy_code;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+    setCheckCopy(true);
+  }
 
   return (
     <PageAuthentication>
       <Layout title="Cart - Market">
         {data ? (
-          <div id="page-content" style={{ margin: '60px 0px' }}>
-            <div className="page section-header text-center">
-              <div className="page-title">
-                <div className="wrapper">
-                  <h1 className="page-width">Your cart</h1>
-                </div>
+          <div className="container" id="shop">
+            <div>
+              <div className="market_prod_head">
+                <h1 className="market_prod_name">{data?.title}</h1>
+                <p className="market_prod_price">#{data?.price}</p>
               </div>
-            </div>
+              <div className="market_prod_img">
+                <span className="market_prod_pics_main">
+                  {typeof data.files === "string" ? (
+                    <img
+                      className="d-block"
+                      src={`data:image/png;base64,${
+                        JSON.parse(data?.files)[imagetoshow]
+                      }`}
+                      alt="Image One"
+                      style={{ width: "100%" }}
+                    />
+                  ) : null}
+                </span>
+                <span className="market_prod_pics_sub">
+                  {typeof data.files === "string"
+                    ? JSON.parse(data?.files).map((file, i) => (
+                        <img
+                          className="d-block"
+                          src={`data:image/png;base64,${file}`}
+                          alt="Image One"
+                          style={{ width: "100%" }}
+                          onClick={() => setImagetoshow(i)}
+                          key={i}
+                        />
+                      ))
+                    : null}
+                </span>
+              </div>
 
-            <div className="container">
-              <div className="row">
-                <div className="col-12 col-sm-12 col-md-8 col-lg-8 main-col mx-auto">
-                  <div className="cart style2">
-                    <div style={{ display: 'block' }}>
-                      <h2 style={{ fontSize: '1rem', fontWeight: 'bold' }}>
-                        {data?.category}
-                      </h2>
-                      <Card>
-                        <Carousel>
-                          {typeof data.files === 'string'
-                            ? JSON.parse(data.files)?.map((file, i) => (
-                                <Carousel.Item interval={4500} key={i}>
-                                  <img
-                                    className="d-block"
-                                    src={`data:image/png;base64,${file}`}
-                                    alt="Image One"
-                                    style={{ width: '100%' }}
-                                  />
-                                  <Carousel.Caption
-                                    style={{ background: '#e64c0066' }}
-                                  >
-                                    <h3>{data?.title} </h3>
-                                    <p
-                                      style={{
-                                        background: 'rgb(230 76 0)',
-                                        color: 'white',
-                                      }}
-                                    >
-                                      {' '}
-                                      {data?.description}{' '}
-                                    </p>
-                                  </Carousel.Caption>
-                                </Carousel.Item>
-                              ))
-                            : null}
-                        </Carousel>
-                        <Card.Body>
-                          <Card.Title>{data?.title}</Card.Title>
-                          <Card.Text>Material: {data?.material}</Card.Text>
-                          <small>Condition : {data?.conditions}</small>
-                        </Card.Body>
-                        <Card.Footer>
-                          <img src="https://img.icons8.com/ios-glyphs/30/null/user-location.png" />
-                          {data?.location} {data?.state}
-                        </Card.Footer>
-                      </Card>
-                    </div>
-                  </div>
+              <div className="market_prod_description">
+                <h3>Description</h3>
+                <p>{data?.description}</p>
+              </div>
+
+              <div className="market_prod_seller_details">
+                <div className="d1">
+                  <p
+                    style={{
+                      color: "white",
+                      background: "#904D00",
+                      borderRadius: "50%",
+                      padding: "8px",
+                    }}
+                    className="p1"
+                  >
+                    {" "}
+                    {getInitials(user?.firstName, user?.lastName)}
+                  </p>
+                  <p className="p2">
+                    <em className="market_prod_sellername">
+                      {user?.firstName} {user?.lastName}
+                    </em>
+                    <em className="market_prod_sellerphone">
+                      {Number(user?.telephone)}
+                    </em>
+                  </p>
+                  {checkcopy ? (
+                    <p
+                      onClick={() => handleCopy(user?.telephone)}
+                      className="p3"
+                    >
+                      Copied
+                    </p>
+                  ) : (
+                    <p
+                      onClick={() => handleCopy(user?.telephone)}
+                      className="p3"
+                    >
+                      Copy Contact{" "}
+                      <img
+                        width="20"
+                        height="20"
+                        src="https://img.icons8.com/ios-glyphs/30/copy.png"
+                        alt="copy"
+                      />
+                    </p>
+                  )}
                 </div>
-                <div className="col-12 col-sm-12 col-md-8 col-lg-4 cart__footer mx-auto">
-                  <div className="cart style2 my-5 my-lg-0">
-                    <h2 style={{ fontSize: '1rem', fontWeight: 'bold' }}>
-                      SELLER INFORMATION
-                    </h2>
-
-                    <div className="cart-note">
-                      <div className="solid-border">
-                        <h1>SELLER</h1>
-                        <hr />
-                        <h5>
-                          <label
-                            htmlFor="CartSpecialInstructions"
-                            className="cart-note__label small--text-center flex align-items-center"
-                          >
-                            <img
-                              src="https://img.icons8.com/plasticine/100/null/gender-neutral-user--v1.png"
-                              width={50}
-                            />{' '}
-                            {user?.firstName} {user?.lastName}
-                          </label>
-                        </h5>
-                        <Link href="tel:2348134460259">
-                          <button className="btn">call : 2348134460259</button>
-                        </Link>{' '}
-                        <div className="row my-3">
-                          <span className="col-6 col-sm-6 ">
-                            <strong>Price</strong>
-                          </span>
-                          <span className="col-6 col-sm-6 text-lg text-right">
-                            <span className="money">&#8358;{data?.price}</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="d2">
+                  <Link href={`tel: ${user?.telephone}`}>
+                    <p>Contact Seller</p>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -168,7 +188,7 @@ export default function Cart() {
           <Alert
             key="danger"
             variant="danger"
-            style={{ margin: '200px 100px' }}
+            style={{ margin: "200px 100px" }}
           >
             loading...
           </Alert>
