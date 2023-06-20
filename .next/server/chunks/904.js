@@ -156,6 +156,9 @@ const Condition = [
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6358);
 /* harmony import */ var react_dropzone__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_dropzone__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var imagekit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3386);
+/* harmony import */ var imagekit__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(imagekit__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -210,7 +213,8 @@ const acceptStyle = {
 const rejectStyle = {
     borderColor: "#ff1744"
 };
-function ImageUpload({ setFileUploadError , setFilesToUpload  }) {
+function ImageUpload({ setFileUploadError , setImageUrl  }) {
+    const { 0: uploading , 1: setUploading  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
     const { 0: files , 1: setFiles  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
     const { getRootProps , getInputProps , isFocused , isDragAccept , isDragReject  } = (0,react_dropzone__WEBPACK_IMPORTED_MODULE_2__.useDropzone)({
         accept: {
@@ -219,11 +223,12 @@ function ImageUpload({ setFileUploadError , setFilesToUpload  }) {
                 ".png"
             ]
         },
-        maxFiles: 2,
-        maxSize: 512000,
+        maxFiles: 3,
+        maxSize: 2097152,
         onDropRejected: (e)=>{
             let error = e[0]?.errors[0].code;
             setFileUploadError(error);
+            setUploading(-1);
         },
         onDrop: (acceptedFiles)=>{
             setFiles(acceptedFiles.map((file)=>Object.assign(file, {
@@ -232,23 +237,49 @@ function ImageUpload({ setFileUploadError , setFilesToUpload  }) {
             let immediateFile = acceptedFiles.map((file)=>Object.assign(file, {
                     preview: URL.createObjectURL(file)
                 }));
-            convertImageToBase64(immediateFile);
+            handleUploadToImageKit(immediateFile);
         }
     });
-    function convertImageToBase64(files) {
-        // const files = event.target.files; // get uploaded files
-        let upload_image = [];
+    const handleUploadToImageKit = async (files)=>{
+        // // const files = event.target.files; // get uploaded files
+        // let upload_image = [];
+        // for (let i = 0; i < files.length; i++) {
+        //   const reader = new FileReader(); // create new file reader
+        //   reader.onload = () => {
+        //     const base64 = reader?.result?.split(",")[1]; // extract base64 data
+        //     upload_image[i] = base64;
+        //     setFilesToUpload(upload_image);
+        //   };
+        //   reader.readAsDataURL(files[i]); // read file as data URL
+        // }
+        setUploading(1);
+        const imagekit = new (imagekit__WEBPACK_IMPORTED_MODULE_3___default())({
+            publicKey: "public_G1mBGH4ynRy46gzsggJdCguDRZA=",
+            privateKey: "private_Df2/XKDIEaIDztFzQ+tAJVmKAOI=",
+            urlEndpoint: "https://ik.imagekit.io/padeusnha"
+        });
+        const uploadPromises = [];
         for(let i = 0; i < files.length; i++){
-            const reader = new FileReader(); // create new file reader
-            console.log("hello");
-            reader.onload = ()=>{
-                const base64 = reader?.result?.split(",")[1]; // extract base64 data
-                upload_image[i] = base64;
-                setFilesToUpload(upload_image);
-            };
-            reader.readAsDataURL(files[i]); // read file as data URL
+            const file = files[i];
+            const uploadPromise = imagekit.upload({
+                file,
+                fileName: file.name
+            });
+            uploadPromises.push(uploadPromise);
         }
-    }
+        try {
+            const responses = await Promise.all(uploadPromises);
+            const uploadedImageUrls = responses.map((response)=>response.url);
+            if (uploadedImageUrls.length == 0 || !uploadedImageUrls) {
+                setUploading(-1);
+            } else {
+                setImageUrl(uploadedImageUrls);
+                setUploading(2);
+            }
+        } catch (error) {
+            console.error("Error uploading images:", error);
+        }
+    };
     const thumbs = files.map((file)=>{
         return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
             style: thumb,
@@ -301,10 +332,10 @@ function ImageUpload({ setFileUploadError , setFilesToUpload  }) {
                         ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                        children: "Note: maximum of two files "
+                        children: "Note: maximum of three images "
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                        children: "Note: image should not be more than 500kb "
+                        children: "Note: image should not be more than 2mb "
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
@@ -316,7 +347,36 @@ function ImageUpload({ setFileUploadError , setFilesToUpload  }) {
             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("aside", {
                 style: thumbsContainer,
                 children: thumbs
-            })
+            }),
+            uploading == -1 ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("em", {
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                        width: "30",
+                        height: "30",
+                        src: "https://img.icons8.com/sf-black-filled/64/FA5252/error.png",
+                        alt: "checked--v1"
+                    }),
+                    " ",
+                    "error; try again"
+                ]
+            }) : uploading == 1 ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                className: "loading-container",
+                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                    className: "loader"
+                })
+            }) : uploading == 2 ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("em", {
+                children: [
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                        width: "20",
+                        height: "20",
+                        src: "https://img.icons8.com/ios-filled/50/90EE90/checked--v1.png",
+                        alt: "checked--v1"
+                    }),
+                    " ",
+                    "uploaded ",
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {})
+                ]
+            }) : null
         ]
     });
 }

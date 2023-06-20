@@ -74,7 +74,8 @@ function TrackItemScreen({ data  }) {
                                 children: [
                                     typeof data?.files === "string" ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
                                         className: "d-block",
-                                        src: `data:image/png;base64,${JSON.parse(data?.files)[0]}`,
+                                        // src={`data:image/png;base64,${JSON.parse(data?.files)[0]}`}
+                                        src: JSON.parse(data?.files)[0],
                                         alt: "Kupon"
                                     }) : null,
                                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {

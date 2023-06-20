@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
+import ImageKit from "imagekit";
 
 const thumbsContainer = {
   display: "flex",
@@ -60,18 +61,21 @@ const rejectStyle = {
   borderColor: "#ff1744",
 };
 
-function ImageUpload({ setFileUploadError, setFilesToUpload }) {
+function ImageUpload({ setFileUploadError, setImageUrl }) {
+  const [uploading, setUploading] = useState(0);
+
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({
       accept: {
         "image/*": [".jpeg", ".png"],
       },
-      maxFiles: 2,
-      maxSize: 512000,
+      maxFiles: 3,
+      maxSize: 2097152,
       onDropRejected: (e) => {
         let error = e[0]?.errors[0].code;
         setFileUploadError(error);
+        setUploading(-1);
       },
 
       onDrop: (acceptedFiles) => {
@@ -88,26 +92,59 @@ function ImageUpload({ setFileUploadError, setFilesToUpload }) {
             preview: URL.createObjectURL(file),
           })
         );
-        convertImageToBase64(immediateFile);
+        handleUploadToImageKit(immediateFile);
       },
     });
 
-  function convertImageToBase64(files) {
-    // const files = event.target.files; // get uploaded files
+  const handleUploadToImageKit = async (files) => {
+    // // const files = event.target.files; // get uploaded files
 
-    let upload_image = [];
+    // let upload_image = [];
+    // for (let i = 0; i < files.length; i++) {
+    //   const reader = new FileReader(); // create new file reader
+
+    //   reader.onload = () => {
+    //     const base64 = reader?.result?.split(",")[1]; // extract base64 data
+    //     upload_image[i] = base64;
+    //     setFilesToUpload(upload_image);
+    //   };
+
+    //   reader.readAsDataURL(files[i]); // read file as data URL
+    // }
+
+    setUploading(1);
+    const imagekit = new ImageKit({
+      publicKey: "public_G1mBGH4ynRy46gzsggJdCguDRZA=",
+      privateKey: "private_Df2/XKDIEaIDztFzQ+tAJVmKAOI=",
+      urlEndpoint: "https://ik.imagekit.io/padeusnha",
+    });
+
+    const uploadPromises = [];
+
     for (let i = 0; i < files.length; i++) {
-      const reader = new FileReader(); // create new file reader
+      const file = files[i];
 
-      reader.onload = () => {
-        const base64 = reader?.result?.split(",")[1]; // extract base64 data
-        upload_image[i] = base64;
-        setFilesToUpload(upload_image);
-      };
+      const uploadPromise = imagekit.upload({
+        file,
+        fileName: file.name,
+      });
 
-      reader.readAsDataURL(files[i]); // read file as data URL
+      uploadPromises.push(uploadPromise);
     }
-  }
+
+    try {
+      const responses = await Promise.all(uploadPromises);
+      const uploadedImageUrls = responses.map((response) => response.url);
+      if (uploadedImageUrls.length == 0 || !uploadedImageUrls) {
+        setUploading(-1);
+      } else {
+        setImageUrl(uploadedImageUrls);
+        setUploading(2);
+      }
+    } catch (error) {
+      console.error("Error uploading images:", error);
+    }
+  };
 
   const thumbs = files.map((file) => {
     return (
@@ -148,12 +185,38 @@ function ImageUpload({ setFileUploadError, setFilesToUpload }) {
           Drag 'n' drop some package image here,
           <br /> or click to select files
         </p>
-        <span>Note: maximum of two files </span>
-        <span>Note: image should not be more than 500kb </span>
+        <span>Note: maximum of three images </span>
+        <span>Note: image should not be more than 2mb </span>
         <br />
         <p className="btn">Select</p>
       </div>
+
       <aside style={thumbsContainer}>{thumbs}</aside>
+      {uploading == -1 ? (
+        <em>
+          <img
+            width="30"
+            height="30"
+            src="https://img.icons8.com/sf-black-filled/64/FA5252/error.png"
+            alt="checked--v1"
+          />{" "}
+          error; try again
+        </em>
+      ) : uploading == 1 ? (
+        <div className="loading-container">
+          <div className="loader"></div>
+        </div>
+      ) : uploading == 2 ? (
+        <em>
+          <img
+            width="20"
+            height="20"
+            src="https://img.icons8.com/ios-filled/50/90EE90/checked--v1.png"
+            alt="checked--v1"
+          />{" "}
+          uploaded <br />
+        </em>
+      ) : null}
     </section>
   );
 }

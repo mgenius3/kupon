@@ -57,7 +57,8 @@ export default function TrackItemScreen({ data }) {
               {typeof data?.files === "string" ? (
                 <img
                   className="d-block"
-                  src={`data:image/png;base64,${JSON.parse(data?.files)[0]}`}
+                  // src={`data:image/png;base64,${JSON.parse(data?.files)[0]}`}
+                  src={JSON.parse(data?.files)[0]}
                   alt="Kupon"
                 />
               ) : null}

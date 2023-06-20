@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import UserLayout from '../../../../components/admin/Layout';
-import { Modal, Button } from 'react-bootstrap';
-import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router';
-import ConfirmationInput from '../../../../components/Confirmation';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { Carousel } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
+import UserLayout from "../../../../components/admin/Layout";
+import { Modal, Button } from "react-bootstrap";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import ConfirmationInput from "../../../../components/Confirmation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Carousel } from "react-bootstrap";
 const UserLogistics = () => {
   const router = useRouter();
 
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
 
@@ -29,10 +29,10 @@ const UserLogistics = () => {
     const fetchLogistics = async () => {
       try {
         console.log(data);
-        const response = await fetch('/admin/market', {
-          method: 'GET',
+        const response = await fetch("/admin/market", {
+          method: "GET",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         });
@@ -61,9 +61,9 @@ const UserLogistics = () => {
     // setIsLoadingDeleteStatus(true);
     try {
       const response = await fetch(`/admin/market/delete/${modalData?.id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
@@ -102,26 +102,26 @@ const UserLogistics = () => {
               <tr
                 key={item?.id}
                 onClick={() => handleModalOpen(item)}
-                style={{ cursor: 'pointer' }}
+                style={{ cursor: "pointer" }}
               >
                 <td>{item?.id}</td>
                 <td>{item?.title}</td>
                 <td>{item?.conditions}</td>
                 <td>{item?.price}</td>
                 <td>
-                  <b style={{ color: `${item?.paid ? 'green' : 'red'}` }}>
-                    {' '}
-                    {item?.paid ? 'true' : 'false'}{' '}
+                  <b style={{ color: `${item?.paid ? "green" : "red"}` }}>
+                    {" "}
+                    {item?.paid ? "true" : "false"}{" "}
                   </b>
                 </td>
                 <td
                   style={{
                     color:
-                      item?.status == 'pending'
-                        ? 'red'
-                        : item?.status == 'in transit'
-                        ? '#f1c40f'
-                        : 'green',
+                      item?.status == "pending"
+                        ? "red"
+                        : item?.status == "in transit"
+                        ? "#f1c40f"
+                        : "green",
                   }}
                 >
                   {item?.status}
@@ -132,15 +132,15 @@ const UserLogistics = () => {
         </table>
       </div>
 
-      <div style={{ overflow: 'auto' }}>
+      <div style={{ overflow: "auto" }}>
         <Modal show={showModal} onHide={handleModalClose}>
           <Modal.Header closeButton>
             <Modal.Title
               style={{
-                fontSize: '1.3rem',
-                fontWeight: 'bold',
-                lineHeight: '1.5',
-                color: '#3c171773',
+                fontSize: "1.3rem",
+                fontWeight: "bold",
+                lineHeight: "1.5",
+                color: "#3c171773",
               }}
             >
               Market Details
@@ -149,43 +149,44 @@ const UserLogistics = () => {
 
             <button
               style={{
-                backgroundColor: modalData?.paid ? 'green' : 'red',
-                color: 'white',
-                padding: '2px 3px',
-                borderRadius: '5px',
-                cursor: 'pointer',
+                backgroundColor: modalData?.paid ? "green" : "red",
+                color: "white",
+                padding: "2px 3px",
+                borderRadius: "5px",
+                cursor: "pointer",
               }}
-              disabled={modalData?.status == 'delivered' ? true : false}
+              disabled={modalData?.status == "delivered" ? true : false}
             >
-              {modalData?.paid ? 'paid' : 'not paid'}
+              {modalData?.paid ? "paid" : "not paid"}
             </button>
           </Modal.Header>
           <Modal.Body>
             <Carousel className="w-screen">
-              {typeof modalData?.files == 'string'
+              {typeof modalData?.files == "string"
                 ? JSON.parse(modalData?.files).map((image, index) => (
                     <Carousel.Item key={index}>
                       <img
                         className="d-block w-100"
-                        src={`data:image/png;base64,${image}`}
+                        // src={`data:image/png;base64,${image}`}
+                        src={image}
                         alt={`Product ${modalData.title}`}
-                        style={{ height: 'auto' }}
+                        style={{ height: "auto" }}
                       />
                     </Carousel.Item>
                   ))
                 : null}
-            </Carousel>{' '}
+            </Carousel>{" "}
             <br />
             <table className="table">
               <thead
                 style={{
-                  fontSize: '1.3rem',
-                  fontWeight: 'bold',
-                  lineHeight: '1.5',
+                  fontSize: "1.3rem",
+                  fontWeight: "bold",
+                  lineHeight: "1.5",
                 }}
               >
                 Product&nbsp;Details
-              </thead>{' '}
+              </thead>{" "}
               <br />
               <tbody>
                 <tr>
@@ -245,7 +246,7 @@ const UserLogistics = () => {
                 setHideConfirmationModal(true);
                 setDeleteConfirmation(true);
               }}
-              style={{ background: 'red', color: 'white' }}
+              style={{ background: "red", color: "white" }}
             >
               Delete
             </Button>

@@ -11,7 +11,7 @@ import LoadingOverlay from "../../components/loadingOverlay";
 
 export default function Logistics() {
   const [data, setData] = useState({});
-  const [filesToUpload, setFilesToUpload] = useState([]);
+  const [imageUrl, setImageUrl] = useState([]);
   const [fileUploadError, setFileUploadError] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,16 +23,12 @@ export default function Logistics() {
 
   useEffect(() => {
     toast.error(fileUploadError);
-    setData({ ...data, ["files"]: JSON.stringify(filesToUpload) });
-  }, [filesToUpload]);
+    setData({ ...data, ["files"]: JSON.stringify(imageUrl) });
+  }, [imageUrl]);
 
-  const {
-    handleSubmit,
-    // formState: { errors },
-  } = useForm();
+  const { handleSubmit } = useForm();
 
   const handleInputChange = (e) => {
-    console.log(data);
     setData({ ...data, [e.target.name]: e.target.value });
   };
 
@@ -103,8 +99,10 @@ export default function Logistics() {
                       <h2 className="login-title mb-3">Package Details</h2>
                       <ImageUpload
                         setFileUploadError={setFileUploadError}
-                        setFilesToUpload={setFilesToUpload}
+                        setImageUrl={setImageUrl}
                       />
+                      <hr />
+                      <br />
 
                       <div className="row">
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">

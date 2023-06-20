@@ -102,207 +102,11 @@ export default function Shop() {
           />
         </span>
       </div>
-      {/* <div className="slideshow slideshow-wrapper pb-section sliderFull">
-        <Carousel>
-          <Carousel.Item interval={10000}>
-            <img
-              className="blur-up lazyload bg-img land-image-slider"
-              dataSrc="/images/slideshow-banners/cartss.jpg"
-              src="/images/slideshow-banners/carts.jpg"
-              alt="Kupon"
-              title="Kupon"
-              style={{
-                width: "100%",
-                height: "30vh!important",
-                objectFit: "cover",
-              }}
-            />
-            <Carousel.Caption>
-              <h2 className="h1 mega-title slideshow__title">
-                <b style={{ color: "#e60000" }}>
-                  {" "}
-                  <img
-                    src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/64/null/external-find-technology-in-daily-life-parzival-1997-flat-parzival-1997.png"
-                    width={30}
-                  />
-                  Find
-                </b>{" "}
-                In kupon
-              </h2>
-              <input
-                type="text"
-                className="form-control search_input"
-                onChange={(e) => searchData("name", e.target.value)}
-              />
-              <div className="market_search-input">
-                <em
-                  style={{
-                    color: "white",
-                    backgroundColor: "black",
-                    borderRadius: "50%",
-                    padding: "3px",
-                  }}
-                  className="market_icon-left"
-                >
-                  {getInitials(user?.firstName, user?.lastName)}
-                </em>
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="market_input-field"
-                />
-                <span className="market_icon-right">
-                  <i className="fas fa-search"></i>
-                </span>
-              </div>
-            </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item interval={10000}>
-            <img
-              className="blur-up lazyload bg-img land-image-slider"
-              dataSrc="/images/slideshow-banners/cart.jpg"
-              src="/images/slideshow-banners/cart.jpg"
-              alt="Kupon"
-              title="Kupon"
-              style={{
-                width: "100%",
-                height: "30vh!important",
-                objectFit: "cover",
-              }}
-            />
-            <Carousel.Caption>
-              <h2 className="h1 mega-title slideshow__title">
-                <b style={{ color: "#e60000" }}>
-                  {" "}
-                  <img
-                    src="https://img.icons8.com/external-parzival-1997-flat-parzival-1997/64/null/external-find-technology-in-daily-life-parzival-1997-flat-parzival-1997.png"
-                    width={30}
-                  />
-                  Find
-                </b>{" "}
-                In kupon
-              </h2>
-              <input
-                type="text"
-                className="form-control search_input"
-                onChange={(e) => searchData("name", e.target.value)}
-              />
-              <div className="market_search-input">
-                <img
-                  src="/path/to/image-icon.png"
-                  alt="Image Icon"
-                  className="market_icon-left"
-                />
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="market_input-field"
-                />
-                <span className="market_icon-right">
-                  <i className="fas fa-search"></i>
-                </span>
-              </div>
-            </Carousel.Caption>
-          </Carousel.Item>
-        </Carousel>
-      </div> */}
-      {/* <Link href="/market/sell">
-        <div
-          className="container"
-          style={{
-            padding: "20px",
-            fontSize: "50px",
-            backgroundColor: "#f54337",
-            color: "white",
-            textAlign: "center",
-            cursor: "pointer",
-            position: "relative",
-            top: "-15px",
-          }}
-        >
-          POST SELL{" "}
-          <img
-            src="https://img.icons8.com/ios/50/FFFFFF/shopping-cart--v1.png"
-            className="mx-2"
-          />
-        </div>
-      </Link> */}
-
-      {/* <div id="page-content" style={{ marginTop: "80px" }}>
-        <div classNameName="page section-header text-center">
-          <div className="page-title">
-            <div className="wrapper">
-              <h1 className="page-width text-center"> Shop List</h1>
-            </div>
-            <br />
-          </div>
-        </div>
-      </div> */}
 
       {data ? (
         <div className="grid-products row">
           <div className=" col-lg-6 container">
             <br />
-            {/* <div className="row ">
-              <div className="col-6">
-                <label htmlFor="state">
-                  Name <span></span>
-                </label>
-                <input
-                  type="text"
-                  className="form-control search_input"
-                  onChange={(e) => searchData("name", e.target.value)}
-                />
-              </div>
-              <div className="form-group col-6 required">
-                <label htmlFor="state">
-                  Condition <span></span>
-                </label>
-                <select
-                  onChange={(e) => searchData("condition", e.target.value)}
-                >
-                  <option disabled selected>
-                    {" "}
-                    --- Please Select ---{" "}
-                  </option>
-                  {Condition?.map((a, i) => (
-                    <option value={a} key={i}>
-                      {a}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group col-6 required">
-                <label htmlFor="state">
-                  Category <span></span>
-                </label>
-                <select
-                  onChange={(e) => searchData("category", e.target.value)}
-                >
-                  <option disabled selected>
-                    {" "}
-                    --- Please Select ---{" "}
-                  </option>
-                  {sellCategory?.map((a, i) => (
-                    <option value={a} key={i}>
-                      {a}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="form-group col-6 required">
-                <label htmlFor="state">
-                  Price <span></span>
-                </label>
-                <select onChange={(e) => searchData("price", e.target.value)}>
-                  <option disabled selected>
-                    {" "}
-                    --- Please Select ---{" "}
-                  </option>
-                </select>
-              </div>
-            </div> */}
-
             <br />
           </div>
           <div className=" col-lg-6 row container">
@@ -327,12 +131,14 @@ export default function Shop() {
                       >
                         <img
                           className="grid-view-item__image primary blur-up lazyload"
-                          dataSrc={`data:image/png;base64,${
-                            JSON.parse(product?.files)[0]
-                          }`}
-                          src={`data:image/png;base64,${
-                            JSON.parse(product?.files)[0]
-                          }`}
+                          // dataSrc={`data:image/png;base64,${
+                          //   JSON.parse(product?.files)[0]
+                          // }`}
+                          // src={`data:image/png;base64,${
+                          //   JSON.parse(product?.files)[0]
+                          // }`}
+                          dataSrc={JSON.parse(product?.files)[0]}
+                          src={JSON.parse(product?.files)[0]}
                           alt="image"
                           title="product"
                           style={{ height: "250px" }}
@@ -341,16 +147,26 @@ export default function Shop() {
                         {/*<!-- Hover image -->*/}
                         <img
                           className="grid-view-item__image hover blur-up lazyload"
-                          dataSrc={`data:image/png;base64,${
+                          // dataSrc={`data:image/png;base64,${
+                          //   JSON.parse(product.files)[1]
+                          //     ? JSON.parse(product.files)[1]
+                          //     : JSON.parse(product.files)[0]
+                          // }`}
+                          // src={`data:image/png;base64,${
+                          //   JSON.parse(product.files)[1]
+                          //     ? JSON.parse(product.files)[1]
+                          //     : JSON.parse(product.files)[0]
+                          // }`}
+                          dataSrc={
                             JSON.parse(product.files)[1]
                               ? JSON.parse(product.files)[1]
                               : JSON.parse(product.files)[0]
-                          }`}
-                          src={`data:image/png;base64,${
+                          }
+                          src={
                             JSON.parse(product.files)[1]
                               ? JSON.parse(product.files)[1]
                               : JSON.parse(product.files)[0]
-                          }`}
+                          }
                           alt="image"
                           title="product"
                           style={{ height: "250px" }}

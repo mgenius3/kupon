@@ -460,7 +460,7 @@ function MainHeader() {
                                     children: "Home"
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx(external_react_bootstrap_.Nav.Link, {
-                                    href: "/market/about",
+                                    href: "/about",
                                     className: "text-uppercase mx-3",
                                     children: "About Us"
                                 }),

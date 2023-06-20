@@ -188,9 +188,10 @@ export default function Home() {
                                   dataSrc={`data:image/png;base64,${
                                     JSON.parse(product?.files)[0]
                                   }`}
-                                  src={`data:image/png;base64,${
-                                    JSON.parse(product?.files)[0]
-                                  }`}
+                                  // src={`data:image/png;base64,${
+                                  //   JSON.parse(product?.files)[0]
+                                  // }`}
+                                  src={JSON.parse(product?.files)[0]}
                                   alt="image"
                                   title="product"
                                   style={{ height: "250px" }}
@@ -199,16 +200,26 @@ export default function Home() {
                                 {/*<!-- Hover image -->*/}
                                 <img
                                   className="grid-view-item__image hover blur-up lazyload"
-                                  dataSrc={`data:image/png;base64,${
+                                  // dataSrc={`data:image/png;base64,${
+                                  //   JSON.parse(product.files)[1]
+                                  //     ? JSON.parse(product.files)[1]
+                                  //     : JSON.parse(product.files)[0]
+                                  // }`}
+                                  // src={`data:image/png;base64,${
+                                  //   JSON.parse(product.files)[1]
+                                  //     ? JSON.parse(product.files)[1]
+                                  //     : JSON.parse(product.files)[0]
+                                  // }`}
+                                  dataSrc={
                                     JSON.parse(product.files)[1]
                                       ? JSON.parse(product.files)[1]
                                       : JSON.parse(product.files)[0]
-                                  }`}
-                                  src={`data:image/png;base64,${
+                                  }
+                                  src={
                                     JSON.parse(product.files)[1]
                                       ? JSON.parse(product.files)[1]
                                       : JSON.parse(product.files)[0]
-                                  }`}
+                                  }
                                   alt="image"
                                   title="product"
                                   style={{ height: "250px" }}

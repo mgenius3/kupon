@@ -103,9 +103,10 @@ export default function Cart() {
                   {typeof data.files === "string" ? (
                     <img
                       className="d-block"
-                      src={`data:image/png;base64,${
-                        JSON.parse(data?.files)[imagetoshow]
-                      }`}
+                      // src={`data:image/png;base64,${
+                      //   JSON.parse(data?.files)[imagetoshow]
+                      // }`}
+                      src={JSON.parse(data?.files)[imagetoshow]}
                       alt="Image One"
                       style={{ width: "100%" }}
                     />
@@ -116,7 +117,8 @@ export default function Cart() {
                     ? JSON.parse(data?.files).map((file, i) => (
                         <img
                           className="d-block"
-                          src={`data:image/png;base64,${file}`}
+                          // src={`data:image/png;base64,${file}`}
+                          src={file}
                           alt="Image One"
                           style={{ width: "100%" }}
                           onClick={() => setImagetoshow(i)}
