@@ -142,7 +142,7 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
         setUploading(2);
       }
     } catch (error) {
-      console.error("Error uploading images:", error);
+      setUploading(-1);
     }
   };
 
@@ -203,9 +203,15 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
           error; try again
         </em>
       ) : uploading == 1 ? (
-        <div className="loading-container">
-          <div className="loader"></div>
-        </div>
+        <>
+          {" "}
+          <span className="d-flex">
+            <div className="loading-container mr-3">
+              <div className="loader"></div>
+            </div>
+            <b>uploading image, please wait</b>
+          </span>
+        </>
       ) : uploading == 2 ? (
         <em>
           <img

@@ -17,7 +17,7 @@ export default function Home() {
     setIsLoading(true);
     try {
       console.log(data);
-      const response = await fetch("/user/contact_message", {
+      const response = await fetch("/reach/message", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function Home() {
           </div>
           <div className="bredcrumbWrap">
             <div className="container breadcrumbs">
-              <Link href="/" title="Back to the home page">
+              <Link href="/home" title="Back to the home page">
                 Home
               </Link>
               <span aria-hidden="true">›</span>
@@ -111,18 +111,6 @@ export default function Home() {
                           />
                         </div>
                       </div>
-                      {/* <div className="col-12 col-sm-12 col-md-6 col-lg-6">
-                        <div className="form-group">
-                          <input
-                            required=""
-                            type="text"
-                            id="ContactSubject"
-                            name="subject"
-                            placeholder="Subject"
-                            value=""
-                          />
-                        </div>
-                      </div> */}
                     </div>
                     <div className="row">
                       <div className="col-12 col-sm-12 col-md-12 col-lg-12">

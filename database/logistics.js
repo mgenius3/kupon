@@ -89,7 +89,6 @@ const sendPackageDetails = async (data) => {
     ]);
     return new_logistics_user[0].insertId;
   } catch (err) {
-    console.error(err);
     throw err.message;
   }
 };
@@ -175,7 +174,6 @@ const countPackage = async () => {
 };
 
 const trackPackage = async (packageCode) => {
-  console.log(packageCode);
   try {
     let connection = await pool.getConnection();
     (await connection).beginTransaction();
@@ -188,7 +186,6 @@ const trackPackage = async (packageCode) => {
     if (get_user_package[0].length == 0) throw new Error("no package found");
     return get_user_package[0];
   } catch (err) {
-    console.log(err);
     throw err.message;
   }
 };

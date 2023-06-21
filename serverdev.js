@@ -29,10 +29,10 @@ app.prepare().then(() => {
   server.use(express.json({ limit: "10mb" }));
   server.use("/logistic", require("./routes/logistics"));
 
-  //Create Table for Sell
   server.use("/sell", require("./routes/sell"));
   server.use("/user", require("./routes/auth"));
   server.use("/admin", require("./routes/admin"));
+  server.use("/reach", require("./routes/contact"));
 
   //Create Table for Logistics
 
@@ -57,7 +57,6 @@ app.prepare().then(() => {
 
   // Error handler middleware
   server.use(function (err, req, res) {
-    console.error(err.stack);
     res.status(500);
 
     // render a custom error page

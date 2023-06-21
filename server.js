@@ -38,6 +38,7 @@ server.use("/logistic", require("./routes/logistics"));
 server.use("/sell", require("./routes/sell"));
 server.use("/user", require("./routes/auth"));
 server.use("/admin", require("./routes/admin"));
+server.use("/reach", require("./routes/contact"));
 
 //Create Table for Logistics
 

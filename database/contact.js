@@ -37,7 +37,6 @@ const newContactMessage = async (data) => {
     ]);
     return new_contact_user[0].insertId;
   } catch (err) {
-    console.error(err);
     throw err.message;
   }
 };

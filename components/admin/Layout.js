@@ -101,7 +101,9 @@ function UserLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="shortcut icon" href="/images/kupon icon.png" />
       </Head>
+
       <ToastContainer position="bottom-center" />
+
       <PageAuthentication>
         <main id="account">
           <aside ref={asideRef}>
@@ -141,6 +143,8 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
+              <hr />
+
               <Link href="profile">
                 <span style={{ cursor: "pointer" }}>
                   <img
@@ -150,6 +154,8 @@ function UserLayout({ children }) {
                   <b>My Profile</b>
                 </span>
               </Link>
+
+              <hr />
 
               <Link href="user">
                 <span style={{ cursor: "pointer" }}>
@@ -161,6 +167,8 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
+              <hr />
+
               <Link href="logistics">
                 <span style={{ cursor: "pointer" }}>
                   <img
@@ -170,6 +178,8 @@ function UserLayout({ children }) {
                   <b>Logistics({noOfLogisticsisPending})</b>
                 </span>
               </Link>
+
+              <hr />
 
               <Link href="market">
                 <span style={{ cursor: "pointer" }}>
@@ -181,6 +191,8 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
+              <hr />
+
               <Link href="messages">
                 <span style={{ cursor: "pointer" }}>
                   <img
@@ -191,6 +203,8 @@ function UserLayout({ children }) {
                   <b>Messages({noOfContactMessages})</b>
                 </span>
               </Link>
+
+              <hr />
 
               <span style={{ cursor: "pointer" }} onClick={() => userlogout()}>
                 <img

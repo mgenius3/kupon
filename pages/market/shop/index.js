@@ -14,18 +14,28 @@ export default function Shop() {
       return localStorage.getItem("token");
     }
   });
-  const [user, setUser] = useState({});
-  const [allData, setAllData] = useState([]);
+
   const dispatch = useDispatch();
-  let { data, isLoading } = useSelector((state) => state);
+  const { data, isLoading } = useSelector((state) => state);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(6);
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // let currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const [user, setUser] = useState({});
+  // const [allData, setAllData] = useState([]);
+
+  const [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
     dispatch(fetchData());
   }, [dispatch]);
 
-  useEffect(() => {
-    setAllData(data);
-  }, [data]);
+  // useEffect(() => {
+  //   setAllData(data);
+  // }, [currentPage]);
 
   useEffect(() => {
     try {
@@ -36,44 +46,51 @@ export default function Shop() {
     }
   }, []);
 
+  useEffect(() => {
+    const updatedCurrentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+    setCurrentItems(updatedCurrentItems);
+  }, [data, currentPage, itemsPerPage, indexOfFirstItem, indexOfLastItem]);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   function searchData(name, e) {
     if (name == "name") {
-      if (e == "" || e == "Other") setAllData(data);
+      if (e == "" || e == "Other")
+        setCurrentItems(() => data?.slice(indexOfFirstItem, indexOfLastItem));
       else {
-        setAllData(() =>
+        setCurrentItems(
           data.filter((product) =>
             product.title.toLowerCase().includes(e.toLowerCase())
           )
         );
       }
-    } else if (name == "condition") {
-      if (e == "" || e == "Other") setAllData(data);
-      else {
-        setAllData(() =>
-          data.filter((product) =>
-            product.conditions.toLowerCase().includes(e.toLowerCase())
-          )
-        );
-      }
-    } else if (name == "category") {
-      if (e == "" || e == "Other") setAllData(data);
-      else {
-        setAllData(() =>
-          data.filter((product) =>
-            product.category.toLowerCase().includes(e.toLowerCase())
-          )
-        );
-      }
     }
+    //  else if (name == "condition") {
+    //   if (e == "" || e == "Other") setAllData(data);
+    //   else {
+    //     setAllData(() =>
+    //       data.filter((product) =>
+    //         product.conditions.toLowerCase().includes(e.toLowerCase())
+    //       )
+    //     );
+    //   }
+    // } else if (name == "category") {
+    //   if (e == "" || e == "Other") setAllData(data);
+    //   else {
+    //     setAllData(() =>
+    //       data.filter((product) =>
+    //         product.category.toLowerCase().includes(e.toLowerCase())
+    //       )
+    //     );
+    //   }
+    // }
   }
+
   return (
     <Layout title="Shop - Market">
       <div className="market_search-input">
-        {/* <img
-                  src="/path/to/image-icon.png"
-                  alt="Image Icon"
-                  className="market_icon-left"
-                /> */}
         <em
           style={{
             color: "white",
@@ -117,7 +134,7 @@ export default function Shop() {
                 </Spinner>
               </div>
             ) : (
-              allData?.map((product, i) => (
+              currentItems?.map((product, i) => (
                 <Link href={`/market/shop/${product?.id}`} key={i}>
                   <div className="col-12 col-sm-6 col-md-4 col-lg-6 item grid-view-item style2">
                     <div className="grid-view_image">
@@ -189,14 +206,35 @@ export default function Shop() {
                       {/*<!--start product details -->*/}
                       <div className="product-details text-center mobile">
                         {/*<!-- product name -->*/}
-                        <div className="product-name">
+                        <div
+                          className="product-name"
+                          style={{
+                            fontFamily: "Roboto",
+                            fontStyle: "normal",
+                            fontWeight: "500",
+                            fontSize: "28px",
+                            lineHeight: "38px",
+                            color: " #7e7570",
+                          }}
+                        >
                           <span>{product?.title}</span>
                         </div>
                         {/*<!-- End product name -->*/}
                         {/*<!-- product price -->*/}
                         <div className="product-price">
-                          {/* <span className="old-price">$500.00</span> */}
-                          <span className="price">&#8358;{product?.price}</span>
+                          <span
+                            className="price"
+                            style={{
+                              fontFamily: "Roboto",
+                              fontStyle: "normal",
+                              fontWeight: "500",
+                              fontSize: "23px",
+                              lineHeight: "38px",
+                              color: "black",
+                            }}
+                          >
+                            &#8358;{product?.price}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -204,6 +242,45 @@ export default function Shop() {
                 </Link>
               ))
             )}
+          </div>
+          <div className="col-12 text-center">
+            <ul className="pagination justify-content-center">
+              <li
+                className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+              >
+                <button
+                  className="page-link"
+                  onClick={() => paginate(currentPage - 1)}
+                  styl
+                >
+                  Previous
+                </button>
+              </li>
+              {Array.from({ length: totalPages }, (_, i) => (
+                <li
+                  key={i + 1}
+                  className={`page-item ${
+                    currentPage === i + 1 ? "active" : ""
+                  }`}
+                >
+                  <button className="page-link" onClick={() => paginate(i + 1)}>
+                    {i + 1}
+                  </button>
+                </li>
+              ))}
+              <li
+                className={`page-item ${
+                  currentPage === totalPages ? "disabled" : ""
+                }`}
+              >
+                <button
+                  className="page-link"
+                  onClick={() => paginate(currentPage + 1)}
+                >
+                  Next
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
       ) : (

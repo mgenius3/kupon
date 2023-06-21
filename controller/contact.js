@@ -6,7 +6,7 @@ const {
 const newContactMessageSent = async (req, res) => {
   try {
     await newContactMessage(req.body);
-    res.status(200).json({ msg: "Thank you for reaching out" });
+    res.status(200).json({ msg: "Thank you for reaching out." });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

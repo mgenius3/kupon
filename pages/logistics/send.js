@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "../../components/Layout";
 import { useForm } from "react-hook-form";
-// import { useMutation } from 'react-query';
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ImageUpload from "../../utils/fileupload";

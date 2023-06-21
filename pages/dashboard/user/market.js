@@ -103,9 +103,10 @@ const UserMarket = () => {
                           <Carousel.Item key={index}>
                             <img
                               className="d-block w-100"
-                              src={`data:image/png;base64,${image}`}
+                              // src={`data:image/png;base64,${image}`}
+                              src={image}
                               alt={`Product ${product.title}`}
-                              style={{ height: "auto" }}
+                              style={{ height: "300px" }}
                             />
                           </Carousel.Item>
                         ))

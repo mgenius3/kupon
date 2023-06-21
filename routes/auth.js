@@ -10,7 +10,7 @@ const { newContactMessageSent } = require("../controller/contact");
 
 router.post("/register", RegisterNewUser);
 router.post("/login", LoginUser);
-router.get("/:id", getUserById);
 router.post("/contact_message", newContactMessageSent);
+router.get("/:id", getUserById);
 
 module.exports = router;

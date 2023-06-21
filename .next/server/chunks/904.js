@@ -277,7 +277,7 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                 setUploading(2);
             }
         } catch (error) {
-            console.error("Error uploading images:", error);
+            setUploading(-1);
         }
     };
     const thumbs = files.map((file)=>{
@@ -359,11 +359,24 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                     " ",
                     "error; try again"
                 ]
-            }) : uploading == 1 ? /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                className: "loading-container",
-                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-                    className: "loader"
-                })
+            }) : uploading == 1 ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                children: [
+                    " ",
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                        className: "d-flex",
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                className: "loading-container mr-3",
+                                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
+                                    className: "loader"
+                                })
+                            }),
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
+                                children: "uploading image, please wait"
+                            })
+                        ]
+                    })
+                ]
             }) : uploading == 2 ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("em", {
                 children: [
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {

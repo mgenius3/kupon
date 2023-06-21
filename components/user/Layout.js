@@ -81,6 +81,8 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
+              <hr />
+
               <Link href="profile">
                 <span style={{ cursor: "pointer" }}>
                   <img
@@ -91,6 +93,7 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
+              <hr />
               <Link href="logistics">
                 <span style={{ cursor: "pointer" }}>
                   <img
@@ -101,6 +104,8 @@ function UserLayout({ children }) {
                 </span>
               </Link>
 
+              <hr />
+
               <Link href="market">
                 <span style={{ cursor: "pointer" }}>
                   <img
@@ -110,16 +115,7 @@ function UserLayout({ children }) {
                   <b>Market</b>
                 </span>
               </Link>
-
-              {/* <Link href="notification">
-                <span style={{ cursor: 'pointer' }}>
-                  <img
-                    src="https://img.icons8.com/ios/50/FD7E14/push-notifications.png"
-                    className="icon"
-                  />
-                  <b>Notification</b>
-                </span>
-              </Link> */}
+              <hr />
 
               <span style={{ cursor: "pointer" }} onClick={() => userlogout()}>
                 <img
@@ -128,10 +124,7 @@ function UserLayout({ children }) {
                 />
                 <b>Logout</b>
               </span>
-              {/* <span>
-              <img src={collapse} className="icon" alt="lynue home" />
-              <b>Collapse</b>
-            </span> */}
+              <hr />
             </div>
           </aside>
 
@@ -149,16 +142,6 @@ function UserLayout({ children }) {
                 <h3>User - Settings</h3>
                 <p style={{ opacity: "0.7" }}>Manage your personal settings</p>
               </div>
-              {/* <nav>
-                <ul style={{ listStyle: 'none', margin: '10px' }}>
-                  <li style={{ margin: '10px' }}>
-                    <Link href="profile">Profile</Link>
-                  </li>
-                  <li style={{ margin: '10px' }}>
-                    <Link href="password">Password</Link>
-                  </li>
-                </ul>
-              </nav> */}
             </header>
 
             <article>{children}</article>

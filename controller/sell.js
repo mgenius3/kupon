@@ -1,4 +1,4 @@
-const { packageValidation } = require('../validation/sell');
+const { packageValidation } = require("../validation/sell");
 const {
   sendPackageDetails,
   getAllSell,
@@ -7,14 +7,14 @@ const {
   getAUserSell,
   updatePackagePayment,
   deletePackage,
-} = require('../database/sell');
+} = require("../database/sell");
 
 const {
   initializePaystackTransaction,
   verifyPaystackTransaction,
-} = require('../utils/payment');
+} = require("../utils/payment");
 
-const { convertBufferToBoolean } = require('../utils/booleanBuffer');
+const { convertBufferToBoolean } = require("../utils/booleanBuffer");
 
 const packageSent = async (req, res) => {
   req.body.sellerId = req.user.id; //pass in seller Id
@@ -24,7 +24,7 @@ const packageSent = async (req, res) => {
     //initialize payment
     let initialize_payment = await initializePaystackTransaction(
       req,
-      'market',
+      "market",
       20000
     );
     //set references on db
@@ -32,7 +32,6 @@ const packageSent = async (req, res) => {
     res.status(201).json({ msg: initialize_payment.data.authorization_url });
     // res.status(201).json({ msg: 'successful' });
   } catch (err) {
-    console.log(err);
     res.status(400).json({ msg: err.message });
   }
 };
@@ -44,7 +43,7 @@ const receiveUserPackage = async (req, res) => {
       let paid = convertBufferToBoolean(pack.paid);
       if (!paid) {
         let confirm_payment = await verifyPaystackTransaction(pack.referenceId);
-        if (confirm_payment.status && confirm_payment.data.status == 'success')
+        if (confirm_payment.status && confirm_payment.data.status == "success")
           await updatePackagePayment(true, pack.id);
       }
     });
@@ -91,7 +90,7 @@ const payment = async (req, res) => {
     //initialize payment
     let initialize_payment = await initializePaystackTransaction(
       req,
-      'market',
+      "market",
       20000
     );
     //set references on db
@@ -106,7 +105,7 @@ const deleteUserPackage = async (req, res) => {
   try {
     const { id } = req.params;
     await deletePackage(id);
-    res.status(200).json({ msg: 'deleted successfully' });
+    res.status(200).json({ msg: "deleted successfully" });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }
