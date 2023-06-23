@@ -11,7 +11,7 @@ function errorHandler(err, req, res, next) {
     },
   });
   // call the next middleware function
-  next();
+  // next();
 }
 
 // export the middleware function
