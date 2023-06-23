@@ -46,15 +46,15 @@ server.use("/reach", require("./routes/contact"));
 server.use(errorHandler);
 
 // Middleware to handle requests that don't match any route
-server.use(function (req, res) {
-  res.status(404);
+// server.use(function (req, res) {
+//   res.status(404);
 
-  // Render a custom error page
-  res.json({
-    title: "Page Not Found",
-    message: "The requested page does not exist",
-  });
-});
+//   // Render a custom error page
+//   res.json({
+//     title: "Page Not Found",
+//     message: "The requested page does not exist",
+//   });
+// });
 
 // Error handler middleware
 server.use(function (err, req, res) {
