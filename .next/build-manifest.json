@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/467DOp4kIEsaTfltP8Q4n/_buildManifest.js",
-    "static/467DOp4kIEsaTfltP8Q4n/_ssgManifest.js"
+    "static/MevwJIRF3dncfUDIl2CKi/_buildManifest.js",
+    "static/MevwJIRF3dncfUDIl2CKi/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -37,7 +37,7 @@
       "static/chunks/webpack-5b2e41c29753785b.js",
       "static/chunks/framework-4556c45dd113b893.js",
       "static/chunks/main-7feab3f544c289f7.js",
-      "static/css/74f6cf25f33dcea2.css",
+      "static/css/ab6ba71f059c39df.css",
       "static/chunks/pages/_app-23799a53a6c4f3f0.js"
     ],
     "/_error": [
@@ -94,7 +94,7 @@
       "static/css/ea863d0176eaee41.css",
       "static/chunks/231-2b2229a2d23cbfa0.js",
       "static/chunks/178-4dac9f5a358b6744.js",
-      "static/chunks/857-cec2957c7aade080.js",
+      "static/chunks/857-d1bc63e370a6b059.js",
       "static/chunks/pages/dashboard/admin/logistics-627499cea147a36d.js"
     ],
     "/dashboard/admin/market": [
@@ -108,7 +108,7 @@
       "static/css/ea863d0176eaee41.css",
       "static/chunks/231-2b2229a2d23cbfa0.js",
       "static/chunks/178-4dac9f5a358b6744.js",
-      "static/chunks/857-cec2957c7aade080.js",
+      "static/chunks/857-d1bc63e370a6b059.js",
       "static/chunks/pages/dashboard/admin/market-106d653b2130331f.js"
     ],
     "/dashboard/admin/messages": [
@@ -119,7 +119,7 @@
       "static/chunks/424-2d6925f9a159b95b.js",
       "static/css/ea863d0176eaee41.css",
       "static/chunks/231-2b2229a2d23cbfa0.js",
-      "static/chunks/857-cec2957c7aade080.js",
+      "static/chunks/857-d1bc63e370a6b059.js",
       "static/chunks/pages/dashboard/admin/messages-b10b5a0bb4d15014.js"
     ],
     "/dashboard/admin/profile": [
@@ -130,8 +130,8 @@
       "static/chunks/424-2d6925f9a159b95b.js",
       "static/css/ea863d0176eaee41.css",
       "static/chunks/231-2b2229a2d23cbfa0.js",
-      "static/chunks/857-cec2957c7aade080.js",
-      "static/chunks/pages/dashboard/admin/profile-307a6a958a6c9cfb.js"
+      "static/chunks/857-d1bc63e370a6b059.js",
+      "static/chunks/pages/dashboard/admin/profile-c5b9e773fc7e2e16.js"
     ],
     "/dashboard/admin/user": [
       "static/chunks/webpack-5b2e41c29753785b.js",
@@ -143,7 +143,7 @@
       "static/css/ea863d0176eaee41.css",
       "static/chunks/231-2b2229a2d23cbfa0.js",
       "static/chunks/178-4dac9f5a358b6744.js",
-      "static/chunks/857-cec2957c7aade080.js",
+      "static/chunks/857-d1bc63e370a6b059.js",
       "static/chunks/pages/dashboard/admin/user-e2747cabafeb0c82.js"
     ],
     "/dashboard/user": [
@@ -242,7 +242,7 @@
       "static/chunks/207-0e4f4136012a3074.js",
       "static/chunks/486-ad0722bac9a2a85a.js",
       "static/chunks/971-3ac0bf8b4fe2f18c.js",
-      "static/chunks/pages/logistics/send-364bdb416ee23ba1.js"
+      "static/chunks/pages/logistics/send-2329b63a2c12b5a6.js"
     ],
     "/logistics/track_code_screen": [
       "static/chunks/webpack-5b2e41c29753785b.js",
@@ -296,7 +296,7 @@
       "static/chunks/207-0e4f4136012a3074.js",
       "static/chunks/486-ad0722bac9a2a85a.js",
       "static/chunks/971-3ac0bf8b4fe2f18c.js",
-      "static/chunks/pages/market/sell-94288e34dad41fd9.js"
+      "static/chunks/pages/market/sell-e90ca8878a463fca.js"
     ],
     "/market/shop": [
       "static/chunks/webpack-5b2e41c29753785b.js",
@@ -320,7 +320,7 @@
       "static/chunks/858-ea24c87060215ce9.js",
       "static/chunks/231-2b2229a2d23cbfa0.js",
       "static/chunks/971-3ac0bf8b4fe2f18c.js",
-      "static/chunks/pages/market/shop/[product]-34f9f6d18bed71d4.js"
+      "static/chunks/pages/market/shop/[product]-4f4474bf4ebe626c.js"
     ],
     "/register": [
       "static/chunks/webpack-5b2e41c29753785b.js",

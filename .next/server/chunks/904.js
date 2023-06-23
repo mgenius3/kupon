@@ -338,9 +338,17 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                         children: "Note: image should not be more than 2mb "
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
                         className: "btn",
-                        children: "Select"
+                        children: [
+                            "UPLOAD IMAGE",
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("img", {
+                                width: "32",
+                                height: "32",
+                                src: "https://img.icons8.com/windows/32/FFFFFF/file-upload.png",
+                                alt: "file-upload"
+                            })
+                        ]
                     })
                 ]
             }),

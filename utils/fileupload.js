@@ -188,7 +188,15 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
         <span>Note: maximum of three images </span>
         <span>Note: image should not be more than 2mb </span>
         <br />
-        <p className="btn">Select</p>
+        <p className="btn">
+          UPLOAD IMAGE
+          <img
+            width="32"
+            height="32"
+            src="https://img.icons8.com/windows/32/FFFFFF/file-upload.png"
+            alt="file-upload"
+          />
+        </p>
       </div>
 
       <aside style={thumbsContainer}>{thumbs}</aside>

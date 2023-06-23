@@ -80,7 +80,7 @@ function UserLayout({ children  }) {
                 }
                 const res1 = await response.json();
                 //pass pending logistics to user
-                setNoOfLogisticsIsPending(res1.msg?.filter((a)=>a.status == "pending").length);
+                setNoOfLogisticsIsPending(res1.msg?.filter((a)=>a.status == "pending" || a.status == "in transit").length);
             } catch (err) {
                 console.log(err);
             }

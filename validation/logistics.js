@@ -1,7 +1,6 @@
 const packageValidation = async (data) => {
   if (!data.userId) throw Error("Unuthorized access, Please sign in");
   if (!data.packageName) throw Error("No package Name");
-
   if (!data.firstName) throw Error("No first Name");
   if (!data.lastName) throw Error("No last Name");
   if (!data.email) throw Error("No email");

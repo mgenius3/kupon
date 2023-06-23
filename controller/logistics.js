@@ -74,6 +74,7 @@ const getAllPackages = async (req, res) => {
 const packageStatusUpdate = async (req, res) => {
   try {
     const { id, status } = req.body;
+    console.log(id, status);
     await updatePackageStatus(id, status);
     res.status(200).json({ msg: "successful" });
   } catch (err) {

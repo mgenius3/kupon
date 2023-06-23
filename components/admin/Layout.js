@@ -56,7 +56,9 @@ function UserLayout({ children }) {
         //pass pending logistics to user
 
         setNoOfLogisticsIsPending(
-          res.msg?.filter((a) => a.status == "pending").length
+          res.msg?.filter(
+            (a) => a.status == "pending" || a.status == "in transit"
+          ).length
         );
       } catch (err) {
         console.log(err);

@@ -5,6 +5,28 @@ import { Alert } from "react-bootstrap";
 import PageAuthentication from "../../../hooks/useAuth";
 import Link from "next/link";
 import { getInitials } from "../../../utils/stringManipulation";
+
+const ImageModal = ({ imageUrl, onClose }) => {
+  return (
+    <div
+      className="modal-overlay"
+      onClick={onClose}
+      style={{
+        position: "absolute",
+        top: "0px",
+        height: "90%",
+        left: "0px",
+        zIndex: "300",
+        cursor: "pointer",
+      }}
+    >
+      <div className="modal-content">
+        <img src={imageUrl} alt="Image" className="modal-image" />
+      </div>
+    </div>
+  );
+};
+
 export default function Cart() {
   const router = useRouter();
   const { query } = router;
@@ -14,6 +36,19 @@ export default function Cart() {
   const [error, setError] = useState();
   const [imagetoshow, setImagetoshow] = useState(0);
   const [checkcopy, setCheckCopy] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImageUrl, setSelectedImageUrl] = useState("");
+
+  const handleImageClick = (imageUrl) => {
+    setSelectedImageUrl(imageUrl);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const [token] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("token");
@@ -109,6 +144,9 @@ export default function Cart() {
                       src={JSON.parse(data?.files)[imagetoshow]}
                       alt="Image One"
                       style={{ width: "100%" }}
+                      onClick={() =>
+                        handleImageClick(JSON.parse(data?.files)[imagetoshow])
+                      }
                     />
                   ) : null}
                 </span>
@@ -118,6 +156,7 @@ export default function Cart() {
                         <img
                           className="d-block"
                           // src={`data:image/png;base64,${file}`}
+
                           src={file}
                           alt="Image One"
                           style={{ width: "100%" }}
@@ -185,6 +224,13 @@ export default function Cart() {
                 </div>
               </div>
             </div>
+
+            {isModalOpen && (
+              <ImageModal
+                imageUrl={selectedImageUrl}
+                onClose={handleCloseModal}
+              />
+            )}
           </div>
         ) : (
           <Alert
