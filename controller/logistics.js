@@ -30,8 +30,13 @@ const PackageSent = async (req, res) => {
       20000
     );
 
+    if (initialize_payment.data != undefined) {
+      await setPackageReference(initialize_payment.data.reference, packagesId);
+    } else {
+      throw new Error("Error in making payment");
+    }
+
     //set references on db
-    await setPackageReference(initialize_payment.data.reference, packagesId);
     res.status(201).json({ msg: initialize_payment.data.authorization_url });
   } catch (err) {
     res.status(400).json({ msg: err.message });
@@ -52,7 +57,7 @@ const ReceiveUserPackage = async (req, res) => {
 
     //refetch userPackage
     userPackage = await getAUserPackage(req.user.id);
-    //convert paid to boolean before sending to client side
+    // convert paid to boolean before sending to client side
     userPackage.forEach(
       (pack) => (pack.paid = convertBufferToBoolean(pack.paid))
     );
@@ -91,8 +96,12 @@ const payment = async (req, res) => {
       "logistics",
       20000
     );
-    //set references on db
-    await setPackageReference(initialize_payment.data.reference, packagesId);
+
+    if (initialize_payment.data != undefined) {
+      await setPackageReference(initialize_payment.data.reference, packagesId);
+    } else {
+      throw new Error("Error making payment");
+    }
     res.status(201).json({ msg: initialize_payment.data.authorization_url });
   } catch (err) {
     res.status(400).json({ msg: err.message });

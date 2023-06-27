@@ -44,7 +44,6 @@ const UserLogistics = () => {
   useEffect(() => {
     const fetchLogistics = async () => {
       try {
-        console.log(data);
         const response = await fetch("/logistic/user", {
           method: "GET",
           headers: {
@@ -66,7 +65,6 @@ const UserLogistics = () => {
     fetchLogistics();
   }, []);
 
-  console.log(data);
   const pay = async (id) => {
     try {
       const response = await fetch(`/logistic/pay/${id}`, {

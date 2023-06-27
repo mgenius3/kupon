@@ -126,7 +126,7 @@ export default function Shop() {
             <br />
             <br />
           </div>
-          <div className=" col-lg-6 row container">
+          <div className="row container">
             {isLoading ? (
               <div className="section text-center col-12">
                 <Spinner animation="grow" role="status" variant="danger">

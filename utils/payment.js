@@ -1,8 +1,8 @@
-const https = require('https');
-const dotenv = require('dotenv');
-const url = require('url');
+const https = require("https");
+const dotenv = require("dotenv");
+const url = require("url");
 
-const paystack = require('paystack');
+const paystack = require("paystack");
 dotenv.config();
 paystack(process.env.PAYSTACK_SECRET_KEY);
 
@@ -10,9 +10,8 @@ const initializePaystackTransaction = async (req, service, amount) => {
   const parsedUrl = url.parse(
     `${req.protocol}://${req.headers.host}${req.url}`
   );
-  const domainUrl = parsedUrl.protocol + '//' + parsedUrl.host;
+  const domainUrl = parsedUrl.protocol + "//" + parsedUrl.host;
 
-  console.log(domainUrl);
   const params = JSON.stringify({
     email: req.user.email,
     amount: amount * 100,
@@ -20,8 +19,8 @@ const initializePaystackTransaction = async (req, service, amount) => {
     metadata: {
       custom_fields: [
         {
-          display_name: req.user.firstName + ' ' + req.user.lastName,
-          variable_name: 'Kupon',
+          display_name: req.user.firstName + " " + req.user.lastName,
+          variable_name: "Kupon",
           value: req.user.id,
         },
       ],
@@ -29,31 +28,31 @@ const initializePaystackTransaction = async (req, service, amount) => {
   });
 
   const options = {
-    hostname: 'api.paystack.co',
+    hostname: "api.paystack.co",
     port: 443,
-    path: '/transaction/initialize',
-    method: 'POST',
+    path: "/transaction/initialize",
+    method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
 
   try {
     const response = await new Promise((resolve, reject) => {
       const req = https.request(options, (res) => {
-        let data = '';
+        let data = "";
 
-        res.on('data', (chunk) => {
+        res.on("data", (chunk) => {
           data += chunk;
         });
 
-        res.on('end', () => {
+        res.on("end", () => {
           resolve(JSON.parse(data));
         });
       });
 
-      req.on('error', (error) => {
+      req.on("error", (error) => {
         reject(error);
       });
 
@@ -63,35 +62,35 @@ const initializePaystackTransaction = async (req, service, amount) => {
 
     return response;
   } catch (error) {
-    console.error(error);
+    return new Error("Unable to make payment");
   }
 };
 
 const verifyPaystackTransaction = async (reference) => {
   return new Promise((resolve, reject) => {
     const options = {
-      hostname: 'api.paystack.co',
+      hostname: "api.paystack.co",
       port: 443,
       path: `/transaction/verify/${reference}`,
-      method: 'GET',
+      method: "GET",
       headers: {
         Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
       },
     };
 
     const req = https.request(options, (res) => {
-      let data = '';
+      let data = "";
 
-      res.on('data', (chunk) => {
+      res.on("data", (chunk) => {
         data += chunk;
       });
 
-      res.on('end', () => {
+      res.on("end", () => {
         resolve(JSON.parse(data));
       });
     });
 
-    req.on('error', (error) => {
+    req.on("error", (error) => {
       reject(error);
     });
 

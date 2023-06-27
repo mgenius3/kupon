@@ -155,8 +155,6 @@ export default function Cart() {
                     ? JSON.parse(data?.files).map((file, i) => (
                         <img
                           className="d-block"
-                          // src={`data:image/png;base64,${file}`}
-
                           src={file}
                           alt="Image One"
                           style={{ width: "100%" }}

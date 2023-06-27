@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { getInitials } from '../../../utils/stringManipulation';
-import jwtDecode from 'jwt-decode';
-import UserLayout from '../../../components/user/Layout';
+import React, { useState, useEffect } from "react";
+import { getInitials } from "../../../utils/stringManipulation";
+import jwtDecode from "jwt-decode";
+import UserLayout from "../../../components/user/Layout";
 const UserProfile = () => {
   const [token] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('token');
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("token");
     }
   });
   const [user, setUser] = useState();
@@ -31,11 +31,11 @@ const UserProfile = () => {
             /> */}
               <span
                 style={{
-                  color: 'white',
-                  backgroundColor: 'black',
-                  borderRadius: '50%',
-                  padding: '10px',
-                  fontSize: '100px',
+                  color: "white",
+                  backgroundColor: "black",
+                  borderRadius: "50%",
+                  padding: "10px",
+                  fontSize: "80px",
                 }}
               >
                 {getInitials(user?.firstName, user?.lastName)}
@@ -53,21 +53,21 @@ const UserProfile = () => {
                 <li className="mb-2 mb-xl-3 display-28">
                   <span className="display-26 text-danger me-2 font-weight-600">
                     Address:
-                  </span>{' '}
+                  </span>{" "}
                   {user?.address}
                 </li>
 
                 <li className="mb-2 mb-xl-3 display-28">
                   <span className="display-26 text-danger me-2 font-weight-600">
                     Email:
-                  </span>{' '}
+                  </span>{" "}
                   {user?.email}
                 </li>
 
                 <li className="display-28">
                   <span className="display-26 text-danger me-2 font-weight-600">
                     Phone:
-                  </span>{' '}
+                  </span>{" "}
                   {user?.telephone}
                 </li>
               </ul>

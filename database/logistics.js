@@ -148,6 +148,7 @@ const setPackageReference = async (referenceId, id) => {
     throw err.message;
   }
 };
+
 const updatePackagePayment = async (paid, id) => {
   try {
     let connection = await pool.getConnection();

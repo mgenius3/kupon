@@ -126,12 +126,15 @@ const UserMarket = () => {
                       {new Date(product?.created_at).toLocaleDateString()}
                     </Card.Text>
                     <div className="d-flex justify-content-between">
-                      {product?.paid ? (
+                      {product?.paid == true ? (
                         <Button disabled variant="primary">
                           PAID
                         </Button>
                       ) : product?.paid == false ? (
-                        <Button variant="info" onClick={() => pay(product?.id)}>
+                        <Button
+                          variant="error"
+                          onClick={() => pay(product?.id)}
+                        >
                           PAY NOW
                         </Button>
                       ) : null}

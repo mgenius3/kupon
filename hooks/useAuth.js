@@ -13,8 +13,6 @@ const PageAuthentication = ({ children }) => {
         try {
           jwt.verify(token, "kupon");
         } catch (err) {
-          console.log(err);
-          console.log(process.env.NEXT_PUBLIC_TOKEN_KEY);
           router.push("/login");
         }
       }

@@ -27,10 +27,14 @@ const packageSent = async (req, res) => {
       "market",
       20000
     );
+
+    if (initialize_payment.data != undefined) {
+      await setPackageReference(initialize_payment.data.reference, packagesId);
+    } else {
+      throw new Error("Data uploaded, but error in making payment");
+    }
     //set references on db
-    await setPackageReference(initialize_payment.data.reference, packagesId);
     res.status(201).json({ msg: initialize_payment.data.authorization_url });
-    // res.status(201).json({ msg: 'successful' });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }
@@ -39,7 +43,7 @@ const packageSent = async (req, res) => {
 const receiveUserPackage = async (req, res) => {
   try {
     let userPackage = await getAUserSell(req.user.id);
-    userPackage.forEach(async (pack) => {
+    await userPackage.forEach(async (pack) => {
       let paid = convertBufferToBoolean(pack.paid);
       if (!paid) {
         let confirm_payment = await verifyPaystackTransaction(pack.referenceId);
@@ -55,7 +59,7 @@ const receiveUserPackage = async (req, res) => {
       (pack) => (pack.paid = convertBufferToBoolean(pack.paid))
     );
 
-    userPackage = userPackage.filter((a) => a.paid);
+    // userPackage = userPackage.filter((a) => a.paid);
 
     res.status(200).json({ msg: userPackage });
   } catch (err) {
@@ -93,8 +97,13 @@ const payment = async (req, res) => {
       "market",
       20000
     );
-    //set references on db
-    await setPackageReference(initialize_payment.data.reference, packagesId);
+
+    if (initialize_payment.data != undefined) {
+      await setPackageReference(initialize_payment.data.reference, packagesId);
+    } else {
+      throw new Error("Data uploaded, but error in making payment");
+    }
+
     res.status(201).json({ msg: initialize_payment.data.authorization_url });
   } catch (err) {
     res.status(400).json({ msg: err.message });

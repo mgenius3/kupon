@@ -31,7 +31,7 @@ const UserProfile = () => {
                   backgroundColor: "black",
                   borderRadius: "50%",
                   padding: "10px",
-                  fontSize: "100px",
+                  fontSize: "80px",
                 }}
               >
                 {getInitials(user?.firstName, user?.lastName)}
