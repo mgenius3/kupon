@@ -17,7 +17,7 @@ export default function Home() {
             style={{ marginBottom: "50px" }}
           >
             <Carousel>
-              <Carousel.Item interval={4500}>
+              <Carousel.Item interval={3500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
                   dataSrc="/images/truck.png"
@@ -54,7 +54,7 @@ export default function Home() {
                   </div>
                 </Carousel.Caption>
               </Carousel.Item>
-              <Carousel.Item interval={4500}>
+              <Carousel.Item interval={3500}>
                 <img
                   className="blur-up lazyload bg-img land-image-slider"
                   dataSrc="/images/cart.png"
@@ -70,7 +70,9 @@ export default function Home() {
                 <Carousel.Caption>
                   <div className="">
                     <h2 className="h1 mega-title slideshow__title">
-                      <b style={{ color: "#e60000" }}>Kupon </b>{" "}
+                      <b style={{ color: "#e60000", fontFamily: "monospace" }}>
+                        Kupon{" "}
+                      </b>{" "}
                       <b className="land-text-slider">Online Marketplace</b>
                     </h2>
                     <span className="mega-subtitle slideshow__subtitle">
@@ -105,7 +107,7 @@ export default function Home() {
                   }}
                 >
                   Welcome to Kupon{" "}
-                  <b style={{ color: "#e60000" }}> Logistics</b>
+                  <b style={{ color: "rgb(144, 42, 0)" }}> Logistics</b>
                 </h2>
                 <p
                   style={{
@@ -166,7 +168,7 @@ export default function Home() {
                   }}
                 >
                   Welcome to Kupon{" "}
-                  <b style={{ color: "#e60000" }}>Marketplace</b>
+                  <b style={{ color: "rgb(144, 42, 0)" }}>Marketplace</b>
                 </h2>
                 <p
                   style={{

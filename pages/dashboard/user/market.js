@@ -95,7 +95,7 @@ const UserMarket = () => {
         <Fragment>
           <Row>
             {data?.map((product) => (
-              <Col sm={12} md={12} lg={6} key={product.id}>
+              <Col sm={12} md={12} lg={12} key={product.id}>
                 <Card className="product-card">
                   <Carousel>
                     {typeof product?.files == "string"

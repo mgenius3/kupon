@@ -18,6 +18,7 @@ function UserLayout({ children }) {
       return localStorage.getItem("token");
     }
   });
+
   const [user, setUser] = useState();
   const asideRef = useRef();
   const router = useRouter();

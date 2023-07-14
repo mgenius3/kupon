@@ -28,7 +28,6 @@ const UserLogistics = () => {
   useEffect(() => {
     const fetchLogistics = async () => {
       try {
-        console.log(data);
         const response = await fetch("/admin/market", {
           method: "GET",
           headers: {
@@ -43,7 +42,6 @@ const UserLogistics = () => {
         }
         const res = await response.json();
         setData(res.msg);
-        console.log(res.msg);
       } catch (err) {
         console.log(err);
       }

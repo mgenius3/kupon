@@ -9,10 +9,12 @@ const PageAuthentication = ({ children }) => {
     const timer = setTimeout(() => {
       if (typeof window !== "undefined") {
         const token = localStorage.getItem("token");
+        console.log(token);
         let key = "kupon";
         try {
           jwt.verify(token, "kupon");
         } catch (err) {
+          console.log(err);
           router.push("/login");
         }
       }

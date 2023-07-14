@@ -17,7 +17,10 @@ const { allUsers, delUser } = require("../controller/auth");
 
 const { countPackages } = require("../controller/auth");
 
-const { getAllContactMessageSent } = require("../controller/contact");
+const {
+  getAllContactMessageSent,
+  deleteAContactMessage,
+} = require("../controller/contact");
 
 router.use(verifyToken);
 router.get("/logistics", getAllLogisticsPackages);
@@ -34,5 +37,6 @@ router.delete("/user/delete/:id", delUser);
 router.get("/count_packages", countPackages);
 
 router.get("/all_contact_message", getAllContactMessageSent);
+router.delete("/contact_message/:id", deleteAContactMessage);
 
 module.exports = router;

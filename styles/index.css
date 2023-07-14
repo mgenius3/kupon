@@ -18,8 +18,7 @@
   font-weight: 700;
   font-size: 56px;
   line-height: 60px;
-  color: #904d00;
-  /* text-align: center; */
+  color: rgb(144, 42, 0);
 }
 
 #index > .d1 > .p1 {
@@ -72,11 +71,16 @@
   #index > .d1 > .d1 {
     text-align: center;
     margin: 50px auto;
+    justify-content: center;
   }
 
   #index > .d1 > .d1 > span img {
     width: 20px;
     height: 20px;
+  }
+  #index > .d1 h1 {
+    font-size: 35px !important;
+    font-family: "inter";
   }
 }
 

@@ -59,7 +59,6 @@ export default function Logistics() {
         throw new Error(res.msg);
       }
       const res = await response.json();
-      localStorage.setItem("token", res);
       if (window !== undefined) window.location.replace(`${res.msg}`);
       setIsLoading(false);
     } catch (err) {

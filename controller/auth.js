@@ -6,11 +6,11 @@ const {
   updateUserToken,
   countPackage: userCountPackage,
   deleteUser,
-} = require('../database/auth');
+} = require("../database/auth");
 
-const { countPackage: sellCountPackage } = require('../database/logistics');
-const { countPackage: logisticsCountPackage } = require('../database/sell');
-const jwt = require('jsonwebtoken');
+const { countPackage: sellCountPackage } = require("../database/logistics");
+const { countPackage: logisticsCountPackage } = require("../database/sell");
+const jwt = require("jsonwebtoken");
 // const bcrypt = require('bcrypt');
 const RegisterNewUser = async (req, res) => {
   try {
@@ -36,7 +36,7 @@ const RegisterNewUser = async (req, res) => {
       },
       process.env.TOKEN_KEY,
       {
-        expiresIn: '5h',
+        expiresIn: "7d",
       }
     );
     //UPDATE USER WITH TOKEN
@@ -56,7 +56,7 @@ const LoginUser = async (req, res) => {
   try {
     //Validate User Input
     if (!(email && password)) {
-      res.status(400).json({ msg: 'Please input all field' });
+      res.status(400).json({ msg: "Please input all field" });
     } else {
       let [user] = await getUserByEmail(email);
 
@@ -75,7 +75,7 @@ const LoginUser = async (req, res) => {
           },
           process.env.TOKEN_KEY,
           {
-            expiresIn: '5h',
+            expiresIn: "7d",
           }
         );
         //UPDATE USER WITH TOKEN
@@ -86,7 +86,7 @@ const LoginUser = async (req, res) => {
         //SEND UPDATED DATA FROM DB
         res.status(200).json(updatedUser.token);
       } else {
-        res.status(400).json({ msg: 'Email or password is not correct' });
+        res.status(400).json({ msg: "Email or password is not correct" });
       }
     }
   } catch (err) {
@@ -135,7 +135,7 @@ const delUser = async (req, res) => {
   try {
     const { id } = req.params;
     await deleteUser(id);
-    res.status(200).json({ msg: 'user account deleted successfully' });
+    res.status(200).json({ msg: "user account deleted successfully" });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

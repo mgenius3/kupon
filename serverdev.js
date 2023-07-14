@@ -13,6 +13,7 @@ const { createTableUser } = require("./database/auth");
 const { createTableLogistics } = require("./database/logistics");
 const { createTableSell } = require("./database/sell");
 const { createTableContact } = require("./database/contact");
+const { disableQueryCache } = require("./configdb/db");
 
 app.prepare().then(() => {
   const server = express();

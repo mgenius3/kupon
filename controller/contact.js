@@ -1,6 +1,7 @@
 const {
   newContactMessage,
   getAllContactMessage,
+  deleteContactMessage,
 } = require("../database/contact");
 
 const newContactMessageSent = async (req, res) => {
@@ -21,7 +22,18 @@ const getAllContactMessageSent = async (req, res) => {
   }
 };
 
+const deleteAContactMessage = async (req, res) => {
+  try {
+    const { id } = req.params;
+    await deleteContactMessage(id);
+    res.status(200).json({ msg: "deleted successfully" });
+  } catch (err) {
+    res.status(400).json({ msg: err.message });
+  }
+};
+
 module.exports = {
   newContactMessageSent,
   getAllContactMessageSent,
+  deleteAContactMessage,
 };

@@ -94,7 +94,9 @@ const sendPackageDetails = async (data) => {
 };
 
 const getAllPackage = async () => {
-  const query = "SELECT * FROM logistics ORDER BY created_at DESC";
+  // const query = "SELECT * FROM logistics ORDER BY created_at DESC";
+  const query = "SELECT SQL_NO_CACHE * FROM logistics ORDER BY created_at DESC";
+
   const connection = await pool.getConnection();
   const [users] = await connection.query(query);
   await connection.release();
@@ -114,50 +116,65 @@ const packageDetailById = async (id) => {
 const getAUserPackage = async (userId) => {
   let connection = await pool.getConnection();
   (await connection).beginTransaction();
+  // let get_user_package = await connection.query(
+  //   `SELECT * FROM logistics WHERE userId = '${userId}'`
+  // );
   let get_user_package = await connection.query(
-    `SELECT * FROM logistics WHERE userId = '${userId}'`
+    `SELECT SQL_NO_CACHE * FROM logistics WHERE userId = '${userId}'`
   );
   await connection.release();
   return get_user_package[0];
 };
 
 const updatePackageStatus = async (id, status) => {
+  let connection = await pool.getConnection();
+  (await connection).beginTransaction();
   try {
-    let connection = await pool.getConnection();
-    (await connection).beginTransaction();
     const query = `UPDATE logistics SET status = ? WHERE id = ?`;
     await pool.query(query, [status, id]);
-    await connection.release();
+    await connection.commit();
   } catch (err) {
+    await connection.rollback();
     throw err.message;
+  } finally {
+    await connection.release();
   }
 };
 
 const setPackageReference = async (referenceId, id) => {
+  let connection = await pool.getConnection();
+  (await connection).beginTransaction();
+
   try {
-    let connection = await pool.getConnection();
-    (await connection).beginTransaction();
     const query = `UPDATE logistics SET referenceId = ? WHERE id = ?`;
     const query2 = `UPDATE logistics SET packageCode = ? WHERE id = ?`;
+
     await pool.query(query, [referenceId, id]);
+    await connection.commit();
 
     //setting package code to referenceId
     await pool.query(query2, [referenceId, id]);
-    await connection.release();
+    await connection.commit();
   } catch (err) {
+    await connection.rollback();
     throw err.message;
+  } finally {
+    await connection.release();
   }
 };
 
 const updatePackagePayment = async (paid, id) => {
+  let connection = await pool.getConnection();
+  (await connection).beginTransaction();
   try {
-    let connection = await pool.getConnection();
-    (await connection).beginTransaction();
     const query = `UPDATE logistics SET paid = ? WHERE id = ?`;
     await pool.query(query, [paid, id]);
-    await connection.release();
+    await connection.commit();
   } catch (err) {
+    await connection.rollback();
     throw err.message;
+  } finally {
+    await connection.release();
   }
 };
 

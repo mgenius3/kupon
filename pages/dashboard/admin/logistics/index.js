@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import { Carousel } from "react-bootstrap";
+import FetchApiClient from "../../../../fetch_api_clients/api";
 
 const UserLogistics = () => {
   const [token] = useState(() => {
@@ -14,6 +15,8 @@ const UserLogistics = () => {
       return localStorage.getItem("token");
     }
   });
+
+  let apiClient = new FetchApiClient("/admin", token);
 
   const router = useRouter();
   const [data, setData] = useState([]);
@@ -33,22 +36,27 @@ const UserLogistics = () => {
   useEffect(() => {
     const fetchLogistics = async () => {
       try {
-        console.log(data);
-        const response = await fetch("/admin/logistics", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          const res = await response.json();
-          throw new Error(res.msg);
+        let { response, error } = await apiClient.get("/logistics");
+        if (response) {
+          setData(response);
+        } else {
+          throw new Error(error);
         }
-        const res = await response.json();
-        setData(res.msg);
-        //pass pending logistics to user
+        // const response = await fetch("/admin/logistics", {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // });
+
+        // if (!response.ok) {
+        //   const res = await response.json();        console.log(data);
+        //   throw new Error(res.msg);
+        // }
+        // const res = await response.json();
+        // setData(res.msg);
+        // //pass pending logistics to user
       } catch (err) {
         console.log(err);
       }
@@ -65,6 +73,7 @@ const UserLogistics = () => {
   const updateStatus = async () => {
     setIsLoadingUpdateStatus(true);
     try {
+      // let {response, error}  = await apiClient.
       const response = await fetch("/admin/logistics/update_status", {
         method: "PATCH",
         headers: {

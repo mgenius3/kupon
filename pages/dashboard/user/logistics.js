@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import UserLayout from "../../../components/user/Layout";
 import Link from "next/link";
 import { toast } from "react-toastify";
+// import { useRouter } from "next/router";
 
 const UserLogistics = () => {
+  // const router = useRouter();
   const [token] = useState(() => {
     if (typeof window !== "undefined") {
       return localStorage.getItem("token");

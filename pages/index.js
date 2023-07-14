@@ -48,7 +48,7 @@ export default function Home() {
             </div>
           </div>
           <div className="d2">
-            <Carousel>
+            <Carousel controls={false}>
               <Carousel.Item interval={2500}>
                 <img src="/images/trucks.png" />
               </Carousel.Item>

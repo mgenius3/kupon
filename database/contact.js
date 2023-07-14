@@ -70,10 +70,25 @@ const countContactMessage = async () => {
   }
 };
 
+const deleteContactMessage = async (id) => {
+  let connection = await pool.getConnection();
+  (await connection).beginTransaction();
+  try {
+    const query = "DELETE FROM contact WHERE id = ?";
+    await pool.query(query, [id]);
+    await connection.commit();
+  } catch (err) {
+    throw err.message;
+  } finally {
+    await connection.release();
+  }
+};
+
 module.exports = {
   createTableContact,
   countContactMessage,
   contactMessageById,
   getAllContactMessage,
   newContactMessage,
+  deleteContactMessage,
 };

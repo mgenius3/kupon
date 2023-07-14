@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-import UserLayout from "../../../components/admin/Layout";
+import AdminLayout from "../../../components/admin/Layout";
+import FetchApiClient from "../../../fetch_api_clients/api";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import { Modal, Button } from "react-bootstrap";
+import { shortenString } from "../../../utils/stringManipulation";
 
 const ComplaintsPage = () => {
+  const router = useRouter();
   const [data, setData] = useState();
 
   const [token] = useState(() => {
@@ -10,33 +17,41 @@ const ComplaintsPage = () => {
     }
   });
 
+  //modal
+  const [showModal, setShowModal] = useState(false);
+  const [modalData, setModalData] = useState();
+
+  const handleModalOpen = (data) => {
+    setShowModal(true);
+    setModalData(data);
+  };
+
+  const handleModalClose = () => setShowModal(false);
+  //modal
+
+  let apiClient = new FetchApiClient("/admin", token);
+
   useEffect(() => {
     const fetchMessages = async () => {
-      try {
-        console.log(data);
-        const response = await fetch("/admin/all_contact_message", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        if (!response.ok) {
-          const res = await response.json();
-          throw new Error(res.msg);
-        }
-        const res = await response.json();
-        setData(res.msg);
-        //pass pending logistics to user
-      } catch (err) {
-        console.log(err);
-      }
+      let { response } = await apiClient.get("/all_contact_message");
+      if (response) setData(response);
+      else toast.error("unable to fetch data");
     };
     fetchMessages();
   }, []);
+
+  const handleDeleteMessage = async (id) => {
+    let { response } = await apiClient.delete(`/contact_message/${id}`);
+    if (response) {
+      toast.success("message deleted successfully");
+      router.reload();
+    } else {
+      toast.error("unable to delete");
+    }
+  };
+
   return (
-    <UserLayout>
+    <AdminLayout>
       <div className="container mt-5">
         <h1
           className="text-center mb-4 "
@@ -50,17 +65,12 @@ const ComplaintsPage = () => {
           <thead className="thead-dark text-white">
             <tr>
               <th scope="col" style={{ color: "white" }}>
-                Full Name
+                Name
               </th>
               <th scope="col" style={{ color: "white" }}>
                 Email
               </th>
-              <th scope="col" style={{ color: "white" }}>
-                Phone
-              </th>
-              <th scope="col" style={{ color: "white" }}>
-                Messages
-              </th>
+
               <th scope="col" style={{ color: "white" }}>
                 Date
               </th>
@@ -68,18 +78,88 @@ const ComplaintsPage = () => {
           </thead>
           <tbody>
             {data?.map((msg, index) => (
-              <tr key={index}>
-                <td>{msg.fullName}</td>
-                <td>{msg.email}</td>
-                <td>{msg.telephone}</td>
-                <td style={{ color: "grey" }}>{msg.message}</td>
-                <td>{new Date(msg.created_at).toLocaleString()}</td>
+              <tr key={index} style={{ cursor: "pointer" }}>
+                <td onClick={() => handleModalOpen(msg)}>
+                  {shortenString(msg.fullName, 12)}
+                </td>
+                <td onClick={() => handleModalOpen(msg)}>
+                  {shortenString(msg.email, 12)}
+                </td>
+                <td onClick={() => handleModalOpen(msg)}>
+                  {new Date(msg.created_at).toLocaleDateString()}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-    </UserLayout>
+
+      <Modal show={showModal} onHide={handleModalClose}>
+        <Modal.Header closeButton>
+          <Modal.Title
+            style={{
+              fontSize: "1.3rem",
+              fontWeight: "bold",
+              lineHeight: "1.5",
+              color: "#3c171773",
+            }}
+          >
+            MESSAGES
+          </Modal.Title>
+          <br />
+        </Modal.Header>
+
+        <h1
+          style={{
+            fontFamily: "poppins",
+            margin: "10px",
+          }}
+        >
+          {modalData?.message}
+        </h1>
+        <Modal.Body>
+          <table className="table">
+            <thead></thead> <br />
+            <tbody>
+              <tr>
+                <th>Name</th>
+                <td>{modalData?.fullName}</td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td>{modalData?.email}</td>
+              </tr>
+              <tr>
+                <th>Telephone</th>
+                <td>{modalData?.telephone}</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <th>Message Sent at</th>
+              <td>{new Date(modalData?.created_at).toLocaleDateString()}</td>
+            </tfoot>
+          </table>
+        </Modal.Body>
+
+        <Modal.Footer className="justify-content-start">
+          <Button
+            variant="danger"
+            onClick={() => {
+              handleDeleteMessage(modalData?.id);
+              handleModalClose();
+            }}
+            style={{ background: "red", color: "white" }}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleModalClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </AdminLayout>
   );
 };
 

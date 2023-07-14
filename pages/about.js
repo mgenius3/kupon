@@ -1,10 +1,10 @@
-import Layout from '../components/Layout';
-import Link from 'next/link';
-import React, { Fragment } from 'react';
+import Layout from "../components/Layout";
+import Link from "next/link";
+import React, { Fragment } from "react";
 // import 'slick-carousel/slick/slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import { Carousel } from 'react-bootstrap';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Carousel } from "react-bootstrap";
 
 export default function Home() {
   return (
@@ -22,15 +22,15 @@ export default function Home() {
                   alt="Kupon"
                   title="Kupon"
                   style={{
-                    width: '100%',
-                    height: '60vh!important',
-                    objectFit: 'cover',
+                    width: "100%",
+                    height: "60vh!important",
+                    objectFit: "cover",
                   }}
                 />
                 <Carousel.Caption>
                   <div className="">
                     <h2 className="h1 mega-title slideshow__title">
-                      <b style={{ color: '#e60000' }}>Kupon</b>{' '}
+                      <b style={{ color: "#e60000" }}>Kupon</b>{" "}
                       <b className="land-text-slider">Logistics Company</b>
                     </h2>
                     <span className="mega-subtitle slideshow__subtitle">
@@ -58,15 +58,15 @@ export default function Home() {
                   alt="Kupon"
                   title="Kupon"
                   style={{
-                    width: '100%',
-                    height: '60vh!important',
-                    objectFit: 'cover',
+                    width: "100%",
+                    height: "60vh!important",
+                    objectFit: "cover",
                   }}
                 />
                 <Carousel.Caption>
                   <div className="">
                     <h2 className="h1 mega-title slideshow__title">
-                      <b style={{ color: '#e60000' }}>Kupon </b>{' '}
+                      <b style={{ color: "#e60000" }}>Kupon </b>{" "}
                       <b className="land-text-slider">Online Marketplace</b>
                     </h2>
                     <span className="mega-subtitle slideshow__subtitle">
@@ -91,16 +91,16 @@ export default function Home() {
           </div>
           <div
             style={{
-              backgroundColor: '#f8f8f8',
-              padding: '2rem',
+              backgroundColor: "#f8f8f8",
+              padding: "2rem",
             }}
             id="about"
           >
             <h2
               style={{
-                fontSize: '2rem',
-                fontWeight: 'bold',
-                marginBottom: '1rem',
+                fontSize: "2rem",
+                fontWeight: "bold",
+                marginBottom: "1rem",
               }}
             >
               About US
@@ -108,8 +108,8 @@ export default function Home() {
             <div>
               <p
                 style={{
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
+                  fontSize: "1.2rem",
+                  lineHeight: "1.5",
                 }}
               >
                 Kupon is a leading provider of logistics and ecommerce services
@@ -120,11 +120,11 @@ export default function Home() {
                 ecommerce website that offers a wide range of products and
                 services to customers.
               </p>
-              <br />{' '}
+              <br />{" "}
               <p
                 style={{
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
+                  fontSize: "1.2rem",
+                  lineHeight: "1.5",
                 }}
               >
                 The website provides a seamless and convenient shopping
@@ -137,33 +137,33 @@ export default function Home() {
               <br />
               <p
                 style={{
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
+                  fontSize: "1.2rem",
+                  lineHeight: "1.5",
                 }}
               >
                 The website features a wide range of products, including
                 electronics, clothing, accessories, and more. In addition to its
                 ecommerce offerings, Kupon also provides logistics services to
                 businesses, helping them to manage their supply chain and
-                streamline their operations.{' '}
+                streamline their operations.{" "}
               </p>
               <br />
               <p
                 style={{
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
+                  fontSize: "1.2rem",
+                  lineHeight: "1.5",
                 }}
               >
                 The website&apos;s logistics services include transportation,
                 warehousing, and inventory management, among others.
                 Kupon&apos;s commitment to customer satisfaction is evident in
                 its user-friendly website design and excellent customer service.
-              </p>{' '}
+              </p>{" "}
               <br />
               <p
                 style={{
-                  fontSize: '1.2rem',
-                  lineHeight: '1.5',
+                  fontSize: "1.2rem",
+                  lineHeight: "1.5",
                 }}
               >
                 Customers can easily track their orders and receive updates on
