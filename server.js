@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
 // const bodyParser = require('body-parser');
 // const next = require('next');
 // const dotenv = require('dotenv');
@@ -40,25 +41,34 @@ server.use("/user", require("./routes/auth"));
 server.use("/admin", require("./routes/admin"));
 server.use("/reach", require("./routes/contact"));
 
-//Create Table for Logistics
+server.get("/sitemap.xml", (req, res) => {
+  const filePath = path.join(__dirname, "sitemap.xml");
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      res.status(404).end();
+    } else {
+      res.setHeader("Content-Type", "application/xml");
+      res.send(data);
+    }
+  });
+});
 
 // error handling
 server.use(errorHandler);
 
 // Middleware to handle requests that don't match any route
-// server.use(function (req, res) {
-//   res.status(404);
+server.use(function (req, res) {
+  res.status(404);
 
-//   // Render a custom error page
-//   res.json({
-//     title: "Page Not Found",
-//     message: "The requested page does not exist",
-//   });
-// });
+  // Render a custom error page
+  res.json({
+    title: "Page Not Found",
+    message: "The requested page does not exist",
+  });
+});
 
 // Error handler middleware
 server.use(function (err, req, res) {
-  console.error(err.stack);
   res.status(500);
 
   // render a custom error page

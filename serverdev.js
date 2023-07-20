@@ -2,6 +2,8 @@ const express = require("express");
 const next = require("next");
 const dotenv = require("dotenv");
 const dev = process.env.NODE_ENV !== "production";
+const path = require("path");
+const fs = require("fs");
 
 dotenv.config();
 const app = next({ dev });
@@ -35,7 +37,18 @@ app.prepare().then(() => {
   server.use("/admin", require("./routes/admin"));
   server.use("/reach", require("./routes/contact"));
 
-  //Create Table for Logistics
+  //site map
+  server.get("/sitemap.xml", (req, res) => {
+    const filePath = path.join(__dirname, "sitemap.xml");
+    fs.readFile(filePath, (err, data) => {
+      if (err) {
+        res.status(404).end();
+      } else {
+        res.setHeader("Content-Type", "application/xml");
+        res.send(data);
+      }
+    });
+  });
 
   // error handling
   server.use(errorHandler);

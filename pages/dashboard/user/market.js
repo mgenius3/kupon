@@ -44,26 +44,26 @@ const UserMarket = () => {
     fetchSell();
   }, []);
 
-  const pay = async (id) => {
-    try {
-      const response = await fetch(`/sell/pay/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+  // const pay = async (id) => {
+  //   try {
+  //     const response = await fetch(`/sell/pay/${id}`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
 
-      if (!response.ok) {
-        const res = await response.json();
-        throw new Error(res.msg);
-      }
-      const res = await response.json();
-      if (window !== undefined) window.location.replace(`${res.msg}`);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //     if (!response.ok) {
+  //       const res = await response.json();
+  //       throw new Error(res.msg);
+  //     }
+  //     const res = await response.json();
+  //     if (window !== undefined) window.location.replace(`${res.msg}`);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const deletePackage = async (id) => {
     setIsLoading(true);
@@ -126,7 +126,7 @@ const UserMarket = () => {
                       {new Date(product?.created_at).toLocaleDateString()}
                     </Card.Text>
                     <div className="d-flex justify-content-between">
-                      {product?.paid == true ? (
+                      {/* {product?.paid == true ? (
                         <Button disabled variant="primary">
                           PAID
                         </Button>
@@ -137,7 +137,7 @@ const UserMarket = () => {
                         >
                           PAY NOW
                         </Button>
-                      ) : null}
+                      ) : null} */}
                       {isLoading ? (
                         <Button variant="error" disabled>
                           ...

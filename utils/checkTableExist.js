@@ -1,4 +1,4 @@
-const { pool } = require('../configdb/db');
+const { pool } = require("../configdb/db");
 
 //check if table exist before create one
 const tableExists = async (tableName) => {
@@ -8,7 +8,7 @@ const tableExists = async (tableName) => {
     conn.release();
     return rows.length > 0;
   } catch (err) {
-    console.error('Error checking if table exists:', err);
+    console.error("Error checking if table exists:", err);
     return false;
   }
 };

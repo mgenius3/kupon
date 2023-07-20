@@ -7,15 +7,18 @@ import "react-toastify/dist/ReactToastify.css";
 import ImageUpload from "../../utils/fileupload";
 import PageAuthentication from "../../hooks/useAuth";
 import LoadingOverlay from "../../components/loadingOverlay";
+import { useRouter } from "next/router";
 
 import {
-  statesInNigeria,
+  // statesInNigeria,
   Condition,
   sellCategory,
   sellMaterials,
 } from "../../utils/data";
 
 export default function Logistics() {
+  const router = useRouter();
+
   const [data, setData] = useState({});
   const [imageUrl, setImageUrl] = useState([]);
 
@@ -41,7 +44,6 @@ export default function Logistics() {
 
   const submitPackageDetails = async () => {
     // sellPackageMutation.mutate(data);
-    console.log(data);
     setIsLoading(true);
     try {
       const response = await fetch("/sell", {
@@ -58,12 +60,13 @@ export default function Logistics() {
         setIsLoading(false);
         throw new Error(res.msg);
       }
-      const res = await response.json();
-      if (window !== undefined) window.location.replace(`${res.msg}`);
+      await response.json();
+      // if (window !== undefined) window.location.replace(`${res.msg}`);
+      router.push("/dashboard/user/market");
+
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
-      toast.error(err.message);
     }
   };
 
@@ -108,20 +111,22 @@ export default function Logistics() {
                       <div className="row">
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-firstname">
-                            Product Title <span className="required-f">*</span>
+                            Product Name <span className="required-f">*</span>
                           </label>
                           <input
                             name="title"
                             id="input-firstname"
                             type="text"
                             required
+                            placeholder="watch"
                             onChange={handleInputChange}
                           />
                         </div>
 
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-address-1">
-                            Location <span className="required-f">*</span>
+                            Location of Product{" "}
+                            <span className="required-f">*</span>
                           </label>
                           <input
                             name="location"
@@ -129,9 +134,10 @@ export default function Logistics() {
                             type="text"
                             required
                             onChange={handleInputChange}
+                            placeholder="Delta State - Warri"
                           />
                         </div>
-                        <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
+                        {/* <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="input-city">
                             City <span className="required-f">*</span>
                           </label>
@@ -163,12 +169,13 @@ export default function Logistics() {
                               </option>
                             ))}
                           </select>
-                        </div>
+                        </div> */}
                       </div>
                       <div className="row">
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
                           <label htmlFor="category">
-                            Category <span className="required-f">*</span>
+                            Category Of Product
+                            <span className="required-f">*</span>
                           </label>
                           <select
                             name="category"
@@ -188,9 +195,7 @@ export default function Logistics() {
                           </select>
                         </div>
                         <div className="form-group col-md-6 col-lg-6 col-xl-6 required">
-                          <label htmlFor="material">
-                            Material <span className="required-f">*</span>
-                          </label>
+                          <label htmlFor="material">Material of Product</label>
                           <select
                             name="material"
                             id="material"

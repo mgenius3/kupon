@@ -215,6 +215,7 @@ const rejectStyle = {
 };
 function ImageUpload({ setFileUploadError , setImageUrl  }) {
     const { 0: uploading , 1: setUploading  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0);
+    const { 0: whatError , 1: setWhatError  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)();
     const { 0: files , 1: setFiles  } = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]);
     const { getRootProps , getInputProps , isFocused , isDragAccept , isDragReject  } = (0,react_dropzone__WEBPACK_IMPORTED_MODULE_2__.useDropzone)({
         accept: {
@@ -229,6 +230,7 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
             let error = e[0]?.errors[0].code;
             setFileUploadError(error);
             setUploading(-1);
+            setWhatError(error);
         },
         onDrop: (acceptedFiles)=>{
             setFiles(acceptedFiles.map((file)=>Object.assign(file, {
@@ -277,6 +279,7 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                 setUploading(2);
             }
         } catch (error) {
+            console.log(error);
             setUploading(-1);
         }
     };
@@ -323,19 +326,34 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("input", {
                         ...getInputProps()
                     }),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("p", {
                         className: "text-center",
+                        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("b", {
+                            style: {
+                                color: "#e64c00"
+                            },
+                            children: [
+                                "You can mark three(3) images at once,",
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
+                                " and also drag them here."
+                            ]
+                        })
+                    }),
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                         children: [
-                            "Drag 'n' drop some package image here,",
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
-                            " or click to select files"
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
+                                children: "Note: maximum of three images"
+                            }),
+                            " "
                         ]
                     }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                        children: "Note: maximum of three images "
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("span", {
-                        children: "Note: image should not be more than 2mb "
+                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
+                        children: [
+                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
+                                children: "Note: image should not be more than 2mb"
+                            }),
+                            " "
+                        ]
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
@@ -365,7 +383,13 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                         alt: "checked--v1"
                     }),
                     " ",
-                    "error; try again"
+                    "Error ",
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
+                        style: {
+                            color: "red"
+                        },
+                        children: whatError
+                    })
                 ]
             }) : uploading == 1 ? /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
                 children: [

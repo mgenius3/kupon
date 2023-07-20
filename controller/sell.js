@@ -21,22 +21,23 @@ const packageSent = async (req, res) => {
   try {
     await packageValidation(req.body);
     let packagesId = await sendPackageDetails(req.body);
-    //initialize payment
-    let initialize_payment = await initializePaystackTransaction(
-      req,
-      "market",
-      20000
-    );
+    // //initialize payment
+    // let initialize_payment = await initializePaystackTransaction(
+    //   req,
+    //   "market",
+    //   20000
+    // );
 
-    if (initialize_payment.data != undefined) {
-      await setPackageReference(initialize_payment.data.reference, packagesId);
-    } else {
-      throw new Error("Data uploaded, but error in making payment");
-    }
+    // if (initialize_payment.data != undefined) {
+    //   await setPackageReference(initialize_payment.data.reference, packagesId);
+    // } else {
+    //   throw new Error("Data uploaded, but error in making payment");
+    // }
     //set references on db
-    res.status(201).json({ msg: initialize_payment.data.authorization_url });
+    // res.status(201).json({ msg: initialize_payment.data.authorization_url });
+    res.status(201).json({ msg: "success in uploading" });
   } catch (err) {
-    res.status(400).json({ msg: err.message });
+    res.status(400).json({ msg: err });
   }
 };
 
@@ -71,8 +72,9 @@ const receivePackage = async (req, res) => {
     const user = await getAllSell();
     user.forEach((pack) => (pack.paid = convertBufferToBoolean(pack.paid)));
 
-    let paid_user_package = user.filter((a) => a.paid);
-    res.status(200).json({ msg: paid_user_package });
+    // let paid_user_package = user.filter((a) => a.paid);
+    // res.status(200).json({ msg: paid_user_package });
+    res.status(200).json({ msg: user });
   } catch (err) {
     res.status(400).json({ msg: err.message });
   }

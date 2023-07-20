@@ -64,6 +64,8 @@ const rejectStyle = {
 function ImageUpload({ setFileUploadError, setImageUrl }) {
   const [uploading, setUploading] = useState(0);
 
+  const [whatError, setWhatError] = useState();
+
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps, isFocused, isDragAccept, isDragReject } =
     useDropzone({
@@ -76,6 +78,7 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
         let error = e[0]?.errors[0].code;
         setFileUploadError(error);
         setUploading(-1);
+        setWhatError(error);
       },
 
       onDrop: (acceptedFiles) => {
@@ -142,6 +145,7 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
         setUploading(2);
       }
     } catch (error) {
+      console.log(error);
       setUploading(-1);
     }
   };
@@ -181,12 +185,22 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
     <section className="container">
       <div {...getRootProps({ style })}>
         <input {...getInputProps()} />
-        <p className="text-center">
+        {/* <p className="text-center">
           Drag 'n' drop some package image here,
           <br /> or click to select files
+        </p> */}
+        <p className="text-center">
+          <b style={{ color: "#e64c00" }}>
+            You can mark three(3) images at once,
+            <br /> and also drag them here.
+          </b>
         </p>
-        <span>Note: maximum of three images </span>
-        <span>Note: image should not be more than 2mb </span>
+        <span>
+          <b>Note: maximum of three images</b>{" "}
+        </span>
+        <span>
+          <b>Note: image should not be more than 2mb</b>{" "}
+        </span>
         <br />
         <p className="btn">
           UPLOAD IMAGE
@@ -208,7 +222,7 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
             src="https://img.icons8.com/sf-black-filled/64/FA5252/error.png"
             alt="checked--v1"
           />{" "}
-          error; try again
+          Error <b style={{ color: "red" }}>{whatError}</b>
         </em>
       ) : uploading == 1 ? (
         <>
