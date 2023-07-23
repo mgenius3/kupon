@@ -58,6 +58,10 @@ class MyDocument extends next_document__WEBPACK_IMPORTED_MODULE_1__["default"] {
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
                             rel: "stylesheet",
                             href: "/styles/shop.css"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                            name: "google-site-verification",
+                            content: "tSVeUWP1-wY-Bn3QfbEZQXs-SbwW2tTHnutRruBJ-So"
                         })
                     ]
                 }),

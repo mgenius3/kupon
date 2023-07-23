@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/ZkvC3eOcUD_xwWOUm3GTa/_buildManifest.js",
-    "static/ZkvC3eOcUD_xwWOUm3GTa/_ssgManifest.js"
+    "static/mvSdgPRgR3zf_lWc6TP05/_buildManifest.js",
+    "static/mvSdgPRgR3zf_lWc6TP05/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
@@ -241,7 +241,7 @@
       "static/css/ea863d0176eaee41.css",
       "static/chunks/231-2b2229a2d23cbfa0.js",
       "static/chunks/207-0e4f4136012a3074.js",
-      "static/chunks/486-ad0722bac9a2a85a.js",
+      "static/chunks/486-e5a12bc13969b1ba.js",
       "static/chunks/971-3ac0bf8b4fe2f18c.js",
       "static/chunks/pages/logistics/send-84c1c62b8eda443a.js"
     ],
@@ -277,7 +277,7 @@
       "static/chunks/531-a72bc0480b86f16d.js",
       "static/chunks/715-18a45be9d5f64961.js",
       "static/chunks/858-ea24c87060215ce9.js",
-      "static/chunks/778-7bf596aa65a9c98c.js",
+      "static/chunks/778-7d9e940735bfc547.js",
       "static/chunks/971-3ac0bf8b4fe2f18c.js",
       "static/css/5674832e1468d24d.css",
       "static/chunks/pages/market-8588a52b0142af91.js"
@@ -295,7 +295,7 @@
       "static/css/ea863d0176eaee41.css",
       "static/chunks/231-2b2229a2d23cbfa0.js",
       "static/chunks/207-0e4f4136012a3074.js",
-      "static/chunks/486-ad0722bac9a2a85a.js",
+      "static/chunks/486-e5a12bc13969b1ba.js",
       "static/chunks/971-3ac0bf8b4fe2f18c.js",
       "static/chunks/pages/market/sell-5c53d336e9579971.js"
     ],
