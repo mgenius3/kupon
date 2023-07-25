@@ -95,8 +95,8 @@ export default function Logistics() {
                       className="blur-up lazyload bg-img"
                       dataSrc="/images/trucks.png"
                       src="/images/trucks.png"
-                      alt="Kupon"
-                      title="Kupon"
+                      alt="Kupon logistics"
+                      title="Kupon logsitics"
                       style={{
                         width: "100%",
                       }}
@@ -107,8 +107,8 @@ export default function Logistics() {
                       className="blur-up lazyload bg-img"
                       dataSrc="/images/trucks_brand.png"
                       src="/images/truck_brand.png"
-                      alt="Kupon"
-                      title="Kupon"
+                      alt="Kupon logistics"
+                      title="Kupon logistics"
                       style={{
                         width: "100%",
                       }}

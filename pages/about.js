@@ -113,12 +113,11 @@ export default function Home() {
                 }}
               >
                 Kupon is a leading provider of logistics and ecommerce services
-                for businesses of all sizes. Founded in [year], our company has
-                established a reputation for excellence in the industry by
-                delivering reliable and cost-effective solutions that help our
-                clients grow and succeed. Kupon is a logistics and online
-                ecommerce website that offers a wide range of products and
-                services to customers.
+                for businesses of all sizes. Our company has established a
+                reputation for excellence in the industry by delivering reliable
+                and cost-effective solutions that help our clients grow and
+                succeed. Kupon is a logistics and online ecommerce website that
+                offers a wide range of products and services to customers.
               </p>
               <br />{" "}
               <p

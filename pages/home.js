@@ -47,6 +47,7 @@ export default function Home() {
                           src="https://img.icons8.com/ios-glyphs/30/FFFFFF/send.png"
                           width={20}
                           className="mx-2"
+                          alt="kupon"
                         />
                         Send Package
                       </span>
@@ -86,6 +87,7 @@ export default function Home() {
                           src="https://img.icons8.com/ios/50/FFFFFF/shopping-cart--v1.png"
                           width={20}
                           className="mx-2"
+                          alt="kupon"
                         />
                         Shop Now
                       </span>

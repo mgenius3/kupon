@@ -76,8 +76,8 @@ export default function Home() {
                     className="blur-up lazyload bg-img"
                     dataSrc="/images/cart.png"
                     src="/images/cart.png"
-                    alt="Summer Bikini Collection"
-                    title="Summer Bikini Collection"
+                    alt="kupon market"
+                    title="Kupon market"
                     style={{
                       width: "100%",
                       height: "60vh!important",
@@ -110,8 +110,8 @@ export default function Home() {
                     className="blur-up lazyload bg-img"
                     dataSrc="/images/slideshow-banners/cart.jpg"
                     src="/images/slideshow-banners/carts.jpg"
-                    alt="Summer Bikini Collection"
-                    title="Summer Bikini Collection"
+                    alt="kupon market"
+                    title="kupon market"
                     style={{
                       width: "100%",
                       height: "60vh!important",
@@ -192,7 +192,7 @@ export default function Home() {
                                   //   JSON.parse(product?.files)[0]
                                   // }`}
                                   src={JSON.parse(product?.files)[0]}
-                                  alt="image"
+                                  alt="kupon market"
                                   title="product"
                                   style={{ height: "250px" }}
                                 />
@@ -220,7 +220,7 @@ export default function Home() {
                                       ? JSON.parse(product.files)[1]
                                       : JSON.parse(product.files)[0]
                                   }
-                                  alt="image"
+                                  alt="kupon market"
                                   title="product"
                                   style={{ height: "250px" }}
                                 />

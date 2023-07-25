@@ -298,7 +298,15 @@ function Layout({ title , children  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "description",
-                        content: "description"
+                        content: "Welcome to Kupon, your one-stop logistics and marketplace solution! We are a cutting-edge platform that connects businesses and individuals with a seamless logistics network and a diverse marketplace, offering a wide range of products and services. Whether you're a small business owner, a supplier, or an individual consumer, we've got you covered"
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                        name: "keywords",
+                        content: "Logistics, Marketplace, Shipping, Delivery, E-commerce, Online Shopping, Suppliers, Sellers, Products, Services, Tracking, Secure, Reliable, Efficient, Convenience, Customer Support, Trust, Transparency, Data Privacy, Catalog, Shopping Experience, Community, Connectivity, kupon.com.ng"
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                        name: "author",
+                        content: "Kupon Logistics - MarketPlace"
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
                         name: "viewport",
@@ -306,6 +314,10 @@ function Layout({ title , children  }) {
                     }),
                     /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
                         rel: "shortcut icon",
+                        href: "/images/kupon icon.png"
+                    }),
+                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                        rel: "icon",
                         href: "/images/kupon icon.png"
                     })
                 ]

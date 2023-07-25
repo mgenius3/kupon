@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Carousel } from "react-bootstrap";
 // import styled from 'styled-components';
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -23,6 +24,19 @@ export default function Home() {
             </p>
 
             <div className="d1">
+              <Link href="https://play.google.com/store/apps/details?id=com.teknesis.kupon">
+                <span>
+                  <img
+                    width="50"
+                    height="50"
+                    src="https://img.icons8.com/ios-filled/50/FFFFFF/google-play.png"
+                    alt="google-play"
+                  />{" "}
+                  <p>
+                    <em> Get on Android</em>
+                  </p>
+                </span>
+              </Link>
               <span>
                 <img
                   width="48"
@@ -32,17 +46,7 @@ export default function Home() {
                 />{" "}
                 <p>
                   <em>Get on Iphone</em>
-                </p>
-              </span>
-              <span>
-                <img
-                  width="50"
-                  height="50"
-                  src="https://img.icons8.com/ios-filled/50/FFFFFF/google-play.png"
-                  alt="google-play"
-                />{" "}
-                <p>
-                  <em> Get on Android</em>
+                  <sub style={{ color: "grey" }}>--coming soon--</sub>
                 </p>
               </span>
             </div>
@@ -50,10 +54,10 @@ export default function Home() {
           <div className="d2">
             <Carousel controls={false}>
               <Carousel.Item interval={2500}>
-                <img src="/images/trucks.png" />
+                <img src="/images/trucks.png" alt="kupon logistics" />
               </Carousel.Item>
               <Carousel.Item interval={2500}>
-                <img src="/images/cart.png" />
+                <img src="/images/cart.png" alt="kupon marketplace" />
               </Carousel.Item>
             </Carousel>
           </div>
