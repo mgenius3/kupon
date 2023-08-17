@@ -35,7 +35,7 @@ export default function Login() {
       const res = await response.json();
       localStorage.setItem("token", res);
       setIsLoading(false);
-      router.back();
+      router.push("/");
     } catch (err) {
       setIsLoading(false);
       toast.error(err.message);

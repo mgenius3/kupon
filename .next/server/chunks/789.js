@@ -4462,7 +4462,7 @@ function shortenString(str, maxLength) {
 function getInitials(firstName, lastName) {
     const firstInitial = firstName?.charAt(0);
     const lastInitial = lastName?.charAt(0);
-    if (!firstInitial && !lastInitial) return "nil";
+    if (!firstInitial && !lastInitial) return "";
     return firstInitial + lastInitial;
 }
 

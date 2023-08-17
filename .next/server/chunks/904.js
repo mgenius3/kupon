@@ -224,7 +224,7 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                 ".png"
             ]
         },
-        maxFiles: 3,
+        maxFiles: 5,
         maxSize: 2097152,
         onDropRejected: (e)=>{
             let error = e[0]?.errors[0].code;
@@ -333,7 +333,7 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                                 color: "#e64c00"
                             },
                             children: [
-                                "You can mark three(3) images at once,",
+                                "You can mark 5 images at once,",
                                 /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {}),
                                 " and also drag them here."
                             ]
@@ -342,7 +342,7 @@ function ImageUpload({ setFileUploadError , setImageUrl  }) {
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", {
                         children: [
                             /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("b", {
-                                children: "Note: maximum of three images"
+                                children: "Note: maximum of 5 images"
                             }),
                             " "
                         ]

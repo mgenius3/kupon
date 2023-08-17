@@ -72,7 +72,7 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
       accept: {
         "image/*": [".jpeg", ".png"],
       },
-      maxFiles: 3,
+      maxFiles: 5,
       maxSize: 2097152,
       onDropRejected: (e) => {
         let error = e[0]?.errors[0].code;
@@ -191,12 +191,12 @@ function ImageUpload({ setFileUploadError, setImageUrl }) {
         </p> */}
         <p className="text-center">
           <b style={{ color: "#e64c00" }}>
-            You can mark three(3) images at once,
+            You can mark 5 images at once,
             <br /> and also drag them here.
           </b>
         </p>
         <span>
-          <b>Note: maximum of three images</b>{" "}
+          <b>Note: maximum of 5 images</b>{" "}
         </span>
         <span>
           <b>Note: image should not be more than 2mb</b>{" "}
