@@ -136,7 +136,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 20px;
-    height: 80px;
+    /* height: 80px; */
   }
   #shop > div > .market_prod_img .market_prod_pics_sub > img {
     width: 30% !important;
